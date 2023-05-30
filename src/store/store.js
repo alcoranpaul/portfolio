@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 30th May 2023 4:20:11 pm
+ * Last Modified: Tuesday, 30th May 2023 4:28:48 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,4 +13,11 @@
  */
 
 import { compose, createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
+import logger from 'redux-logger';
+
+import { rootReducer } from './root-reducer';
+
+const middleWares = [logger];
+const composedEnhancers = compose(applyMiddleware(...middleWares));
+
+export const store = createStore(rootReducer, undefined, composedEnhancers);
