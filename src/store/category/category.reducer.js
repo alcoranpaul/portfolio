@@ -1,7 +1,7 @@
 /*
- * File: root-reducert.js
+ * File: user.reducer.js
  * Project: portfolio
- * File Created: Tuesday, 30th May 2023 4:20:24 pm
+ * File Created: Tuesday, 30th May 2023 4:21:19 pm
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
@@ -12,6 +12,3 @@
  * Description:
  */
 
-import { combineReducers } from "redux";
-
-export const rootReducer = combineReducers({})
