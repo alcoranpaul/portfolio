@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 30th May 2023 4:40:20 pm
+ * Last Modified: Tuesday, 30th May 2023 5:07:40 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -17,7 +17,7 @@ const INITIAL_STATE = {
     categories: []
 }
 
-export const categoryReducer = (state = {}, action = {}) => {
+export const categoryReducer = (state = INITIAL_STATE, action = {}) => {
     const { type, payload } = action;
     switch (type) {
         case CATEGORY_ACTION_TYPE.SET_CATEGORIES_MAP:
