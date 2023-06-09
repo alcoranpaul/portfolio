@@ -5,38 +5,56 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 9th June 2023 1:33:53 pm
+ * Last Modified: Friday, 9th June 2023 2:54:21 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 import { Container, Row, Col } from 'react-bootstrap';
+import tempProjectShowcase from '../../data/home/tempProjectShowcase.gif';
 import './home.styles.scss';
 
 const Home = () => {
     return (
-        <div className='def'>
-            <h1>Home</h1>
-            <Container fluid>
-                <Row className="full-height">
-                    <Col className="cell" style={{ backgroundColor: 'red' }}>
-                        <div className="box"></div>
-                        Cell 1
-                    </Col>
-                    <Col className="cell" style={{ backgroundColor: 'green' }}>
-                        <div className="box"></div>
-                        Cell 2
-                    </Col>
-                </Row>
-                <Row className="full-height">
-                    <Col className="cell" style={{ backgroundColor: 'yellow' }}>
-                        <div className="box"></div>
-                        Cell 4
-                    </Col>
-                </Row>
-            </Container>
-        </div>
+        <Container className='mainContent'>
+
+
+            <Row className='topRow'>
+                <Col className='name-container'>
+                    <Row>
+                        <Col className='name'>
+                            <h2>Hi I'm <span>Paul</span></h2>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col className='carousel'>
+                            <ul>
+                                <li>Full Stack Developer</li>
+                                <li>Web Developer</li>
+                                <li>Software Engineer</li>
+                            </ul>
+                        </Col>
+                    </Row>
+
+                </Col>
+                <Col className='facts-container' >
+                    <ul>
+                        <li>Java</li>
+                        <li>Python</li>
+                        <li>OOP</li>
+                    </ul>
+                </Col>
+            </Row>
+            <Row className='botRow'>
+                <Col className='projects-container' >
+                    <img src={tempProjectShowcase} alt='tempProjectShowcase' className='video' />
+                </Col>
+            </Row>
+
+
+
+        </Container >
     );
 };
 
