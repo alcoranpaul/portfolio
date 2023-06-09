@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 31st May 2023 6:35:39 pm
+ * Last Modified: Friday, 9th June 2023 3:50:15 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -14,12 +14,14 @@
 
 // theme.js
 
-const theme = {
-    primaryColor: '#335C67',
-    secondaryColor: '#FFF3B0',
-    accentColor1: '#E09F3E',
-    accentColor2: '#9E2A2B',
-    accentColor3: '#540B0E',
+export const theme = {
+    colors: {
+        background: '#F0F0F0',
+        text: '#333333',
+        primary: '#007BFF',
+        secondary: '#6C757D',
+        accent: '#FFC107',
+        error: '#DC3545',
+        success: '#28A745',
+    },
 };
-
-export default theme;

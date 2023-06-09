@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 9th June 2023 2:54:21 pm
+ * Last Modified: Friday, 9th June 2023 3:37:42 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,6 +13,7 @@
  */
 import { Container, Row, Col } from 'react-bootstrap';
 import tempProjectShowcase from '../../data/home/tempProjectShowcase.gif';
+
 import './home.styles.scss';
 
 const Home = () => {
@@ -30,9 +31,10 @@ const Home = () => {
                     <Row>
                         <Col className='carousel'>
                             <ul>
-                                <li>Full Stack Developer</li>
                                 <li>Web Developer</li>
                                 <li>Software Engineer</li>
+                                <li>Programmer</li>
+
                             </ul>
                         </Col>
                     </Row>
