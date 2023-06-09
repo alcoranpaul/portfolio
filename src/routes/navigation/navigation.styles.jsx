@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 9th June 2023 4:08:33 pm
+ * Last Modified: Friday, 9th June 2023 4:11:02 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -44,15 +44,13 @@ export const ContentContainer = styled.div`
   padding: 20px;
 `;
 
-export const NavLink = styled(Link)`
+
+export const NavItem = styled(Link)`
+  background-color: #B9BAA3;
   text-decoration: none;
   cursor: pointer;
-  border-radius: 20px;
-  color: black;
-`
 
-export const NavItem = styled.div`
-  background-color: #B9BAA3;
+  color: black;
   font-size: 18px;
   width: 100%;
   padding: 15px 50px 15px 10px;

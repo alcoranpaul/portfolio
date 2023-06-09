@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Sunday, 4th June 2023 10:38:40 pm
+ * Last Modified: Friday, 9th June 2023 4:11:04 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,35 +13,20 @@
  */
 
 
-import { SidebarContainer, Sidebar, ContentContainer, NavLink, NavItem } from './navigation.styles.jsx';
+import { SidebarContainer, Sidebar, ContentContainer, NavItem } from './navigation.styles.jsx';
 import { Outlet } from 'react-router-dom';
 
 const Navigation = () => {
     return (
         <SidebarContainer>
             <Sidebar>
-
-                <NavItem>
-                    <NavLink to="/">Home</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink eventkey="2" to='/projects'>Projects</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink eventkey="3" to='/skills'>Skills</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink eventkey="4" to='/work'>Work</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink eventkey="5" to='/education'>Education</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink eventkey="6" to='/contact'>Contact</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink eventkey="7" to='/about'>About</NavLink>
-                </NavItem>
+                <NavItem to="/">Home</NavItem>
+                <NavItem to="/projects">Projects</NavItem>
+                <NavItem to="/skills">Skills</NavItem>
+                <NavItem to="/work">Work</NavItem>
+                <NavItem to="/education">Education</NavItem>
+                <NavItem to="/contact">Contact</NavItem>
+                <NavItem to="/about">About</NavItem>
 
             </Sidebar>
             <ContentContainer>
