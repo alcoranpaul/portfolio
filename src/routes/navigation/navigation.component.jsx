@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 31st May 2023 4:48:58 pm
+ * Last Modified: Sunday, 4th June 2023 10:38:40 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -28,10 +28,19 @@ const Navigation = () => {
                     <NavLink eventkey="2" to='/projects'>Projects</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink eventkey="3" to='/about'>About</NavLink>
+                    <NavLink eventkey="3" to='/skills'>Skills</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink eventkey="4" to='/contact'>Contact</NavLink>
+                    <NavLink eventkey="4" to='/work'>Work</NavLink>
+                </NavItem>
+                <NavItem>
+                    <NavLink eventkey="5" to='/education'>Education</NavLink>
+                </NavItem>
+                <NavItem>
+                    <NavLink eventkey="6" to='/contact'>Contact</NavLink>
+                </NavItem>
+                <NavItem>
+                    <NavLink eventkey="7" to='/about'>About</NavLink>
                 </NavItem>
 
             </Sidebar>
