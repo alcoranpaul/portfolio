@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 9th June 2023 3:37:42 pm
+ * Last Modified: Friday, 9th June 2023 4:17:38 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -19,8 +19,6 @@ import './home.styles.scss';
 const Home = () => {
     return (
         <Container className='mainContent'>
-
-
             <Row className='topRow'>
                 <Col className='name-container'>
                     <Row>
@@ -38,7 +36,6 @@ const Home = () => {
                             </ul>
                         </Col>
                     </Row>
-
                 </Col>
                 <Col className='facts-container' >
                     <ul>
@@ -53,9 +50,6 @@ const Home = () => {
                     <img src={tempProjectShowcase} alt='tempProjectShowcase' className='video' />
                 </Col>
             </Row>
-
-
-
         </Container >
     );
 };
