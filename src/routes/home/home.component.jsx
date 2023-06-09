@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 9th June 2023 4:17:38 pm
+ * Last Modified: Friday, 9th June 2023 4:43:21 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -14,13 +14,13 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import tempProjectShowcase from '../../data/home/tempProjectShowcase.gif';
 
-import './home.styles.scss';
+import { MainContent, TopRow, NameContainer, FactsContainer, BotRow, ProjectsContainer } from './home.styles.jsx';
 
 const Home = () => {
     return (
-        <Container className='mainContent'>
-            <Row className='topRow'>
-                <Col className='name-container'>
+        <MainContent>
+            <TopRow>
+                <NameContainer>
                     <Row>
                         <Col className='name'>
                             <h2>Hi I'm <span>Paul</span></h2>
@@ -36,21 +36,21 @@ const Home = () => {
                             </ul>
                         </Col>
                     </Row>
-                </Col>
-                <Col className='facts-container' >
+                </NameContainer>
+                <FactsContainer>
                     <ul>
                         <li>Java</li>
                         <li>Python</li>
                         <li>OOP</li>
                     </ul>
-                </Col>
-            </Row>
-            <Row className='botRow'>
-                <Col className='projects-container' >
+                </FactsContainer>
+            </TopRow>
+            <BotRow>
+                <ProjectsContainer>
                     <img src={tempProjectShowcase} alt='tempProjectShowcase' className='video' />
-                </Col>
-            </Row>
-        </Container >
+                </ProjectsContainer>
+            </BotRow>
+        </MainContent >
     );
 };
 
