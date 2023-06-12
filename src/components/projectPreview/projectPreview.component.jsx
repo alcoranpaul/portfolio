@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 9th June 2023 5:12:35 pm
+ * Last Modified: Friday, 9th June 2023 5:56:13 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -19,7 +19,11 @@ const ProjectPreview = ({ project }) => {
     return (
         <Container className='main-content'>
             <div className='leftArrow'>
-                <Arrow />
+                <Arrow className='arrow' />
+            </div>
+
+            <div className='rightArrow'>
+                <Arrow className='arrow' />
             </div>
             <Row className='projects-container'>
                 <Col className='project-one'>1</Col>
