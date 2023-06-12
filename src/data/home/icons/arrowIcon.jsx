@@ -5,14 +5,14 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 9th June 2023 5:47:29 pm
+ * Last Modified: Monday, 12th June 2023 12:33:39 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
-function Arrow({ className }) {
+function ArrowIcon({ className }) {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -27,4 +27,4 @@ function Arrow({ className }) {
 
 }
 
-export default Arrow;
+export default ArrowIcon;

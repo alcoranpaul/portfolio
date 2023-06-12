@@ -5,34 +5,71 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 12th June 2023 11:49:07 am
+ * Last Modified: Monday, 12th June 2023 1:02:09 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
- * Description:
+ * Description: Renders the Project Items
  */
 
-import { Container, Row, Col } from 'react-bootstrap';
-import Arrow from '../../data/home/icons/arrowIcon';
-import './projectPreview.styles.scss';
+// import { Col } from 'react-bootstrap';
+import ArrowIcon from '../../data/home/icons/arrowIcon';
+import ProjectItem from '../project/project-item.component';
+
+import {
+    ProjectPreviewContainer,
+    LeftArrowContainer,
+    RightArrowContainer,
+    Arrow,
+    ProjectsPreviewContainer,
+    ProjectContainer
+} from './projectPreview.styles.jsx';
+
+const projectsTemp = {
+    projectOne: {
+        title: 'Project One',
+        description: 'This is a project',
+        image: 'https://th.bing.com/th/id/OIP.py11cEQbNyv0SjZwjkHasAHaEK?pid=ImgDet&rs=1'
+    },
+    projectTwo: {
+        title: 'Project Two',
+        description: 'This is a project',
+        image: 'https://th.bing.com/th/id/OIP.ZO4TmUbxM5-V1R7bbDpMHQHaEK?pid=ImgDet&rs=1'
+    },
+    projectThree: {
+        title: 'Project Three',
+        description: 'This is a project',
+        image: 'https://th.bing.com/th/id/OIP.W2ZZmFD47OaU47rNNwzzUAHaEo?pid=ImgDet&rs=1'
+    },
+}
 
 //TODO: State machine for Arrow hover?
-const ProjectPreview = ({ project }) => {
+const ProjectPreview = () => {
     return (
-        <Container className='main-content'>
-            <div className='leftArrow'>
-                <Arrow className='arrow' />
-            </div>
+        <ProjectPreviewContainer>
+            <LeftArrowContainer>
+                <Arrow>
+                    <ArrowIcon />
+                </Arrow>
+            </LeftArrowContainer>
 
-            <div className='rightArrow'>
-                <Arrow className='arrow' />
-            </div>
-            <Row className='projects-container'>
-                <Col className='project-one'>1</Col>
-                <Col className='project-two'>2</Col>
-                <Col className='project-three'>3</Col>
-            </Row>
-        </Container>
+            <RightArrowContainer>
+                <Arrow>
+                    <ArrowIcon />
+                </Arrow>
+            </RightArrowContainer>
+
+            <ProjectsPreviewContainer>
+                {Object.keys(projectsTemp).map((key) => (
+                    <ProjectContainer key={key}>
+                        <ProjectItem title={projectsTemp[key].title}
+                            description={projectsTemp[key].description}
+                            image={projectsTemp[key].image}
+                        />
+                    </ProjectContainer>
+                ))}
+            </ProjectsPreviewContainer>
+        </ProjectPreviewContainer>
     );
 }
 
