@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 9th June 2023 5:56:13 pm
+ * Last Modified: Monday, 12th June 2023 11:49:07 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -15,6 +15,8 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import Arrow from '../../data/home/icons/arrowIcon';
 import './projectPreview.styles.scss';
+
+//TODO: State machine for Arrow hover?
 const ProjectPreview = ({ project }) => {
     return (
         <Container className='main-content'>
