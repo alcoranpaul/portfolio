@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 12th June 2023 8:28:59 pm
+ * Last Modified: Monday, 12th June 2023 11:11:14 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -41,6 +41,11 @@ const projectsTemp = {
         description: 'This is a project',
         image: 'https://th.bing.com/th/id/OIP.W2ZZmFD47OaU47rNNwzzUAHaEo?pid=ImgDet&rs=1'
     },
+    projectFour: {
+        title: 'Project Four',
+        description: 'This is a project',
+        image: 'https://th.bing.com/th/id/OIP.W2ZZmFD47OaU47rNNwzzUAHaEo?pid=ImgDet&rs=1'
+    },
 }
 
 const COLUMN_WIDTHS = [4, 4, 4]; // Initial column widths
@@ -52,6 +57,7 @@ const COLUMN_WIDTHS = [4, 4, 4]; // Initial column widths
 const ProjectPreview = () => {
     const [columnWidths, setColumnWidths] = useState(COLUMN_WIDTHS); // Initial column widths
     const [activeIndex, setActiveIndex] = useState(-1); // Active index of the clicked project
+    const [maxIndex, setMaxIndex] = useState(0); // Max index for traversal    
 
     const handleClick = (index) => {
         if (index === activeIndex) {
@@ -66,37 +72,63 @@ const ProjectPreview = () => {
         }
     };
 
+    const handleNext = () => {
+        setMaxIndex((prevIndex) => (prevIndex + 1) % Object.keys(projectsTemp).length)
+
+    }
+
+    const handlePrev = () => {
+        setMaxIndex((prevIndex) =>
+            prevIndex === 0 ? Object.keys(projectsTemp).length - 1 : prevIndex - 1
+        );
+
+    };
+
+    const projectsArray = Object.values(projectsTemp);
+    const lastProjectIndex = projectsArray.length - 1;
+
+
+
     return (
         <ProjectPreviewWrapper>
             <ProjectsPreviewContainer>
-                {Object.keys(projectsTemp).map((key, index) => (
-                    <ProjectContainer key={key} onClick={() => handleClick(index)}
-                        lg={columnWidths[index]}
-                    >
-                        <ProjectItem
-                            title={projectsTemp[key].title}
-                            description={projectsTemp[key].description}
-                            image={projectsTemp[key].image}
-                            clicked={index === activeIndex}
-                        />
-                    </ProjectContainer>
-                ))}
+                {projectsArray
+                    .slice(maxIndex, maxIndex + 3)
+                    .map((project, index) => (
+                        <ProjectContainer
+                            key={index}
+                            onClick={() => handleClick(index)}
+                            lg={columnWidths[index]}
+
+                        >
+                            <ProjectItem
+                                title={project.title}
+                                description={project.description}
+                                image={project.image}
+                                clicked={index === activeIndex}
+                            />
+                        </ProjectContainer>
+                    ))}
             </ProjectsPreviewContainer>
 
-            <LeftArrowContainer>
-                <Arrow>
-                    <ArrowIcon />
-                </Arrow>
-            </LeftArrowContainer>
+            {maxIndex !== 0 && (
+                <LeftArrowContainer>
+                    <Arrow onClick={handlePrev}>
+                        <ArrowIcon />
+                    </Arrow>
+                </LeftArrowContainer>
+            )}
 
-            <RightArrowContainer>
-                <Arrow>
-                    <ArrowIcon />
-                </Arrow>
-            </RightArrowContainer>
-
+            {(maxIndex + 3) === lastProjectIndex && (
+                <RightArrowContainer>
+                    <Arrow onClick={handleNext}>
+                        <ArrowIcon />
+                    </Arrow>
+                </RightArrowContainer>
+            )}
         </ProjectPreviewWrapper>
     );
+
 }
 
 
