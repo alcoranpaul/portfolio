@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 12th June 2023 10:21:28 pm
+ * Last Modified: Monday, 12th June 2023 11:22:20 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -81,5 +81,7 @@ export const ProjectContainer = styled(Col)`
     padding-left: 0px;
     padding-right: 0px;
 
-    transition: width 0.5s ease-in-out;
+    transition: width 0.5s ease-in-out, opacity 0.5s ease-in-out; // Add transition for width and opacity
+
+
 `
