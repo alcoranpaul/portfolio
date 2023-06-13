@@ -5,19 +5,19 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 12th June 2023 1:02:09 pm
+ * Last Modified: Monday, 12th June 2023 7:19:14 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description: Renders the Project Items
  */
 
-// import { Col } from 'react-bootstrap';
+import { useState } from 'react';
 import ArrowIcon from '../../data/home/icons/arrowIcon';
 import ProjectItem from '../project/project-item.component';
 
 import {
-    ProjectPreviewContainer,
+    ProjectPreviewWrapper,
     LeftArrowContainer,
     RightArrowContainer,
     Arrow,
@@ -33,7 +33,7 @@ const projectsTemp = {
     },
     projectTwo: {
         title: 'Project Two',
-        description: 'This is a project',
+        description: 'lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum voluptates. ',
         image: 'https://th.bing.com/th/id/OIP.ZO4TmUbxM5-V1R7bbDpMHQHaEK?pid=ImgDet&rs=1'
     },
     projectThree: {
@@ -44,9 +44,42 @@ const projectsTemp = {
 }
 
 //TODO: State machine for Arrow hover?
+// - When hot hovered the description should be lessen
+// - When hovered the description should be expanded
+// - Add view all button
 const ProjectPreview = () => {
+    const [columnWidths, setColumnWidths] = useState([4, 4, 4]); // Initial column widths
+    const [activeIndex, setActiveIndex] = useState(-1); // Initial active index [0, 1, 2
+
+    const handleClick = (index) => {
+        if (index === activeIndex) {
+            setActiveIndex(-1);
+            setColumnWidths([4, 4, 4]);
+        }
+        else {
+            setActiveIndex(index);
+            const updatedWidths = [1, 1, 1]; // Reset all column widths to 1
+            updatedWidths[index] = 10; // Set the clicked column width to 10
+            setColumnWidths(updatedWidths);
+        }
+    };
+
     return (
-        <ProjectPreviewContainer>
+        <ProjectPreviewWrapper>
+            <ProjectsPreviewContainer>
+                {Object.keys(projectsTemp).map((key, index) => (
+                    <ProjectContainer key={key} onClick={() => handleClick(index)}
+                        lg={columnWidths[index]}
+                    >
+                        <ProjectItem
+                            title={projectsTemp[key].title}
+                            description={projectsTemp[key].description}
+                            image={projectsTemp[key].image}
+                        />
+                    </ProjectContainer>
+                ))}
+            </ProjectsPreviewContainer>
+
             <LeftArrowContainer>
                 <Arrow>
                     <ArrowIcon />
@@ -59,17 +92,7 @@ const ProjectPreview = () => {
                 </Arrow>
             </RightArrowContainer>
 
-            <ProjectsPreviewContainer>
-                {Object.keys(projectsTemp).map((key) => (
-                    <ProjectContainer key={key}>
-                        <ProjectItem title={projectsTemp[key].title}
-                            description={projectsTemp[key].description}
-                            image={projectsTemp[key].image}
-                        />
-                    </ProjectContainer>
-                ))}
-            </ProjectsPreviewContainer>
-        </ProjectPreviewContainer>
+        </ProjectPreviewWrapper>
     );
 }
 

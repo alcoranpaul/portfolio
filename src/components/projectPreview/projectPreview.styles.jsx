@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 12th June 2023 1:06:35 pm
+ * Last Modified: Monday, 12th June 2023 7:18:45 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -15,7 +15,7 @@
 import styled from 'styled-components';
 import { Container, Row, Col } from 'react-bootstrap';
 
-export const ProjectPreviewContainer = styled(Container)`
+export const ProjectPreviewWrapper = styled(Container)`
     padding-top: 20px;
     max-width: 85vw;
 
@@ -30,7 +30,7 @@ export const LeftArrowContainer = styled.div`
     left: 15%; /* Position it horizontally at the center */
     transform: translate(-50%, -50%); /* Center the left arrow precisely */
     z-index: 1; /* Place the left arrow on top of other elements */
-     ${'' /* background-color: antiquewhite; */}
+
 `
 
 export const RightArrowContainer = styled.div`
@@ -48,9 +48,12 @@ export const RightArrowContainer = styled.div`
 
 export const Arrow = styled.svg`
     display: block;
+    width: 100px;
+    height: 100px;
     line-height: 0;
-    transition: transform 0.3s ease; /* Add a smooth transition effect */
     fill: white;
+
+    transition: transform 0.3s ease; /* Add a smooth transition effect */
     &:hover {
         cursor: pointer;
         fill: red;
@@ -60,6 +63,7 @@ export const Arrow = styled.svg`
     &:active {
         transform: translateX(10px); /* Move the arrow 10 pixels to the right when clicked */
     }
+  
 `
 
 export const ProjectsPreviewContainer = styled(Row)`
@@ -76,4 +80,6 @@ export const ProjectContainer = styled(Col)`
     
     padding-left: 0px;
     padding-right: 0px;
+
+    transition: width 0.5s ease-in-out;
 `

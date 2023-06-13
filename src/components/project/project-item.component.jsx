@@ -5,22 +5,22 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 12th June 2023 12:58:20 pm
+ * Last Modified: Monday, 12th June 2023 2:57:30 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
-import { ProjectItemContainer, BackgroundImage } from './project-item.styles.jsx';
-const ProjectItem = ({ title, description, image }) => {
+import { ProjectItemContainer, BackgroundImage, ContentContainer } from './project-item.styles.jsx';
+const ProjectItem = ({ title, description, image, expanded }) => {
     return (
-        <ProjectItemContainer>
-
-            <h2>{title}</h2>
-            <p>{description}</p>
+        <ProjectItemContainer expanded={expanded}>
             <BackgroundImage imageurl={image} />
-
+            <ContentContainer>
+                <h2>{title}</h2>
+                <p>{description}</p>
+            </ContentContainer>
         </ProjectItemContainer>
     );
 }
