@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 12th June 2023 8:44:37 pm
+ * Last Modified: Monday, 12th June 2023 10:07:59 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -16,9 +16,12 @@ import styled from 'styled-components';
 
 
 export const ButtonContainer = styled.div`
-  opacity: ${({ clicked }) => (clicked ? '1' : '0')};
-  transform: ${({ clicked }) => (clicked ? 'translateY(50%)' : 'translateY(100%)')};
-  transition: opacity 1s ease, transform 0.5s ease-in-out; /* Transition effect for the Button */
+    display: flex;
+    position: absolute;
+    bottom: ${({ clicked }) => (clicked ? '10%' : '-5%')};
+    opacity: ${({ clicked }) => (clicked ? '1' : '0')};
+    transform: ${({ clicked }) => (clicked ? 'translateY(0)' : 'translateY(100%)')};
+    transition: opacity 1s ease, transform 0.5s ease-in-out, bottom 0.6s ease-in-out; /* Transition effect for the Button */
 `;
 
 

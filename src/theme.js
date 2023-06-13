@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 9th June 2023 3:50:15 pm
+ * Last Modified: Monday, 12th June 2023 9:55:09 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -16,8 +16,8 @@
 
 export const theme = {
     colors: {
-        background: '#F0F0F0',
-        text: '#333333',
+        background: '#d6d5c9',
+        text: '#fdf0d5',
         primary: '#007BFF',
         secondary: '#6C757D',
         accent: '#FFC107',

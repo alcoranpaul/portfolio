@@ -1,13 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Federo&display=swap');
 
+:root {
+  /* Primary color */
+  --color-primary: #902923;
+
+  /* Secondary color */
+  --color-secondary: #a22c29;
+
+  /* Accent color */
+  --color-accent: #d6d5c9;
+
+  /* Background color */
+  --color-background: #0a100d;
+
+  /* Text color */
+  --color-text: #fdf0d5;
+
+  /* Additional colors */
+  --color-error: #b9baa3;
+  --color-success: #0a100d;
+  --color-custom: #fdf0d5;
+}
+
+
+
+
 body {
   margin: 0;
   font-family: "Federo", 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
 
-  background-color: #0A100D;
-  color: #FDF0D5;
+    background-color: var(--color-background);
+    color: var(--color-text);
 }
 
 
+.button {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+}

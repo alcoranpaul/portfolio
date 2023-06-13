@@ -5,17 +5,26 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 12th June 2023 8:30:25 pm
+ * Last Modified: Monday, 12th June 2023 9:47:03 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
-const Button = () => {
+import { Button, ButtonIcon, ButtonText } from "./button.styles";
+import { BUTTON_TYPES } from "./buttonTypes";
+
+
+const CustomButton = ({ type, disabled, children }) => {
     return (
-        <button className="btn btn-primary">Click Me</button>
+        <Button type={type} disabled={disabled}>
+            <ButtonIcon>{children}</ButtonIcon>
+            <ButtonText>
+                {type === BUTTON_TYPES.DEMO ? 'Demo' : 'Github'}
+            </ButtonText>
+        </Button>
     )
 }
 
-export default Button;
+export default CustomButton;

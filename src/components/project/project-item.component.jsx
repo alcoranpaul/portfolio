@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 12th June 2023 8:43:13 pm
+ * Last Modified: Monday, 12th June 2023 9:48:11 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,7 +13,11 @@
  */
 
 import { ProjectItemContainer, BackgroundImage, ContentContainer, ButtonContainer } from './project-item.styles.jsx';
-import Button from '../button/button.component.jsx';
+import { BUTTON_TYPES } from '../button/buttonTypes.js';
+import GithubIcon from '../../data/components/button/githubIcon.jsx'
+import DemoIcon from '../../data/components/button/demoIcon.jsx';
+
+import CustomButton from '../button/button.component.jsx';
 
 const ProjectItem = ({ title, description, image, clicked }) => {
     return (
@@ -24,8 +28,12 @@ const ProjectItem = ({ title, description, image, clicked }) => {
                 <p>{description}</p>
 
                 <ButtonContainer clicked={clicked}>
-                    <Button />
-                    <Button />
+                    <CustomButton type={BUTTON_TYPES.DEMO} disabled={!clicked}>
+                        <DemoIcon />
+                    </CustomButton>
+                    <CustomButton type={BUTTON_TYPES.GITHUB} disabled={!clicked}>
+                        <GithubIcon />
+                    </CustomButton>
                 </ButtonContainer>
 
             </ContentContainer>
