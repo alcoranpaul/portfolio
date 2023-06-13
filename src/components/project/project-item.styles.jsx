@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 12th June 2023 3:14:31 pm
+ * Last Modified: Monday, 12th June 2023 8:44:37 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,6 +13,14 @@
  */
 
 import styled from 'styled-components';
+
+
+export const ButtonContainer = styled.div`
+  opacity: ${({ clicked }) => (clicked ? '1' : '0')};
+  transform: ${({ clicked }) => (clicked ? 'translateY(50%)' : 'translateY(100%)')};
+  transition: opacity 1s ease, transform 0.5s ease-in-out; /* Transition effect for the Button */
+`;
+
 
 export const BackgroundImage = styled.div`
     position: absolute;
@@ -47,8 +55,19 @@ export const ProjectItemContainer = styled.div`
     flex-direction: column;
     background-color: yellow;
   
-
-    &:before {
+    ${({ clicked }) => clicked ?
+        `
+        ${ContentContainer} {
+            transform: translateX(5%); /* Translate 10% towards the right side when hovered */
+            font-size: 1.2em; /* Increase the font size when hovered */
+            transition: transform 1s ease, font-size 0.3s ease;
+        }
+        ${BackgroundImage} {
+            filter: none;
+        }
+        
+    `:
+        ` &:before {
         position: absolute;
         top: 0;
         left: 0;
@@ -58,20 +77,22 @@ export const ProjectItemContainer = styled.div`
         transition: opacity 0.3s ease;
         opacity: 0;
         z-index: 1; /* Overlay on top of the background image */
-    }
+        }
   
-    &:hover:before {
-        opacity: 1;
-    }
-  
-    &:hover ${BackgroundImage} {
-        filter: none;
-    }
-  
-    &:hover ${ContentContainer} {
-        transform: translateX(5%); /* Translate 10% towards the right side when hovered */
-        font-size: 1.2em; /* Increase the font size when hovered */
-        transition: transform 1s ease, font-size 0.3s ease;
-  }
+        &:hover:before {
+            opacity: 1;
+        }
+    
+        &:hover ${BackgroundImage} {
+            filter: none;
+        }
+    
+        &:hover ${ContentContainer} {
+            transform: translateX(5%); /* Translate 10% towards the right side when hovered */
+            font-size: 1.2em; /* Increase the font size when hovered */
+            transition: transform 1s ease, font-size 0.3s ease;
+        }
+    `}
+   
 
 `

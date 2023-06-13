@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 12th June 2023 7:19:14 pm
+ * Last Modified: Monday, 12th June 2023 8:28:59 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -43,18 +43,20 @@ const projectsTemp = {
     },
 }
 
+const COLUMN_WIDTHS = [4, 4, 4]; // Initial column widths
+
 //TODO: State machine for Arrow hover?
 // - When hot hovered the description should be lessen
 // - When hovered the description should be expanded
 // - Add view all button
 const ProjectPreview = () => {
-    const [columnWidths, setColumnWidths] = useState([4, 4, 4]); // Initial column widths
-    const [activeIndex, setActiveIndex] = useState(-1); // Initial active index [0, 1, 2
+    const [columnWidths, setColumnWidths] = useState(COLUMN_WIDTHS); // Initial column widths
+    const [activeIndex, setActiveIndex] = useState(-1); // Active index of the clicked project
 
     const handleClick = (index) => {
         if (index === activeIndex) {
             setActiveIndex(-1);
-            setColumnWidths([4, 4, 4]);
+            setColumnWidths(COLUMN_WIDTHS);
         }
         else {
             setActiveIndex(index);
@@ -75,6 +77,7 @@ const ProjectPreview = () => {
                             title={projectsTemp[key].title}
                             description={projectsTemp[key].description}
                             image={projectsTemp[key].image}
+                            clicked={index === activeIndex}
                         />
                     </ProjectContainer>
                 ))}
