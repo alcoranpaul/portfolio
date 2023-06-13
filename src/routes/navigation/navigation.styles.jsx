@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 9th June 2023 4:11:02 pm
+ * Last Modified: Monday, 12th June 2023 10:21:20 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -25,7 +25,7 @@ export const SidebarContainer = styled.div`
 `;
 
 export const Sidebar = styled(Navbar)`
-  background-color: #D6D5C9;
+  background-color: var(--color-accent);
   padding: 10px;
   width: 150px;
   display: flex;
@@ -46,7 +46,7 @@ export const ContentContainer = styled.div`
 
 
 export const NavItem = styled(Link)`
-  background-color: #B9BAA3;
+  background-color: var(--color-error);
   text-decoration: none;
   cursor: pointer;
 
@@ -57,6 +57,6 @@ export const NavItem = styled(Link)`
 
 
   &:hover {
-    background-color: #A22C29;
+    background-color: var(--color-secondary);
   }
 `

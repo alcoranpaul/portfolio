@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 12th June 2023 7:18:45 pm
+ * Last Modified: Monday, 12th June 2023 10:21:28 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -43,7 +43,7 @@ export const RightArrowContainer = styled.div`
     transform: translate(-50%, -50%); /* Center the left arrow precisely */
     z-index: 1; /* Place the left arrow on top of other elements */
     transform: rotate(180deg);
-     ${'' /* background-color: antiquewhite; */}
+
 `
 
 export const Arrow = styled.svg`
@@ -68,13 +68,13 @@ export const Arrow = styled.svg`
 
 export const ProjectsPreviewContainer = styled(Row)`
     height: 85vh;
-    background-color: rgb(20, 6, 209);
+
     padding-left: 0px;
     padding-right: 0px;
 `
 
 export const ProjectContainer = styled(Col)`
-    background-color: rgb(182, 84, 84);
+
     height: 100%; /* Adjust the height to fill the entire column */
     display: flex;
     

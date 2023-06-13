@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 12th June 2023 10:07:59 pm
+ * Last Modified: Monday, 12th June 2023 10:20:25 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -56,7 +56,6 @@ export const ProjectItemContainer = styled.div`
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    background-color: yellow;
   
     ${({ clicked }) => clicked ?
         `
@@ -76,7 +75,6 @@ export const ProjectItemContainer = styled.div`
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
         transition: opacity 0.3s ease;
         opacity: 0;
         z-index: 1; /* Overlay on top of the background image */
