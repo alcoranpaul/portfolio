@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 14th June 2023 1:14:53 am
+ * Last Modified: Wednesday, 14th June 2023 1:33:09 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -25,7 +25,7 @@ const DropdownButton = ({ categories, onSelectCategory }) => {
         onSelectCategory(eventKey); // Send selected value to parent component
     };
 
-    const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+    const CustomToggle = React.forwardRef(({ children, onClick }, ref) => ( //TODO: Convert to Styled Component
         <div
             ref={ref}
             onClick={(e) => {
