@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 13th June 2023 11:03:18 pm
+ * Last Modified: Tuesday, 13th June 2023 11:54:25 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -45,7 +45,7 @@ export default function RadarGraph() {
 
         <RadarGraphContainer
             cx={255}
-            cy={200}
+            cy={190}
             outerRadius={120}
             width={500}
             height={500}

@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 13th June 2023 11:25:10 pm
+ * Last Modified: Tuesday, 13th June 2023 11:55:27 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -22,7 +22,7 @@ export const SkillTriangleContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    ${'' /* justify-content: flex-start; */}
 
 `
 export const Title = styled.h2`
