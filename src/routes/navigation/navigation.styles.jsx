@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 12th June 2023 10:21:20 pm
+ * Last Modified: Tuesday, 13th June 2023 8:01:45 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -54,6 +54,7 @@ export const NavItem = styled(Link)`
   font-size: 18px;
   width: 100%;
   padding: 15px 50px 15px 10px;
+  margin: 2px 0px;
 
 
   &:hover {
