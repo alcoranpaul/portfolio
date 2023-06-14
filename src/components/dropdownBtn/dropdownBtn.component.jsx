@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 13th June 2023 11:52:36 pm
+ * Last Modified: Wednesday, 14th June 2023 1:14:53 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -33,7 +33,7 @@ const DropdownButton = ({ categories, onSelectCategory }) => {
                 onClick(e);
             }}
             style={{
-                width: '250px',
+                width: '300px',
                 height: '50px',
                 fontSize: '20px',
                 backgroundColor: '#474B45',
@@ -56,7 +56,7 @@ const DropdownButton = ({ categories, onSelectCategory }) => {
                 {selectedCategory}
             </Dropdown.Toggle>
 
-            <Dropdown.Menu style={{ backgroundColor: '#474B45', width: '250px', border: '1px solid #D6D5C9', }}>
+            <Dropdown.Menu style={{ backgroundColor: '#474B45', width: '300px', border: '1px solid #D6D5C9', fontSize: '20px' }}>
                 {categories.map((category) => (
                     <DropdownItem
                         key={category}

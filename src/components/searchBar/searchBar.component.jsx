@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 14th June 2023 1:05:32 am
+ * Last Modified: Wednesday, 14th June 2023 1:23:20 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -20,7 +20,7 @@ const SearchBar = () => {
     return (
         <InputGroupContainer >
             <SearchBarContainer type="text" placeholder="Look up my tech" />
-            <InputGroup.Text id="basic-addon1" style={{ background: 'var(--color-background)' }}>
+            <InputGroup.Text id="basic-addon1" style={{ background: 'var(--color-background)', borderTopRightRadius: '10px', borderBottomRightRadius: '0px', }}>
                 <SearchIcon />
             </InputGroup.Text>
         </InputGroupContainer>

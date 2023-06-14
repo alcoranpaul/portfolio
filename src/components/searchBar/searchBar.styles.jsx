@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 14th June 2023 1:01:22 am
+ * Last Modified: Wednesday, 14th June 2023 1:22:12 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -22,7 +22,9 @@ export const SearchBarContainer = styled(Form.Control)`
   font-size: 20px;
   background: var(--color-background);
   color: var(--color-text);
-
+  border-radius: 0px; /* Set the desired border radius here */
+  border-top-left-radius: 10px;
+  
   ::placeholder {
     color: var(--color-text);
     opacity: 0.5;
@@ -35,9 +37,9 @@ export const SearchBarContainer = styled(Form.Control)`
 `
 
 export const InputGroupContainer = styled(InputGroup)`
-  width: 250px;
+  width: 300px;
   height: 50px;
-
+  
 `
 
 export const IconContainer = styled.div`
@@ -48,4 +50,5 @@ export const IconContainer = styled.div`
   height: 100%;
   background-color: var(--color-background);
   color: var(--color-text);
+  border-radius: 0px; /* Set the desired border radius here */
 `;
