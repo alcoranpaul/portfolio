@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 13th June 2023 11:30:19 pm
+ * Last Modified: Wednesday, 14th June 2023 12:13:09 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -18,7 +18,7 @@ function ArrowUpDown() {
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
-            fill="#000"
+            fill="var(--color-text)"
             version="1.1"
             viewBox="0 0 34.695 34.695"
             xmlSpace="preserve"
