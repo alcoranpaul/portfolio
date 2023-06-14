@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 13th June 2023 11:04:06 pm
+ * Last Modified: Tuesday, 13th June 2023 11:25:10 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -14,8 +14,9 @@
 
 import styled from 'styled-components';
 
+
 export const SkillTriangleContainer = styled.div`
-    background-color: red;
+    background-color: var(--color-skillVerse);
     height: 100%;
     width: 100%;
     display: flex;
