@@ -5,20 +5,20 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 13th June 2023 10:16:14 pm
+ * Last Modified: Tuesday, 13th June 2023 10:57:53 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
-import { SkillTriangleContainer } from "./skillTriangle.styles"
+import { SkillTriangleContainer, Title } from "./skillTriangle.styles"
 import RadarGraph from "../radarGraph/radarGraph"
 
 const SkillTriangle = () => {
     return (
         <SkillTriangleContainer>
-            <h1>Skill Triangle</h1>
+            <Title>Skillverse</Title>
             <RadarGraph />
         </SkillTriangleContainer>
     )

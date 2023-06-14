@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 13th June 2023 10:34:59 pm
+ * Last Modified: Tuesday, 13th June 2023 11:03:18 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -22,31 +22,41 @@ import {
 const data = [ //Use the formula below at line 61 to calculate the scaled radius for each category.
     {
         subject: "Software",
-        A: 64,
+        A: 54,
     },
     {
-        subject: "Game",
-        A: 21,
+        subject: "BackEnd",
+        A: 29,
     },
     {
-        subject: "Web",
-        A: 64,
-    }
+        subject: "Toolchain",
+        A: 29,
+    },
+    {
+        subject: "FrontEnd",
+        A: 38,
+    },
+
 ];
 
 export default function RadarGraph() {
+
     return (
 
         <RadarGraphContainer
-            cx={200}
+            cx={255}
             cy={200}
-            outerRadius={150}
+            outerRadius={120}
             width={500}
             height={500}
             data={data}
         >
             <PolarGrid />
-            <PolarAngleAxis dataKey="subject" tick={{ fill: "var(--color-text)" }} />
+            <PolarAngleAxis dataKey="subject"
+                tick={{
+                    fill: "var(--color-text)",
+                }}
+            />
             <Radar
                 name="CodeStyle"
                 dataKey="A"
