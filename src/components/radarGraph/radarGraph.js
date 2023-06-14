@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 14th June 2023 12:12:19 am
+ * Last Modified: Wednesday, 14th June 2023 1:11:57 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -44,11 +44,11 @@ export default function RadarGraph() {
     return (
 
         <RadarGraphContainer
-            cx={255}
-            cy={190}
+            cx={210}
+            cy={170}
             outerRadius={120}
-            width={500}
-            height={500}
+            width={400}
+            height={450}
             data={data}
         >
             <PolarGrid />

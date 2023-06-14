@@ -5,14 +5,14 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 14th June 2023 12:20:07 am
+ * Last Modified: Wednesday, 14th June 2023 1:12:10 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
-import { SkillTriangleContainer, Title } from "./skillTriangle.styles"
+import { SkillTriangleContainer, Title, VisualContainer, SorterContainer } from "./skillTriangle.styles"
 import RadarGraph from "../radarGraph/radarGraph"
 import DropdownButton from "../dropdownBtn/dropdownBtn.component"
 import SearchBar from "../searchBar/searchBar.component";
@@ -30,14 +30,20 @@ const SkillTriangle = () => {
 
     return (
         <SkillTriangleContainer>
-            <Title>Skillverse</Title>
-            <RadarGraph />
+            <VisualContainer>
+                <Title>Skillverse</Title>
+                <RadarGraph />
 
-            <SearchBar />
-            <br />
-            <DropdownButton categories={categoryOptions} onSelectCategory={handleCategorySelection} />
-            <br />
-            <DropdownButton categories={skillLevels} onSelectCategory={handleCategorySelection} />
+            </VisualContainer>
+
+            <SorterContainer>
+                <SearchBar />
+                <br />
+                <DropdownButton categories={categoryOptions} onSelectCategory={handleCategorySelection} />
+                <br />
+                <DropdownButton categories={skillLevels} onSelectCategory={handleCategorySelection} />
+            </SorterContainer>
+
         </SkillTriangleContainer>
     )
 }
