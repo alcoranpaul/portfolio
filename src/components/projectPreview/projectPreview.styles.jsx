@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 12th June 2023 11:22:20 pm
+ * Last Modified: Tuesday, 13th June 2023 8:26:31 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -67,7 +67,7 @@ export const Arrow = styled.svg`
 `
 
 export const ProjectsPreviewContainer = styled(Row)`
-    height: 85vh;
+    height: 100%;
 
     padding-left: 0px;
     padding-right: 0px;
