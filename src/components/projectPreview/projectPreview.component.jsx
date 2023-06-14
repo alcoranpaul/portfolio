@@ -5,14 +5,14 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 13th June 2023 11:58:12 pm
+ * Last Modified: Wednesday, 14th June 2023 1:43:33 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description: Renders the Project Items
  */
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ArrowIcon from '../../data/home/icons/arrowIcon';
 import ProjectItem from '../project/project-item.component';
 
@@ -58,6 +58,15 @@ const ProjectPreview = () => {
     const [columnWidths, setColumnWidths] = useState(COLUMN_WIDTHS); // Initial column widths
     const [activeIndex, setActiveIndex] = useState(-1); // Active index of the clicked project
     const [maxIndex, setMaxIndex] = useState(0); // Max index for traversal    
+    const [isAnimating, setIsAnimating] = useState(false);
+
+    useEffect(() => {
+        setIsAnimating(true);
+        const timeout = setTimeout(() => {
+            setIsAnimating(false);
+        }, 500); // Set the desired duration of the transition effect in milliseconds
+        return () => clearTimeout(timeout);
+    }, [maxIndex]);
 
     const handleClick = (index) => {
         if (index === activeIndex) {
@@ -101,7 +110,7 @@ const ProjectPreview = () => {
                             key={index}
                             onClick={() => handleClick(index)}
                             lg={columnWidths[index]}
-
+                            className={isAnimating ? 'fade-in' : ''}
                         >
                             <ProjectItem
                                 title={project.title}

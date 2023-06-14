@@ -5,14 +5,14 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 13th June 2023 8:26:31 pm
+ * Last Modified: Wednesday, 14th June 2023 1:43:39 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Container, Row, Col } from 'react-bootstrap';
 
 export const ProjectPreviewWrapper = styled(Container)`
@@ -73,6 +73,15 @@ export const ProjectsPreviewContainer = styled(Row)`
     padding-right: 0px;
 `
 
+
+const fade = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 export const ProjectContainer = styled(Col)`
 
     height: 100%; /* Adjust the height to fill the entire column */
@@ -83,5 +92,8 @@ export const ProjectContainer = styled(Col)`
 
     transition: width 0.5s ease-in-out, opacity 0.5s ease-in-out; // Add transition for width and opacity
 
+    &.fade-in {
+        animation: ${fade} 0.5s; // Adjust the duration and animation name as needed
+    }
 
 `
