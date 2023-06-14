@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 13th June 2023 11:54:25 pm
+ * Last Modified: Wednesday, 14th June 2023 12:12:19 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -61,8 +61,8 @@ export default function RadarGraph() {
                 name="CodeStyle"
                 dataKey="A"
                 stroke="var(--color-text)"
-                fill="#8884d8"
-                fillOpacity={0.4}
+                fill="var(--color-primary)"
+                fillOpacity={0.7}
             />
         </RadarGraphContainer>
     );
