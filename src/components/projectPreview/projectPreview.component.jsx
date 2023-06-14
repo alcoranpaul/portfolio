@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 12th June 2023 11:16:49 pm
+ * Last Modified: Tuesday, 13th June 2023 11:58:12 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -73,11 +73,15 @@ const ProjectPreview = () => {
     };
 
     const handleNext = () => {
+        setActiveIndex(-1);
+        setColumnWidths(COLUMN_WIDTHS);
         setMaxIndex((prevIndex) => (prevIndex + 1) % Object.keys(projectsTemp).length)
 
     }
 
     const handlePrev = () => {
+        setActiveIndex(-1);
+        setColumnWidths(COLUMN_WIDTHS);
         setMaxIndex((prevIndex) =>
             prevIndex === 0 ? Object.keys(projectsTemp).length - 1 : prevIndex - 1
         );
@@ -86,8 +90,6 @@ const ProjectPreview = () => {
 
     const projectsArray = Object.values(projectsTemp);
     const lastProjectIndex = projectsArray.length - 1;
-
-
 
     return (
         <ProjectPreviewWrapper>
