@@ -5,19 +5,19 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 13th June 2023 8:09:37 pm
+ * Last Modified: Thursday, 15th June 2023 2:52:47 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 import { SkillContentContainer } from "./skillContent.styles"
+import TechPreview from "../techPreview/techPreview.component"
 
 const SkillContent = () => {
     return (
         <SkillContentContainer>
-            <h1>Skill Content</h1>
-            <p> lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quibusdam.</p>
+            <TechPreview />
         </SkillContentContainer>
     )
 }
