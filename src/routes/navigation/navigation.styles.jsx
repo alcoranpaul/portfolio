@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 15th June 2023 8:07:53 pm
+ * Last Modified: Thursday, 15th June 2023 8:14:32 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -19,17 +19,18 @@ import { Navbar } from 'react-bootstrap';
 
 export const SidebarContainer = styled.div`
 
+  position: sticky;
+  top: 0;
   height: 100vh;
   display: flex;
   width: 150px;
-  background:red;
 `;
 
 export const Sidebar = styled(Navbar)`
+  display: flex;
   background-color: var(--color-accent);
   padding: 10px;
 
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;

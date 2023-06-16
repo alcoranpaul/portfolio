@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 15th June 2023 8:06:58 pm
+ * Last Modified: Thursday, 15th June 2023 8:14:06 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -17,11 +17,10 @@ import { Outlet } from 'react-router-dom';
 
 const Navigation = () => {
 
-
     return (
         <div style={{ display: 'flex' }}>
-            <SidebarContainer>
-                <Sidebar>
+            <SidebarContainer id="sidebar-container">
+                <Sidebar id="sidebar">
                     <NavItem to="/">Home</NavItem>
                     <NavItem to="/projects">Projects</NavItem>
                     <NavItem to="/skills">Skills</NavItem>
