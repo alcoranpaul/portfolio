@@ -5,13 +5,12 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 15th June 2023 8:14:06 pm
+ * Last Modified: Thursday, 15th June 2023 8:19:22 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
-import { useEffect, useState } from 'react';
 import { SidebarContainer, Sidebar, ContentContainer, NavItem } from './navigation.styles.jsx';
 import { Outlet } from 'react-router-dom';
 
