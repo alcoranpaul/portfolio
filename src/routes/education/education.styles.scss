@@ -5,11 +5,60 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 15th June 2023 11:32:29 pm
+ * Last Modified: Friday, 16th June 2023 12:26:25 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
+ .timelineContainer{
+    padding: 20px 20px 0 20px;
+    
+    .row{
+        margin: 0;
+        padding: 0;
+        // background-color: yellow;
+        margin-bottom: 60px;
+       
+    }
+
+
+    .date-left {
+        position: absolute;
+        top: -40px;
+        left: 600px;
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        font-size: 30px;
+    }
+
+    .date-right{
+        position: absolute;
+        top: -40px;
+        right: 600px;
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        font-size: 30px;
+    }
+    
+    .vertical-timeline-element-date {
+    font-size: 68px; /* Adjust the font size as desired */
+    }
+
+    .vertical-timeline {
+        height: fit-content;
+    }
+
+    .elementContent{
+        top: -400px;
+        max-height: 600px;
+        // background-color: red;
+    }
+    .last-row {
+        max-height: 300px;
+      }
+ }
  

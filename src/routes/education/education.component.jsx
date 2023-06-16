@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 15th June 2023 11:55:55 pm
+ * Last Modified: Friday, 16th June 2023 12:25:07 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -19,7 +19,7 @@ import 'react-vertical-timeline-component/style.min.css';
 
 const timelineData = [
     {
-        date: '2019',
+        date: '2023-Present',
         title: '3rd year, Bachelors of Science in Computer Science',
         description: 'Expected Graduation: 2025\n\nRelevant Coursework:\n- Computer Programming for Scientists and Engineers\n- Introductory Computer Science 2\n- Data Structures and Algorithms\n- Engineering Algorithms\n- Digital Logic Systems\n- Micro-processing Systems\n- Design in Engineering\n\nOther Coursework:\n- Intro to Statistics\n- Intro to Electrical and Computer Engineering\n- Intro to Thermal Sciences\n- Engineering Communications\n- Engineering Economics\n\nSchroeder Scholarship Recipient\n\nRecipient of the Full 4-year Scholarship awarded by the Schroeder Foundation, this esteemed opportunity has allowed for the pursuit of a Software Engineering career from 2019 to 2023.\n\nThe scholarship has been instrumental in facilitating an immersive educational journey and fostering academic growth. Gratitude is extended to the Schroeder Foundation for their generous investment in fostering future talents and providing unwavering support throughout the educational endeavor.',
         image: "https://via.placeholder.com/800x600"
@@ -52,13 +52,12 @@ const timelineData = [
 ];
 const Education = () => {
     return (
-        <div>
-            <h1>Work Experience</h1>
+        <div className='timelineContainer'>
             <VerticalTimeline>
                 {timelineData.map((item, index) => (
                     <div className="row" key={index}>
                         <VerticalTimelineElement
-                            date={item.date}
+                            // date={item.date}
                             contentStyle={{
                                 background: 'var(--color-background)',
                                 color: 'var(--color-text)',
@@ -68,17 +67,22 @@ const Education = () => {
                             icon={<i className="fas fa-briefcase"></i>}
                             position={index % 2 === 0 ? 'left' : 'right'} // Alternate position based on index
                             className='elementImage'
+
                         >
+                            <h4 className={index % 2 === 0 ? 'date-left' : 'date-right'}>{item.date}</h4>
                             <img src={item.image} alt="work" style={{ width: "100%", height: '300px' }} />
 
                         </VerticalTimelineElement>
                         <VerticalTimelineElement
-                            style={{ top: '-350px' }} // Adjust the top position as desired
-                            contentStyle={{ background: 'var(--color-background)', color: 'var(--color-text)' }}
+
+                            contentStyle={{
+                                background: 'var(--color-background)', color: 'var(--color-text)', maxHeight: "900px"
+
+                            }}
                             contentArrowStyle={{ display: 'none' }}
                             iconStyle={{ display: 'none' }} // Add this line to hide the icon
                             position={index % 2 === 0 ? 'right' : 'left'} // Alternate position based on index
-                            className='elementContent'
+                            className={index === timelineData.length - 1 ? 'last-row elementContent' : 'elementContent'}
                         >
                             <h3 className="vertical-timeline-element-title">{item.title}</h3>
                             {item.description.split('\n').map((line, index) => {
