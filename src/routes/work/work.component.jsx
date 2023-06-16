@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Sunday, 4th June 2023 10:37:06 pm
+ * Last Modified: Thursday, 15th June 2023 7:46:00 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,19 +13,75 @@
  */
 
 const Work = () => {
+    const handleScrollToWork = () => {
+        document.getElementById('work').scrollIntoView({ behavior: 'smooth' });
+    };
+
+    const handleScrollToOtherWork = () => {
+        document.getElementById('other-work').scrollIntoView({ behavior: 'smooth' });
+    };
+
     return (
-        <div>
-            <h1>Work</h1>
-            <p>
-                aesent condimentum aliquam ligula. Donec malesuada augue ac diam vestibPraesent condimentum aliquam ligula. Donec malesuada augue ac diam vestibPraesent condimentum aliquam ligula. Donec malesuada augue ac diam vestibPraesent condimentum aliquam ligula. Donec malesuada augue ac diam vestibPraesent condimentum aliquam ligula. Donec malesuada augue ac diam vestibPraesent condimentum aliquam ligula. Donec malesuada augue ac diam vestibPraesent condimentum aliquam ligula. Donec malesuada augue ac diam vestibulum, vitae consequat leo venenatis. Suspendisse potenti. Morbi luctus sollicitudin velit, non aliquet arcu blandit id.
+        <div className="page">
+            <div className="scroll-buttons">
+                <button onClick={handleScrollToWork}>Scroll to Work</button>
+                <button onClick={handleScrollToOtherWork}>Scroll to Other Work</button>
+            </div>
+            <section id="work" className="section">
+                <h2>Work</h2>
+                {/* Add work experience content here */}
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </section>
 
-                Quisque a ex fringilla, consectetur nisl id, convallis lectus. Donec ultricies arcu in nibh faucibus fermentum. Aliquam tempus semper sem, sed tincidunt metus pulvinar et.
+            <section id="other-work" className="section">
+                <h2>Other Work</h2>
+                {/* Add content for other work here */}
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </section>
 
-                Vestibulum ut urna at orci tristique facilisis eu in magna. Proin rhoncus, ex a dapibus malesuada, sem purus aliquam lorem, sit amet laoreet leo erat sed dui.
 
-                Nunc ac purus nec nisl iaculis tincidunt. In tincidunt, purus in condimentum cursus, lacus nisi aliquet odio, ac scelerisque lectus sapien ac neque.
-            </p>
         </div>
-    )
+    );
 }
 export default Work;

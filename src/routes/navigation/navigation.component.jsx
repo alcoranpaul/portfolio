@@ -5,34 +5,36 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 9th June 2023 4:11:04 pm
+ * Last Modified: Thursday, 15th June 2023 8:06:58 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
-
-
+import { useEffect, useState } from 'react';
 import { SidebarContainer, Sidebar, ContentContainer, NavItem } from './navigation.styles.jsx';
 import { Outlet } from 'react-router-dom';
 
 const Navigation = () => {
-    return (
-        <SidebarContainer>
-            <Sidebar>
-                <NavItem to="/">Home</NavItem>
-                <NavItem to="/projects">Projects</NavItem>
-                <NavItem to="/skills">Skills</NavItem>
-                <NavItem to="/work">Work</NavItem>
-                <NavItem to="/education">Education</NavItem>
-                <NavItem to="/contact">Contact</NavItem>
-                <NavItem to="/about">About</NavItem>
 
-            </Sidebar>
+
+    return (
+        <div style={{ display: 'flex' }}>
+            <SidebarContainer>
+                <Sidebar>
+                    <NavItem to="/">Home</NavItem>
+                    <NavItem to="/projects">Projects</NavItem>
+                    <NavItem to="/skills">Skills</NavItem>
+                    <NavItem to="/work">Work</NavItem>
+                    <NavItem to="/education">Education</NavItem>
+                    <NavItem to="/contact">Contact</NavItem>
+                    <NavItem to="/about">About</NavItem>
+                </Sidebar>
+            </SidebarContainer>
             <ContentContainer>
                 <Outlet />
             </ContentContainer>
-        </SidebarContainer >
+        </div>
     );
 }
 
