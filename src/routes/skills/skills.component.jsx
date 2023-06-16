@@ -5,14 +5,13 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 13th June 2023 8:28:29 pm
+ * Last Modified: Thursday, 15th June 2023 11:20:01 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
-import { Col } from 'react-bootstrap';
 import SkillContent from '../../components/skillContent/skillContent.component';
 import SkillTriangle from '../../components/skillTriangle/skillTriangle.component';
 import { SkillsContainer, ChildrenContainer, ChildrenRow } from './skills.styles';
