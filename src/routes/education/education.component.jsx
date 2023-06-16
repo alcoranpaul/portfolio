@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 16th June 2023 12:25:07 am
+ * Last Modified: Friday, 16th June 2023 12:35:41 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -53,7 +53,7 @@ const timelineData = [
 const Education = () => {
     return (
         <div className='timelineContainer'>
-            <VerticalTimeline>
+            <VerticalTimeline lineColor={"var(--color-accent)"}>
                 {timelineData.map((item, index) => (
                     <div className="row" key={index}>
                         <VerticalTimelineElement
