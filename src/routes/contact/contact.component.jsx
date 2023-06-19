@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 19th June 2023 4:44:10 pm
+ * Last Modified: Monday, 19th June 2023 5:35:40 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -29,6 +29,9 @@ const Contact = () => {
                         <p>Stay connected and engaged with me on various social media platforms. Connect with me on the following popular social media apps below to explore my world as a developer. </p>
                         <p>Let's connect, share experiences, and stay updated together. Your support and interaction mean a lot to me as I continue to grow and evolve in my journey. Feel free to reach out and connect with me today!</p>
                     </div>
+                    <div className="location">
+                        <p>Based on Winnipeg, MB</p>
+                    </div>
                     <div className="email-container">
                         <div className="email">
                             <strong>EMAIL:</strong> paulreyes74@yahoo.com
@@ -47,7 +50,7 @@ const Contact = () => {
 export default Contact;
 
 const Container = styled.div`
-
+    
     flex-direction: column;
     align-items: center;
 `;
@@ -89,7 +92,7 @@ const Box2 = styled.div`
   
   .email-container{
     width: 100%;
-    padding-top: 50px;
+    padding-top: 30px;
     .btn{
         margin-top: 20px;
         width: 100%;
