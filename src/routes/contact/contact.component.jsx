@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 19th June 2023 3:56:42 pm
+ * Last Modified: Monday, 19th June 2023 4:44:10 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -23,7 +23,19 @@ const Contact = () => {
                 <Box1>
                     <SimpleMap />
                 </Box1>
-                <Box2 />
+                <Box2>
+                    <div className="opening-text">
+                        <span>Reach out today and let's start a conversation!</span>
+                        <p>Stay connected and engaged with me on various social media platforms. Connect with me on the following popular social media apps below to explore my world as a developer. </p>
+                        <p>Let's connect, share experiences, and stay updated together. Your support and interaction mean a lot to me as I continue to grow and evolve in my journey. Feel free to reach out and connect with me today!</p>
+                    </div>
+                    <div className="email-container">
+                        <div className="email">
+                            <strong>EMAIL:</strong> paulreyes74@yahoo.com
+                        </div>
+                        <div className="btn btn-primary">Send me an Email</div>
+                    </div>
+                </Box2>
             </MapAndEmailContainer>
             <PlatformContainer>
                 <Platforms />
@@ -43,7 +55,7 @@ const Container = styled.div`
 const MapAndEmailContainer = styled.div`
     width: 100%;
     height: 600px;
-    background-color: var(--color-primary);
+    ${'' /* background-color: var(--color-primary); */}
     margin: 20px 0px;
     padding: 20px;
     display: flex;
@@ -52,13 +64,53 @@ const MapAndEmailContainer = styled.div`
 const Box1 = styled.div`
     width: 75%;
     height: 100%;
-    background-color: #f0f0f0;
+    padding: 10px;
+    margin-right: 10px;
+    border: 2px double var(--color-text);
 `;
 
 const Box2 = styled.div`
-    width: 25%;
-    height: 100%;
-    background-color: #c0c0c0;
+  width: 25%;
+  height: 100%;
+  padding: 10px 20px 0px 20px;
+  display: flex;
+  flex-direction: column;
+  border: 2px double var(--color-contact);
+  background-color: var(--color-contact);
+  
+  .opening-text {
+    margin-bottom: 20px;
+
+    span{
+        font-size: 30px;
+        font-weight: 600;
+    }
+  }
+  
+  .email-container{
+    width: 100%;
+    padding-top: 50px;
+    .btn{
+        margin-top: 20px;
+        width: 100%;
+        background-color: var(--color-primary);
+        border: 2px solid var(--color-primary);
+
+        &:hover{
+            background-color: var(--color-buttonHover);
+            border: 2px solid var(--color-text);
+        }
+    }
+  }
+  .email {
+    font-size: 16px;
+    
+    strong {
+      font-size: 18px;
+      
+      letter-spacing: 2px;
+    }
+  }
 `;
 
 const PlatformContainer = styled.div`

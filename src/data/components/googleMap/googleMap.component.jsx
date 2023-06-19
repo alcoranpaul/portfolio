@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 19th June 2023 4:15:08 pm
+ * Last Modified: Monday, 19th June 2023 4:15:42 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -28,7 +28,7 @@ export default function SimpleMap() {
 
     return (
 
-        <div style={{ height: '100%', width: '100%', paddingRight: '10px' }}>
+        <div style={{ height: '100%', width: '100%' }}>
             <GoogleMapReact
                 bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
                 defaultCenter={defaultProps.center}
