@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 19th June 2023 3:24:54 pm
+ * Last Modified: Monday, 19th June 2023 5:55:48 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -39,7 +39,9 @@ export const Label = styled.label`
     letter-spacing: 5px;
     font-size: 24px;
     margin-top: 5px;
-    
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `
 
 export const Line = styled.div`

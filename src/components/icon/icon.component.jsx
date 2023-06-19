@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 19th June 2023 2:44:06 pm
+ * Last Modified: Monday, 19th June 2023 5:54:19 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -40,7 +40,7 @@ const Icon = ({ IconComponent, iconColor }) => {
             }, 100);
         } else if (tiltCount === 2) {
             timeout = setTimeout(() => {
-                setTilt(0);
+                setTilt(0.01);
                 setTiltCount(tiltCount + 1);
             }, 50);
         }
@@ -105,12 +105,16 @@ const Icon = ({ IconComponent, iconColor }) => {
                         justifyContent: 'center',
                         transition: 'transform 0.5s ease',
                         transform: `rotate(${tilt}deg)`,
+
                     }}
                 >
                     <IconComponent
                         style={{
                             width: '100%',
                             height: '100%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
                             borderRadius: '50%',
                         }}
                         fill={isHovered}
