@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 19th June 2023 5:35:40 pm
+ * Last Modified: Monday, 19th June 2023 6:28:47 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -26,8 +26,10 @@ const Contact = () => {
                 <Box2>
                     <div className="opening-text">
                         <span>Reach out today and let's start a conversation!</span>
-                        <p>Stay connected and engaged with me on various social media platforms. Connect with me on the following popular social media apps below to explore my world as a developer. </p>
+                        <p>Stay connected and engaged with me on various social media platforms. Connect with me on the following popular social media apps below to explore my world as a developer.</p>
                         <p>Let's connect, share experiences, and stay updated together. Your support and interaction mean a lot to me as I continue to grow and evolve in my journey. Feel free to reach out and connect with me today!</p>
+                        <p>Feel free to reach out for inquiries, collaborations, or meaningful professional connections. And if you're up for some fun, let's play games together too!</p>
+
                     </div>
                     <div className="location">
                         <p>Based on Winnipeg, MB</p>
@@ -82,19 +84,20 @@ const Box2 = styled.div`
   background-color: var(--color-contact);
   
   .opening-text {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 
     span{
         font-size: 30px;
         font-weight: 600;
     }
   }
+
+
   
   .email-container{
     width: 100%;
-    padding-top: 30px;
     .btn{
-        margin-top: 20px;
+        margin-top: 5px;
         width: 100%;
         background-color: var(--color-primary);
         border: 2px solid var(--color-primary);

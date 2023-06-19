@@ -5,13 +5,15 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 19th June 2023 5:54:19 pm
+ * Last Modified: Monday, 19th June 2023 6:33:37 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
-import React, { useState, useEffect } from 'react';
+
+import { useState, useEffect } from 'react';
+import { IconContainer, IconBackground, Component } from './icon.styles';
 
 const Icon = ({ IconComponent, iconColor }) => {
     const [isHovered, setIsHovered] = useState(false);
@@ -58,71 +60,26 @@ const Icon = ({ IconComponent, iconColor }) => {
         }
     };
 
+    const handleOnClick = () => {
+        alert('clicked');
+    };
+
     return (
-        <div className='icon-container'
-            style={{
-                width: isHovered ? '85px' : '75px',
-                height: isHovered ? '85px' : '75px',
-                border: '2px solid white',
-                borderRadius: '50%',
-                display: 'flex',
-
-                alignItems: 'center',
-                justifyContent: 'center',
-                transition:
-                    'width 0.3s ease, height 0.3s ease, border-radius 0.3s ease, border-color 0.3s ease',
-
-                margin: '0 20px 0 20px',
-
-            }}>
-            <div
-                className="icon-background"
+        <IconContainer
+            isHovered={isHovered}
+            onClick={handleOnClick}
+        >
+            <IconBackground
+                isHovered={isHovered}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
-                style={{
-                    width: isHovered ? '75px' : '100%',
-                    height: isHovered ? '75px' : '100%',
-
-                    borderRadius: '50%',
-
-                    justifyContent: 'center',
-                    alignItems: 'center',
-
-                    transition:
-                        'width 0.3s ease, height 0.3s ease, border-radius 0.3s ease, border-color 0.3s ease',
-
-                    ...getIconColor(),
-                }}
+                style={getIconColor()}
             >
-                <div
-                    className='icon'
-                    style={{
-                        width: '100%',
-                        height: '100%',
-                        overflow: 'hidden',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        transition: 'transform 0.5s ease',
-                        transform: `rotate(${tilt}deg)`,
-
-                    }}
-                >
-                    <IconComponent
-                        style={{
-                            width: '100%',
-                            height: '100%',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            borderRadius: '50%',
-                        }}
-                        fill={isHovered}
-                    />
-                </div>
-            </div>
-        </div>
-
+                <Component tilt={tilt}>
+                    <IconComponent fill={isHovered} />
+                </Component>
+            </IconBackground>
+        </IconContainer>
     );
 };
 
