@@ -5,18 +5,31 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 19th June 2023 6:28:47 pm
+ * Last Modified: Monday, 19th June 2023 9:01:33 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
+import { useState } from "react";
 import Platforms from "../../components/platforms/platforms.component";
-import styled from 'styled-components';
 import SimpleMap from "../../data/components/googleMap/googleMap.component";
+import { Container, MapAndEmailContainer, Box1, Box2, PlatformContainer, EmailButton } from "./contact.styles";
+
+const EMAIL = "paulreyes74@yahoo.com"
 
 const Contact = () => {
+    const [isOpeningEmailApp, setIsOpeningEmailApp] = useState(false);
+
+    const handleEmailClick = () => {
+        setIsOpeningEmailApp(true);
+        setTimeout(() => {
+            setIsOpeningEmailApp(false);
+        }, 2000);
+        window.location.href = `mailto:${EMAIL}`;
+    };
+
     return (
         <Container>
             <MapAndEmailContainer>
@@ -35,10 +48,22 @@ const Contact = () => {
                         <p>Based on Winnipeg, MB</p>
                     </div>
                     <div className="email-container">
-                        <div className="email">
+                        <div className='email'>
                             <strong>EMAIL:</strong> paulreyes74@yahoo.com
                         </div>
-                        <div className="btn btn-primary">Send me an Email</div>
+                        <EmailButton
+                            onClick={handleEmailClick}>
+                            {isOpeningEmailApp ? (
+                                <>
+                                    Opening email app...
+                                    {/* Place your loading icon component here */}
+                                </>
+                            ) : (
+                                <>
+                                    Send me an email
+                                </>
+                            )}
+                        </EmailButton>
                     </div>
                 </Box2>
             </MapAndEmailContainer>
@@ -50,79 +75,3 @@ const Contact = () => {
 }
 
 export default Contact;
-
-const Container = styled.div`
-    
-    flex-direction: column;
-    align-items: center;
-`;
-
-const MapAndEmailContainer = styled.div`
-    width: 100%;
-    height: 600px;
-    ${'' /* background-color: var(--color-primary); */}
-    margin: 20px 0px;
-    padding: 20px;
-    display: flex;
-`;
-
-const Box1 = styled.div`
-    width: 75%;
-    height: 100%;
-    padding: 10px;
-    margin-right: 10px;
-    border: 2px double var(--color-text);
-`;
-
-const Box2 = styled.div`
-  width: 25%;
-  height: 100%;
-  padding: 10px 20px 0px 20px;
-  display: flex;
-  flex-direction: column;
-  border: 2px double var(--color-contact);
-  background-color: var(--color-contact);
-  
-  .opening-text {
-    margin-bottom: 10px;
-
-    span{
-        font-size: 30px;
-        font-weight: 600;
-    }
-  }
-
-
-  
-  .email-container{
-    width: 100%;
-    .btn{
-        margin-top: 5px;
-        width: 100%;
-        background-color: var(--color-primary);
-        border: 2px solid var(--color-primary);
-
-        &:hover{
-            background-color: var(--color-buttonHover);
-            border: 2px solid var(--color-text);
-        }
-    }
-  }
-  .email {
-    font-size: 16px;
-    
-    strong {
-      font-size: 18px;
-      
-      letter-spacing: 2px;
-    }
-  }
-`;
-
-const PlatformContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 20px;
-`;
