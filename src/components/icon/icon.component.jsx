@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 19th June 2023 6:33:37 pm
+ * Last Modified: Monday, 19th June 2023 7:32:13 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -15,7 +15,13 @@
 import { useState, useEffect } from 'react';
 import { IconContainer, IconBackground, Component } from './icon.styles';
 
-const Icon = ({ IconComponent, iconColor }) => {
+import { ICON_TYPES } from '../../data/components/contact/linksTo';
+import Tooltip from '../tooltip/tooltip.component';
+
+const Icon = ({ IconComponent, iconColor, payload: { type, value } }) => {
+    const [tooltipVisible, setTooltipVisible] = useState(false);
+    const [tooltipContent, setTooltipContent] = useState('');
+
     const [isHovered, setIsHovered] = useState(false);
     const [tilt, setTilt] = useState(0);
     const [tiltCount, setTiltCount] = useState(0);
@@ -30,6 +36,7 @@ const Icon = ({ IconComponent, iconColor }) => {
         setIsHovered(false);
         setTilt(0);
         setTiltCount(0);
+        setTooltipVisible(false);
     };
 
     useEffect(() => {
@@ -51,6 +58,13 @@ const Icon = ({ IconComponent, iconColor }) => {
     }, [tilt, tiltCount]);
 
 
+    useEffect(() => {
+        if (type === ICON_TYPES.popUp) {
+            setTooltipContent(value);
+        }
+    }, []);
+
+
     const getIconColor = () => {
         if (iconColor.startsWith('linear-gradient')) {
             return { backgroundImage: isHovered ? iconColor : 'linear-gradient(135deg, black, transparent)' };
@@ -61,7 +75,23 @@ const Icon = ({ IconComponent, iconColor }) => {
     };
 
     const handleOnClick = () => {
-        alert('clicked');
+        if (type === ICON_TYPES.popUp) {
+            setTooltipVisible(!tooltipVisible);
+
+            // Copy tooltip content to clipboard
+            if (tooltipContent) {
+                navigator.clipboard.writeText(tooltipContent)
+                    .then(() => {
+                        console.log('Tooltip content copied to clipboard');
+                    })
+                    .catch((error) => {
+                        console.error('Failed to copy tooltip content:', error);
+                    });
+            }
+        }
+        else {
+            window.open(value, '_blank');
+        }
     };
 
     return (
@@ -78,8 +108,14 @@ const Icon = ({ IconComponent, iconColor }) => {
                 <Component tilt={tilt}>
                     <IconComponent fill={isHovered} />
                 </Component>
+                {(tooltipVisible) && (
+                    <Tooltip text={tooltipContent} isVisible={tooltipVisible} >
+                        <p>{tooltipContent}</p>
+                    </Tooltip>
+                )}
             </IconBackground>
-        </IconContainer>
+
+        </IconContainer >
     );
 };
 
