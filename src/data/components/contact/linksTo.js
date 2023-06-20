@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 19th June 2023 7:08:13 pm
+ * Last Modified: Monday, 19th June 2023 8:39:29 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -20,12 +20,8 @@ export const links = {
     indeed: { type: 'link', value: 'https://profile.indeed.com/p/pauladrianr-ncd231d' },
     github: { type: 'link', value: 'https://github.com/alcoranpaul' },
     discord: {
-        type: 'popUp',
-        value: `paulalcoran`
-        // value: {
-        //     username: `Pol`,
-        //     id: `paulalcoran`
-        // }
+        type: 'link',
+        value: 'https://discordlookup.com/user/581876912377561089'
     },
     steam: { type: 'link', value: 'https://steamcommunity.com/profiles/76561198200509718/' },
     riotGames: { type: 'link', value: 'https://www.op.gg/summoners/na/Alkoran' }

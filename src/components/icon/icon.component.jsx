@@ -5,22 +5,22 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 19th June 2023 7:32:13 pm
+ * Last Modified: Monday, 19th June 2023 8:25:34 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
-
 import { useState, useEffect } from 'react';
 import { IconContainer, IconBackground, Component } from './icon.styles';
-
 import { ICON_TYPES } from '../../data/components/contact/linksTo';
 import Tooltip from '../tooltip/tooltip.component';
 
 const Icon = ({ IconComponent, iconColor, payload: { type, value } }) => {
     const [tooltipVisible, setTooltipVisible] = useState(false);
     const [tooltipContent, setTooltipContent] = useState('');
+    const [iconCoordinates, setIconCoordinates] = useState({ x: 0, y: 0 });
+
 
     const [isHovered, setIsHovered] = useState(false);
     const [tilt, setTilt] = useState(0);
@@ -40,6 +40,13 @@ const Icon = ({ IconComponent, iconColor, payload: { type, value } }) => {
     };
 
     useEffect(() => {
+        if (type === ICON_TYPES.popUp) {
+            setTooltipContent(value);
+        }
+        // eslint-disable-next-line
+    }, []);
+
+    useEffect(() => {
         let timeout;
 
         if (tiltCount < 2) {
@@ -57,30 +64,23 @@ const Icon = ({ IconComponent, iconColor, payload: { type, value } }) => {
         return () => clearTimeout(timeout);
     }, [tilt, tiltCount]);
 
-
-    useEffect(() => {
-        if (type === ICON_TYPES.popUp) {
-            setTooltipContent(value);
-        }
-    }, []);
-
-
     const getIconColor = () => {
         if (iconColor.startsWith('linear-gradient')) {
             return { backgroundImage: isHovered ? iconColor : 'linear-gradient(135deg, black, transparent)' };
-        }
-        else {
-            return { backgroundColor: isHovered ? iconColor : 'black' }
+        } else {
+            return { backgroundColor: isHovered ? iconColor : 'black' };
         }
     };
 
-    const handleOnClick = () => {
+    const handleOnClick = (event) => {
         if (type === ICON_TYPES.popUp) {
+            setIconCoordinates({ x: event.clientX, y: event.clientY });
+            console.log(iconCoordinates)
             setTooltipVisible(!tooltipVisible);
 
-            // Copy tooltip content to clipboard
             if (tooltipContent) {
-                navigator.clipboard.writeText(tooltipContent)
+                navigator.clipboard
+                    .writeText(tooltipContent)
                     .then(() => {
                         console.log('Tooltip content copied to clipboard');
                     })
@@ -88,17 +88,13 @@ const Icon = ({ IconComponent, iconColor, payload: { type, value } }) => {
                         console.error('Failed to copy tooltip content:', error);
                     });
             }
-        }
-        else {
+        } else {
             window.open(value, '_blank');
         }
     };
 
     return (
-        <IconContainer
-            isHovered={isHovered}
-            onClick={handleOnClick}
-        >
+        <IconContainer isHovered={isHovered} onClick={handleOnClick}>
             <IconBackground
                 isHovered={isHovered}
                 onMouseEnter={handleMouseEnter}
@@ -108,14 +104,11 @@ const Icon = ({ IconComponent, iconColor, payload: { type, value } }) => {
                 <Component tilt={tilt}>
                     <IconComponent fill={isHovered} />
                 </Component>
-                {(tooltipVisible) && (
-                    <Tooltip text={tooltipContent} isVisible={tooltipVisible} >
-                        <p>{tooltipContent}</p>
-                    </Tooltip>
+                {tooltipVisible && (
+                    <Tooltip text={tooltipContent} isVisible={tooltipVisible} coordinates={iconCoordinates} />
                 )}
             </IconBackground>
-
-        </IconContainer >
+        </IconContainer>
     );
 };
 

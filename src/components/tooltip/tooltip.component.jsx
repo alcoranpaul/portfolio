@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 19th June 2023 7:27:34 pm
+ * Last Modified: Monday, 19th June 2023 8:37:07 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,6 +13,7 @@
  */
 
 
+import { Fragment } from 'react';
 import styled from 'styled-components';
 
 const TooltipContainer = styled.div`
@@ -23,9 +24,17 @@ const TooltipContainer = styled.div`
 const TooltipContent = styled.div`
   visibility: ${props => (props.isVisible ? 'visible' : 'hidden')};
   position: absolute;
-  transform: translate(-10px, -175px);
-  width: auto;
-  height: auto;  
+  top: -180px;
+  left: -60px;
+
+  justify-content: center;
+  align-items: center;
+
+  width: 200px;
+  height: 80px;
+  max-width: 200px;
+  max-height: 80px;
+  
   background-color: var(--color-accent);
   color: var(--color-background);
   padding: 8px 8px 0px 8px;
@@ -34,6 +43,7 @@ const TooltipContent = styled.div`
   border: 1px dashed var(--color-background);
   opacity: ${props => (props.isVisible ? 1 : 0)};
   transition: visibility 0s linear, opacity 0.2s, transform 0.2s;
+  z-index: 999;
 
   &::before {
     content: '';
@@ -44,21 +54,25 @@ const TooltipContent = styled.div`
     border-width: 10px;
     border-style: solid;
     border-color: transparent transparent var(--color-accent) transparent;
-    
+  }
+
+  span{
+    padding: 0px;
+    font-size: 14px;
+    text-transform: uppercase;
   }
 `;
 
-
 const Tooltip = ({ text, isVisible }) => {
 
-    return (
-        <TooltipContainer>
-
-            <TooltipContent isVisible={isVisible}>
-                <p>ID: paulalcoran</p>
-            </TooltipContent>
-        </TooltipContainer>
-    );
+  return (
+    <TooltipContainer>
+      <TooltipContent isVisible={isVisible}>
+        <span>Copied to clipboard!</span>
+        <p>{text}</p>
+      </TooltipContent>
+    </TooltipContainer>
+  );
 };
 
 export default Tooltip;
