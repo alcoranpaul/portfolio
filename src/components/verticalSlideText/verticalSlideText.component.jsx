@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 20th June 2023 9:53:00 pm
+ * Last Modified: Tuesday, 20th June 2023 9:54:10 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -22,7 +22,7 @@ const VerticalSlideText = ({ words }) => {
             setCurrentWordIndex((prevIndex) =>
                 (prevIndex + 1) % words.length
             );
-        }, 2000);
+        }, 3000);
 
         return () => clearInterval(interval);
     }, []);
