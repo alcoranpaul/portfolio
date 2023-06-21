@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 20th June 2023 10:09:46 pm
+ * Last Modified: Wednesday, 21st June 2023 11:29:17 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -20,40 +20,47 @@ import { MainContent, TopRow, NameContainer, FactsContainer, BotRow, ProjectsCon
 
 import TypingAnimation from '../../components/typingAnimation/typingAnimation.component.jsx';
 import VerticalSlideText from '../../components/verticalSlideText/verticalSlideText.component';
+import { motion } from 'framer-motion';
 
 const shortDescription = "Passionate software developer driven by a desire to create meaningful applications, collaborate, and make a positive impact through continuous learning and values-driven actions.";
 
 const carousel = ['Web Developer', 'Software Engineer', 'Programmer']
+
+
+
 const Home = () => {
     return (
-        <MainContent>
-            <TopRow>
-                <NameContainer>
-                    <Row>
-                        <Col lg={5}>
-                            <h2 className='name-container'>Hi I'm <span className='name'>Paul</span></h2>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <TypingAnimation value={shortDescription} className='short-description' />
-                        </Col>
-                    </Row>
-                </NameContainer>
-                <FactsContainer>
-                    {/* <ul>
-                        <li>Java</li>
-                        <li>Python</li>
-                        <li>OOP</li>
-                    </ul> */}
-                </FactsContainer>
-            </TopRow>
-            <BotRow>
-                <ProjectsContainer>
-                    <img src={tempProjectShowcase} alt='tempProjectShowcase' className='video' />
-                </ProjectsContainer>
-            </BotRow>
-        </MainContent>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            style={{
+                overflow: 'hidden',
+                width: '100%'
+            }}>
+            <MainContent>
+                <TopRow>
+                    <NameContainer>
+                        <Row>
+                            <Col lg={5}>
+                                <h2 className='name-container'>Hi I'm <span className='name'>Paul</span></h2>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <TypingAnimation value={shortDescription} className='short-description' />
+                            </Col>
+                        </Row>
+                    </NameContainer>
+                </TopRow>
+                <BotRow>
+                    <ProjectsContainer>
+                        <img src={tempProjectShowcase} alt='tempProjectShowcase' className='video' />
+                    </ProjectsContainer>
+                </BotRow>
+            </MainContent>
+        </motion.div>
     );
 };
 

@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 20th June 2023 5:18:14 pm
+ * Last Modified: Wednesday, 21st June 2023 11:32:13 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,7 +13,7 @@
  */
 
 import SectionCard from "../../components/sectionCard/sectionCard.component";
-
+import { motion } from "framer-motion";
 const data = {
     section1: {
         title: "I ASPIRE TO CREATE MEANINGFUL APPLICATIONS",
@@ -32,11 +32,19 @@ const data = {
 
 const About = () => {
     return (
-        <div>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            style={{
+                overflow: 'hidden',
+                width: '100%'
+            }}>
             {Object.entries(data).map(([key, section]) => (
                 <SectionCard key={key} title={section.title} body={section.body} />
             ))}
-        </div>
+        </motion.div>
     )
 }
 

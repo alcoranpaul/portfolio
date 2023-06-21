@@ -5,19 +5,35 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 13th June 2023 8:27:17 pm
+ * Last Modified: Wednesday, 21st June 2023 11:29:09 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
+import { useEffect } from "react";
+import { motion } from "framer-motion";
 import ProjectPreview from "../../components/projectPreview/projectPreview.component";
+
 const Projects = () => {
+    useEffect(() => {
+        // Reset scroll position when component mounts
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
-        <div>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            style={{
+                overflow: 'hidden',
+                width: '100%'
+            }}>
             <ProjectPreview />
-        </div>
+        </motion.div>
     );
 };
 

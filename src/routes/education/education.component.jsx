@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 16th June 2023 12:35:41 am
+ * Last Modified: Wednesday, 21st June 2023 11:32:13 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -15,6 +15,7 @@
 
 import './education.styles.scss';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
+import { motion } from 'framer-motion';
 import 'react-vertical-timeline-component/style.min.css';
 
 const timelineData = [
@@ -52,7 +53,15 @@ const timelineData = [
 ];
 const Education = () => {
     return (
-        <div className='timelineContainer'>
+        <motion.div className='timelineContainer'
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            style={{
+                overflow: 'hidden',
+                width: '100%'
+            }}>
             <VerticalTimeline lineColor={"var(--color-accent)"}>
                 {timelineData.map((item, index) => (
                     <div className="row" key={index}>
@@ -96,7 +105,7 @@ const Education = () => {
                     </div>
                 ))}
             </VerticalTimeline>
-        </div>
+        </motion.div>
     );
 };
 

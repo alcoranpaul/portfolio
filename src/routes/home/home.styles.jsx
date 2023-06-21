@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 20th June 2023 10:07:40 pm
+ * Last Modified: Wednesday, 21st June 2023 11:04:48 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -14,6 +14,7 @@
 
 import styled from "styled-components";
 import { Container, Row, Col } from 'react-bootstrap';
+
 
 export const MainContent = styled(Container)`
     width: 90%;
