@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 20th June 2023 9:52:37 pm
+ * Last Modified: Tuesday, 20th June 2023 10:07:40 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -18,7 +18,6 @@ import { Container, Row, Col } from 'react-bootstrap';
 export const MainContent = styled(Container)`
     width: 90%;
     height: 90%;
-    
     max-width: 90vw;
 `
 export const TopRow = styled(Row)`
@@ -29,7 +28,7 @@ export const NameContainer = styled(Col)`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: red;
+    ${'' /* background-color: red; */}
 
     .name-container{
         font-size: 55px;
@@ -59,7 +58,7 @@ export const FactsContainer = styled(Col)`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: blue;
+    ${'' /* background-color: blue; */}
 `
 
 export const BotRow = styled(Row)`
@@ -70,7 +69,7 @@ export const ProjectsContainer = styled(Col)`
     display: flex;
     align-items: center; /* Center vertically */
     justify-content: center; /* Center horizontally */
-    background-color: green;
+    ${'' /* background-color: green; */}
     padding: 10px;
     margin-top: 20px;
     height: 90%;

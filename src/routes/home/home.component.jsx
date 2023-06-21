@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 20th June 2023 9:42:36 pm
+ * Last Modified: Tuesday, 20th June 2023 10:09:46 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -33,10 +33,6 @@ const Home = () => {
                         <Col lg={5}>
                             <h2 className='name-container'>Hi I'm <span className='name'>Paul</span></h2>
                         </Col>
-                        <Col className='carousel'>
-
-                            <VerticalSlideText words={carousel} interval={2000} />
-                        </Col>
                     </Row>
                     <Row>
                         <Col>
@@ -45,11 +41,11 @@ const Home = () => {
                     </Row>
                 </NameContainer>
                 <FactsContainer>
-                    <ul>
+                    {/* <ul>
                         <li>Java</li>
                         <li>Python</li>
                         <li>OOP</li>
-                    </ul>
+                    </ul> */}
                 </FactsContainer>
             </TopRow>
             <BotRow>
