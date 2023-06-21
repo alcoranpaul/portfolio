@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 21st June 2023 11:32:13 am
+ * Last Modified: Wednesday, 21st June 2023 11:34:25 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -72,8 +72,8 @@ const Education = () => {
                                 color: 'var(--color-text)',
                                 border: '1px solid var(--color-accent)'
                             }}
-                            iconStyle={{ background: 'var(--color-primary)', color: 'var(--color-text)' }}
-                            icon={<i className="fas fa-briefcase"></i>}
+                            iconStyle={{ background: 'var(--color-primary)', color: 'red' }}
+
                             position={index % 2 === 0 ? 'left' : 'right'} // Alternate position based on index
                             className='elementImage'
 
@@ -105,7 +105,7 @@ const Education = () => {
                     </div>
                 ))}
             </VerticalTimeline>
-        </motion.div>
+        </motion.div >
     );
 };
 
