@@ -1,0 +1,31 @@
+/*
+ * File: verticalSlide.styles.scss
+ * Project: portfolio
+ * File Created: Tuesday, 20th June 2023 8:50:51 pm
+ * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
+ * GitHub: https://github.com/alcoranpaul
+ * -----
+ * Last Modified: Tuesday, 20th June 2023 9:45:34 pm
+ * Modified By: PR (paulreyes74@yahoo.com>)
+ * -----
+ * -----
+ * Description:
+ */
+
+ .slide-up-text {
+    animation: slide-up 1s ease-out infinite;
+    // background-color: aqua;
+    width: 100%;
+    height: 100%;
+  }
+  
+  @keyframes slide-up {
+    0% {
+      opacity: 0;
+      transform: translateY(0.5px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
