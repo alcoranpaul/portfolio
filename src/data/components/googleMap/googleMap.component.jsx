@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 19th June 2023 7:37:07 pm
+ * Last Modified: Tuesday, 20th June 2023 7:29:57 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -30,7 +30,7 @@ export default function SimpleMap() {
 
         <div style={{ height: '100%', width: '100%' }}>
             <GoogleMapReact
-                bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
+                bootstrapURLKeys={{ key: "AIzaSyDbIzXlWhh7G3iYUlrIKMs_mts-g7T-VXU" }}
                 defaultCenter={defaultProps.center}
                 defaultZoom={defaultProps.zoom}
                 options={{
