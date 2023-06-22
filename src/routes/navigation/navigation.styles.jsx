@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 15th June 2023 8:14:32 pm
+ * Last Modified: Wednesday, 21st June 2023 9:15:07 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -15,9 +15,10 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Navbar } from 'react-bootstrap';
+import { motion } from 'framer-motion';
 
 
-export const SidebarContainer = styled.div`
+export const SidebarContainer = styled(motion.div)`
 
   position: sticky;
   top: 0;

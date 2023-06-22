@@ -25,6 +25,15 @@ In this web portfolio, I have created a collection of my projects, highlighting 
 
 ## Version
 
+### v1.0.1
+
+- Page Transition
+- Removed Briefcase Icon in Education
+- Revamped Homepage
+    - Removed SideNav during Home route
+    - Added 4 buttons for links
+    - Added Picture
+
 ### v1.0.0
 
 - Initial release

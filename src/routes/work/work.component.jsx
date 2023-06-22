@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 21st June 2023 11:32:13 am
+ * Last Modified: Thursday, 22nd June 2023 12:14:40 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -84,7 +84,7 @@ const Work = () => {
                                     </div>
                                     <Card.Text style={{ paddingTop: "10px" }}>
                                         <p>{work.technologies.join(', ')}</p>
-                                        <i> <p>{work.date}</p></i>
+                                        <i> {work.date}</i>
                                     </Card.Text>
 
                                 </Col>

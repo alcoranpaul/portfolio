@@ -5,30 +5,72 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 21st June 2023 11:29:17 am
+ * Last Modified: Thursday, 22nd June 2023 12:18:25 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description: 
  */
 
-
-import { Row, Col } from 'react-bootstrap';
-import tempProjectShowcase from '../../data/home/tempProjectShowcase.gif';
-
-import { MainContent, TopRow, NameContainer, FactsContainer, BotRow, ProjectsContainer } from './home.styles.jsx';
-
-import TypingAnimation from '../../components/typingAnimation/typingAnimation.component.jsx';
-import VerticalSlideText from '../../components/verticalSlideText/verticalSlideText.component';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { CardGroup, Card } from 'react-bootstrap';
 import { motion } from 'framer-motion';
+import TypingAnimation, { typingObserver } from '../../components/typingAnimation/typingAnimation.component.jsx';
+import Observer from '../../utils/observers/observer.js';
 
-const shortDescription = "Passionate software developer driven by a desire to create meaningful applications, collaborate, and make a positive impact through continuous learning and values-driven actions.";
+import { MainContent } from './home.styles.jsx';
 
-const carousel = ['Web Developer', 'Software Engineer', 'Programmer']
+const shortDescription = "Passionate <b>software<\/b> developer driven\n\nby a desire to create <b>meaningful<\/b> applications, collaborate, and make a positive impact through continuous learning and values-driven actions.";
 
 
+class OnLinkClick extends Observer {
+    constructor() {
+        super();
+    }
+}
+export const onHomeLinksClick = new OnLinkClick();
+
+const soemthing = {
+    moveUp: { y: -100 },
+    default: { y: 0 }
+};
+
+const cardVariants = {
+    hidden: { opacity: 0, y: 100 },
+    visible: { opacity: 1, y: 0 },
+    none: { opacity: 0, y: 0 }
+};
 
 const Home = () => {
+    const [showLinks, setShowLinks] = useState(false);
+    const [showCards, setCards] = useState(false);
+
+
+    useEffect(() => {
+        const handleTypingComplete = () => {
+            console.log("Typing animation complete!");
+            setTimeout(() => {
+                setShowLinks(true);
+                setTimeout(() => {
+                    setCards(true);
+                }, 2000);
+            }, 2000);
+        };
+
+        typingObserver.subscribe(handleTypingComplete);
+
+        return () => {
+            typingObserver.unsubscribe(handleTypingComplete);
+        };
+    }, []);
+
+
+    const handleOnButtonClick = () => {
+        onHomeLinksClick.notify();
+    }
+
+
     return (
         <motion.div
             initial={{ opacity: 0 }}
@@ -38,29 +80,67 @@ const Home = () => {
             style={{
                 overflow: 'hidden',
                 width: '100%'
-            }}>
+            }}
+        >
             <MainContent>
-                <TopRow>
-                    <NameContainer>
-                        <Row>
-                            <Col lg={5}>
-                                <h2 className='name-container'>Hi I'm <span className='name'>Paul</span></h2>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <TypingAnimation value={shortDescription} className='short-description' />
-                            </Col>
-                        </Row>
-                    </NameContainer>
-                </TopRow>
-                <BotRow>
-                    <ProjectsContainer>
-                        <img src={tempProjectShowcase} alt='tempProjectShowcase' className='video' />
-                    </ProjectsContainer>
-                </BotRow>
-            </MainContent>
-        </motion.div>
+
+                <motion.div
+                    variants={soemthing}
+                    initial={showLinks ? "moveUp" : "default"}
+                    animate={showLinks ? "moveUp" : "default"}
+                    transition={{ duration: 2 }}
+                >
+                    <motion.h2
+                        className='name-container'
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                    > Hi I'm <span className='name'>Paul</span></motion.h2>
+
+                    <TypingAnimation value={shortDescription} className="short-description" />
+                </motion.div>
+                <div className='card-container'>
+                    {showCards && (
+                        <CardGroup>
+                            {['Projects', 'Skills', 'Contact', 'About'].map((title, index) => (
+                                <motion.div
+                                    key={index}
+                                    variants={cardVariants}
+                                    initial={showCards ? "hidden" : "none"}
+                                    animate={showCards ? "visible" : "none"}
+                                    exit={showCards ? "hidden" : "none"}
+                                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                                >
+                                    <Link to={title.toLowerCase()} className='card-NavLink' onClick={handleOnButtonClick}>
+                                        <motion.div
+                                            key={`button-${index}`}
+                                            whileHover={{ scale: 1.1 }}
+                                            whileTap={{ scale: 0.9 }}
+                                            transition={{ duration: 0.2 }}
+
+                                        >
+                                            <Card className='card'>
+                                                <Card.Body>
+                                                    <Card.Title style={{ fontSize: '24px', fontWeight: 'bold' }}>{title}</Card.Title>
+                                                    <Card.Text className='card-text'>{`Explore ${title.toLowerCase()}`}</Card.Text>
+                                                </Card.Body>
+                                            </Card>
+                                        </motion.div>
+                                    </Link>
+
+                                </motion.div>
+                            ))}
+                        </CardGroup>
+                    )
+
+                    }
+                </div>
+
+
+
+            </MainContent >
+        </motion.div >
     );
 };
 
