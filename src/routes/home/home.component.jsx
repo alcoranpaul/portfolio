@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 22nd June 2023 12:18:25 am
+ * Last Modified: Friday, 23rd June 2023 5:22:40 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,38 +13,19 @@
  */
 
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { CardGroup, Card } from 'react-bootstrap';
 import { motion } from 'framer-motion';
-import TypingAnimation, { typingObserver } from '../../components/typingAnimation/typingAnimation.component.jsx';
-import Observer from '../../utils/observers/observer.js';
 
+import { typingObserver } from '../../components/typingAnimation/typingAnimation.component.jsx';
+import OpeningLinks from '../../components/openingLinks/openingLinks.component.jsx';
+import OpeningContent from '../../components/openingContent/openingContent.component.jsx';
+import { onHomeLinksHover } from '../../components/openingLinks/openingLinks.component.jsx';
+import ProjectSnippet from '../../components/projectSnippet/projectSnippet.component.jsx';
 import { MainContent } from './home.styles.jsx';
-
-const shortDescription = "Passionate <b>software<\/b> developer driven\n\nby a desire to create <b>meaningful<\/b> applications, collaborate, and make a positive impact through continuous learning and values-driven actions.";
-
-
-class OnLinkClick extends Observer {
-    constructor() {
-        super();
-    }
-}
-export const onHomeLinksClick = new OnLinkClick();
-
-const soemthing = {
-    moveUp: { y: -100 },
-    default: { y: 0 }
-};
-
-const cardVariants = {
-    hidden: { opacity: 0, y: 100 },
-    visible: { opacity: 1, y: 0 },
-    none: { opacity: 0, y: 0 }
-};
 
 const Home = () => {
     const [showLinks, setShowLinks] = useState(false);
     const [showCards, setCards] = useState(false);
+    const [buttonIndex, setButtonIndex] = useState(false);
 
 
     useEffect(() => {
@@ -65,11 +46,18 @@ const Home = () => {
         };
     }, []);
 
+    useEffect(() => {
+        const handleHomeLinksHover = (someBool) => {
+            // console.log("Home link hovered with index:", index);
+            setButtonIndex(someBool);
+        };
 
-    const handleOnButtonClick = () => {
-        onHomeLinksClick.notify();
-    }
+        onHomeLinksHover.subscribe(handleHomeLinksHover);
 
+        return () => {
+            onHomeLinksHover.unsubscribe(handleHomeLinksHover);
+        };
+    }, []);
 
     return (
         <motion.div
@@ -83,64 +71,11 @@ const Home = () => {
             }}
         >
             <MainContent>
-
-                <motion.div
-                    variants={soemthing}
-                    initial={showLinks ? "moveUp" : "default"}
-                    animate={showLinks ? "moveUp" : "default"}
-                    transition={{ duration: 2 }}
-                >
-                    <motion.h2
-                        className='name-container'
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                    > Hi I'm <span className='name'>Paul</span></motion.h2>
-
-                    <TypingAnimation value={shortDescription} className="short-description" />
-                </motion.div>
-                <div className='card-container'>
-                    {showCards && (
-                        <CardGroup>
-                            {['Projects', 'Skills', 'Contact', 'About'].map((title, index) => (
-                                <motion.div
-                                    key={index}
-                                    variants={cardVariants}
-                                    initial={showCards ? "hidden" : "none"}
-                                    animate={showCards ? "visible" : "none"}
-                                    exit={showCards ? "hidden" : "none"}
-                                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                                >
-                                    <Link to={title.toLowerCase()} className='card-NavLink' onClick={handleOnButtonClick}>
-                                        <motion.div
-                                            key={`button-${index}`}
-                                            whileHover={{ scale: 1.1 }}
-                                            whileTap={{ scale: 0.9 }}
-                                            transition={{ duration: 0.2 }}
-
-                                        >
-                                            <Card className='card'>
-                                                <Card.Body>
-                                                    <Card.Title style={{ fontSize: '24px', fontWeight: 'bold' }}>{title}</Card.Title>
-                                                    <Card.Text className='card-text'>{`Explore ${title.toLowerCase()}`}</Card.Text>
-                                                </Card.Body>
-                                            </Card>
-                                        </motion.div>
-                                    </Link>
-
-                                </motion.div>
-                            ))}
-                        </CardGroup>
-                    )
-
-                    }
-                </div>
-
-
-
-            </MainContent >
-        </motion.div >
+                <OpeningContent showLinks={showLinks} />
+                <OpeningLinks showCards={showCards} />
+                <ProjectSnippet show={buttonIndex} />
+            </MainContent>
+        </motion.div>
     );
 };
 

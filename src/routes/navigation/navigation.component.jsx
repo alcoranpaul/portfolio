@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 21st June 2023 11:09:11 pm
+ * Last Modified: Thursday, 22nd June 2023 1:59:02 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,7 +13,7 @@
  */
 
 import { SidebarContainer, Sidebar, ContentContainer, NavItem } from './navigation.styles.jsx';
-import { onHomeLinksClick } from "../home/home.component"
+import { onHomeLinksClick } from '../../components/openingLinks/openingLinks.component.jsx';
 import { Outlet } from 'react-router-dom';
 import { useEffect } from 'react';
 

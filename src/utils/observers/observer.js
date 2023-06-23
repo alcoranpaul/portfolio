@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 21st June 2023 4:55:41 pm
+ * Last Modified: Thursday, 22nd June 2023 10:33:17 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -26,8 +26,8 @@ class Observer {
         this.subscribers = this.subscribers.filter(subscriber => subscriber !== callback);
     }
 
-    notify() {
-        this.subscribers.forEach(callback => callback());
+    notify(...args) {
+        this.subscribers.forEach(callback => callback(...args));
     }
 }
 

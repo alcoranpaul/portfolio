@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 22nd June 2023 12:15:48 am
+ * Last Modified: Thursday, 22nd June 2023 10:28:21 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -17,12 +17,7 @@ import { useState, useEffect } from 'react';
 import Observer from '../../utils/observers/observer.js';
 import { StyledParagraph, StyledSpan } from './typingAnimaiton.styles.jsx';
 
-class TypingObserver extends Observer {
-  constructor() {
-    super();
-  }
-}
-export const typingObserver = new TypingObserver();
+export const typingObserver = new Observer();
 
 
 const TypingAnimation = ({ value, className }) => {
