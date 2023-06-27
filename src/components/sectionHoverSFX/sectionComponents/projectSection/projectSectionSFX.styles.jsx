@@ -1,11 +1,11 @@
 /*
- * File: projectSnippet.styles.jsx
+ * File: projectSectionSFX.styles.jsx
  * Project: portfolio
- * File Created: Thursday, 22nd June 2023 10:37:06 pm
+ * File Created: Tuesday, 27th June 2023 1:16:46 pm
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 23rd June 2023 5:22:57 pm
+ * Last Modified: Tuesday, 27th June 2023 2:49:57 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -35,15 +35,15 @@ export const Container = styled.div`
   z-index: -1; /* Set a lower z-index to place it behind everything */
   height: 100%;
   width: 100%;
-  overflow: hidden;
-  ${'' /* background-color: red; */}
+  ${'' /* overflow: hidden; */}
+
   cursor: pointer;
   user-select: none;
-
+ 
 `;
 
 export const WordCloud = styled.div`
-${'' /* background-color: blue; */}
+
   cursor: pointer;
   user-select: none;
   position: absolute;
@@ -53,10 +53,12 @@ ${'' /* background-color: blue; */}
   right: 0;
   bottom: 0;
   overflow: hidden;
-  opacity: ${({ show }) => (show ? 1 : 0)};
-  transition: opacity 1s, transform 0.2s;
+  opacity: ${({ show }) => (show ? 0.3 : 0)};
+  
   transform: translateY(${({ show }) => (show ? '0%' : '100%')});
-  filter: blur(${({ show }) => (show ? '0' : '8px')});
+
+  filter: blur(${({ show }) => (show ? '10px' : '20px')});
+  transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
 
   span {
     display: block;

@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 22nd June 2023 2:52:55 pm
+ * Last Modified: Friday, 23rd June 2023 11:43:57 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -17,7 +17,7 @@ import { motion } from "framer-motion";
 import { OpeningContainer, ShortDescription } from './openingContent.styles'
 
 const linkVariants = {
-    moveUp: { y: -300 },
+    moveUp: { y: -225 },
     default: { y: 0 }
 };
 
@@ -31,6 +31,7 @@ const OpeningContent = ({ showLinks }) => {
             initial="default"
             animate={showLinks ? "moveUp" : ""}
             transition={{ duration: 2 }}
+
         >
             <OpeningContainer
 

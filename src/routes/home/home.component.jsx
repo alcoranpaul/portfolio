@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 23rd June 2023 5:22:40 pm
+ * Last Modified: Friday, 23rd June 2023 10:53:48 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -18,15 +18,11 @@ import { motion } from 'framer-motion';
 import { typingObserver } from '../../components/typingAnimation/typingAnimation.component.jsx';
 import OpeningLinks from '../../components/openingLinks/openingLinks.component.jsx';
 import OpeningContent from '../../components/openingContent/openingContent.component.jsx';
-import { onHomeLinksHover } from '../../components/openingLinks/openingLinks.component.jsx';
-import ProjectSnippet from '../../components/projectSnippet/projectSnippet.component.jsx';
 import { MainContent } from './home.styles.jsx';
 
 const Home = () => {
     const [showLinks, setShowLinks] = useState(false);
     const [showCards, setCards] = useState(false);
-    const [buttonIndex, setButtonIndex] = useState(false);
-
 
     useEffect(() => {
         const handleTypingComplete = () => {
@@ -46,18 +42,6 @@ const Home = () => {
         };
     }, []);
 
-    useEffect(() => {
-        const handleHomeLinksHover = (someBool) => {
-            // console.log("Home link hovered with index:", index);
-            setButtonIndex(someBool);
-        };
-
-        onHomeLinksHover.subscribe(handleHomeLinksHover);
-
-        return () => {
-            onHomeLinksHover.unsubscribe(handleHomeLinksHover);
-        };
-    }, []);
 
     return (
         <motion.div
@@ -73,7 +57,6 @@ const Home = () => {
             <MainContent>
                 <OpeningContent showLinks={showLinks} />
                 <OpeningLinks showCards={showCards} />
-                <ProjectSnippet show={buttonIndex} />
             </MainContent>
         </motion.div>
     );

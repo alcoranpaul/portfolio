@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 23rd June 2023 5:25:37 pm
+ * Last Modified: Friday, 23rd June 2023 11:44:21 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -16,6 +16,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const OpeningLinksContainer = styled.div`
+  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,7 +67,7 @@ export const CardNavLink = styled(Link)`
 export const BackgroundImage = styled.div`
   content: '';
   background-image: ${({ imageUrl }) => `url(${imageUrl})`};
-  
+
   background-size: cover;
   background-position: center;
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
