@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 15th June 2023 4:12:21 pm
+ * Last Modified: Wednesday, 28th June 2023 3:51:34 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -17,7 +17,7 @@ import TechSkill from "../techSkill/techSkill.component";
 const SkillTech = [
     {
         name: "Web Development",
-        icons: ["HTML", "CSS", "JavaScript", "Vue", "React", "React Router", "React Redux"]
+        icons: ["HTML", "CSS", "JavaScript", "Vue", "React", "React Router", "React Router"]
     },
     {
         name: "Design and Prototyping",

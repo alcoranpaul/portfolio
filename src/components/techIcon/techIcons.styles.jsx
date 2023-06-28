@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 15th June 2023 4:11:15 pm
+ * Last Modified: Wednesday, 28th June 2023 3:54:50 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -15,8 +15,9 @@
 import styled from "styled-components";
 
 export const IconsContainer = styled.div`
-    margin: 5px 10px;
-    height: 200px
+    margin: 15px 20px 0px 20px;
+    height: 200px; 
+    width: 95%;
 `
 
 export const IconsWrapper = styled.div`
@@ -24,7 +25,9 @@ export const IconsWrapper = styled.div`
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
+    
     width: 100%;
+
 `
 
 export const Icon = styled.div`
@@ -37,7 +40,12 @@ export const Icon = styled.div`
 export const SquareOverlay = styled.div`
   width: 130px;
   height: 100px;
-    background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
 `;
 
 export const IconName = styled.span`

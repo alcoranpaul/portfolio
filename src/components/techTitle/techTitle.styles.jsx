@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 15th June 2023 4:07:05 pm
+ * Last Modified: Wednesday, 28th June 2023 3:54:03 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -18,7 +18,6 @@ export const TitleContainer = styled.div`
     display: flex;
     align-items: center;
     width: 100%;
-    ${'' /* background: red; */}
     padding-top: 5px;
 `
 

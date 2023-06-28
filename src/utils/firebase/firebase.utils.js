@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 28th June 2023 1:49:12 pm
+ * Last Modified: Wednesday, 28th June 2023 2:41:06 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,7 +13,9 @@
  */
 
 import { initializeApp } from 'firebase/app';
-import { getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import {
+    getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider
+} from 'firebase/auth';
 
 import {
     getFirestore,   // get firestore instance 
@@ -47,9 +49,19 @@ provider.setCustomParameters({
 
 export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+export const signInWithGoogleRedirect = () => signInWithRedirect(auth, provider);
+
 
 //*********************************************** Database ***************************************//
 //************************************************************************************************//
+class AdminAuthError extends Error {
+    constructor(message, code) {
+        super(message);
+        this.code = code;
+        this.name = 'AdminAuthError';
+    }
+}
+
 
 export const db_Firestore = getFirestore();
 
@@ -63,17 +75,33 @@ export const createUserDocumentFromAuth = async (userAuth) => {
 
     if (!userSnapshot.exists()) {
         const { displayName, email } = userAuth;
+        const lastLogin = new Date();
 
         try {
             await setDoc(userDocRef, {
                 displayName,
                 email,
+                lastLogin
             });
         }
         catch (error) {
             console.log("Error creating user", error.message);
         }
     }
+    console.log("SignIn successful")
+
+    return userDocRef;
+}
+
+
+export const signInAdminFromAuth = async (userAuth) => {
+    const userDocRef = doc(db_Firestore, "admin_user", userAuth.uid);
+    const userSnapshot = await getDoc(userDocRef);
+
+    if (!userSnapshot.exists()) {
+        throw new AdminAuthError(`Unauthorized user`, 401);
+    }
+
 
     return userDocRef;
 }

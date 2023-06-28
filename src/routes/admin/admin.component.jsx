@@ -5,23 +5,66 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 28th June 2023 1:49:49 pm
+ * Last Modified: Wednesday, 28th June 2023 2:59:17 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
-import { signInWithGooglePopup } from "../../utils/firebase/firebase.utils"
+import { useState } from "react"
+import { signInWithGooglePopup, signInAdminFromAuth } from "../../utils/firebase/firebase.utils"
+import { hover } from "@testing-library/user-event/dist/hover";
+
 
 const Admin = () => {
-    const logGoogleUser = async () => {
-        const { user } = await signInWithGooglePopup();
+    const [adminLogIn, setAdminLogIn] = useState(null);
+
+    const signinWithGoogle = async () => {
+        try {
+            const { user } = await signInWithGooglePopup();
+            await signInAdminFromAuth(user);
+            setAdminLogIn(true)
+        }
+        catch (error) {
+            setAdminLogIn(false)
+            setTimeout(() => {
+                setAdminLogIn(null)
+            }, 3000)
+        };
     }
+
+
     return (
-        <div>
+        <div
+        >
             <h1>Admin</h1>
-            <button onClick={logGoogleUser}>Log Google User</button>
+            {/* <div style={{
+                position: 'absolute',
+                top: '35%',
+                left: '40%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '200px',
+                width: '400px',
+            }}
+            >
+                {adminLogIn === null && <button type='button' onClick={signinWithGoogle}
+                    style={{
+                        height: '150px',
+                        width: '200px',
+                        borderRadius: '30%',
+                        textTransform: 'uppercase',
+                        fontSize: '20px',
+                        backgroundColor: 'var(--color-accent)'
+                    }}
+                >Admin Login</button>}
+                {adminLogIn === true && <h1>Admin Logged In</h1>}
+                {adminLogIn === false && <h1>Unauthorized user</h1>}
+            </div> */}
+
         </div>
     )
 }

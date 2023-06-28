@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 27th June 2023 10:17:52 pm
+ * Last Modified: Wednesday, 28th June 2023 3:45:29 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -14,9 +14,8 @@
 
 import { SidebarContainer, Sidebar, ContentContainer, NavItem, AdminSignIn } from './navigation.styles.jsx';
 import { onHomeLinksClick } from '../../components/openingLinks/openingLinks.component.jsx';
-import { Outlet } from 'react-router-dom';
-import { useEffect } from 'react';
-
+import { Outlet, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 const sidebarVariants = {
     hidden: { opacity: 0, x: '-100%' },
@@ -26,13 +25,14 @@ const sidebarVariants = {
     exitOut: { opacity: 0 }
 };
 
-let showSidebar = false;
-
 const Navigation = () => {
+    const [showSidebar, setShowSidebar] = useState(false);
+    const currentRoute = useLocation().pathname;
+
     useEffect(() => {
         const handleTypingComplete = () => {
             console.log("Changing Boolean");
-            showSidebar = true;
+            setShowSidebar(true);
         };
 
         onHomeLinksClick.subscribe(handleTypingComplete);
@@ -42,9 +42,14 @@ const Navigation = () => {
         };
     }, []);
 
+    useEffect(() => {
+        if (currentRoute !== "/") {
+            setShowSidebar(true);
+        }
+    }, [currentRoute]);
 
     const handleHomeClick = () => {
-        showSidebar = false;
+        setShowSidebar(false);
         console.log("Showing Home Page");
     };
 
@@ -70,7 +75,6 @@ const Navigation = () => {
                     </Sidebar>
                     <AdminSignIn to="admin">Admin Sign In</AdminSignIn>
                 </SidebarContainer>
-
             )}
             <ContentContainer>
                 <Outlet />
