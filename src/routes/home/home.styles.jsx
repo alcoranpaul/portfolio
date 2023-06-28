@@ -5,13 +5,15 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 22nd June 2023 2:53:37 pm
+ * Last Modified: Tuesday, 27th June 2023 10:17:56 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
+
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const MainContent = styled.div`

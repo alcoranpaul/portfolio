@@ -10,6 +10,8 @@ import Contact from './routes/contact/contact.component';
 import Education from './routes/education/education.component';
 import Skills from './routes/skills/skills.component';
 import Work from './routes/work/work.component';
+import Admin from './routes/admin/admin.component';
+
 import ParticleBG from './components/particleBG/particleBG';
 import { AnimatePresence } from 'framer-motion';
 
@@ -27,6 +29,7 @@ function App() {
           <Route path='education' element={<Education />} />
           <Route path='contact' element={<Contact />} />
           <Route path='about' element={<About />} />
+          <Route path='admin' element={<Admin />} />
         </Route>
       </Routes>
       <ParticleBG />

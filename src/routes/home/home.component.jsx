@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 23rd June 2023 10:53:48 pm
+ * Last Modified: Tuesday, 27th June 2023 10:17:25 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -18,7 +18,8 @@ import { motion } from 'framer-motion';
 import { typingObserver } from '../../components/typingAnimation/typingAnimation.component.jsx';
 import OpeningLinks from '../../components/openingLinks/openingLinks.component.jsx';
 import OpeningContent from '../../components/openingContent/openingContent.component.jsx';
-import { MainContent } from './home.styles.jsx';
+import { MainContent, AdminSignIn } from './home.styles.jsx';
+
 
 const Home = () => {
     const [showLinks, setShowLinks] = useState(false);
@@ -58,6 +59,7 @@ const Home = () => {
                 <OpeningContent showLinks={showLinks} />
                 <OpeningLinks showCards={showCards} />
             </MainContent>
+
         </motion.div>
     );
 };

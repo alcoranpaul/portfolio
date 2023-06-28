@@ -5,14 +5,14 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 22nd June 2023 1:59:02 pm
+ * Last Modified: Tuesday, 27th June 2023 10:17:52 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
-import { SidebarContainer, Sidebar, ContentContainer, NavItem } from './navigation.styles.jsx';
+import { SidebarContainer, Sidebar, ContentContainer, NavItem, AdminSignIn } from './navigation.styles.jsx';
 import { onHomeLinksClick } from '../../components/openingLinks/openingLinks.component.jsx';
 import { Outlet } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -68,7 +68,9 @@ const Navigation = () => {
                         <NavItem to="/contact">Contact</NavItem>
                         <NavItem to="/about">About</NavItem>
                     </Sidebar>
+                    <AdminSignIn to="admin">Admin Sign In</AdminSignIn>
                 </SidebarContainer>
+
             )}
             <ContentContainer>
                 <Outlet />

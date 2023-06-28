@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 27th June 2023 2:08:21 pm
+ * Last Modified: Wednesday, 28th June 2023 1:46:38 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -18,7 +18,7 @@ const SkillsSectionSFX = ({ show }) => {
 
         <Container>
             <WordCloud show={show}>
-                <div class="forward">
+                <div className="forward">
                     <span>SKILLS</span>
                     <span>SKILLS</span>
                     <span>SKILLS</span>
@@ -26,7 +26,7 @@ const SkillsSectionSFX = ({ show }) => {
                     <span>SKILLS</span>
                     <span>SKILLS</span>
                 </div>
-                <div class="reverse">
+                <div className="reverse">
                     <span>SKILLS</span>
                     <span>SKILLS</span>
                     <span>SKILLS</span>

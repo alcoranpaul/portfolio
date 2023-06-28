@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 21st June 2023 9:15:07 pm
+ * Last Modified: Tuesday, 27th June 2023 10:18:40 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -67,4 +67,21 @@ export const NavItem = styled(Link)`
   &:hover {
     background-color: var(--color-primary);
   }
+`
+
+
+export const AdminSignIn = styled(Link)`
+    position: absolute; 
+    right: 20px;
+    bottom: 50px;
+    background-color: var(--color-background);
+    border: 2px double var(--color-accent);
+    color: var(--color-text);
+    opacity: 0.4;
+    padding: 10px;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      opacity: 1;
+    }
 `
