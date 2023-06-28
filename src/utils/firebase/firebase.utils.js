@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 28th June 2023 2:41:06 pm
+ * Last Modified: Wednesday, 28th June 2023 6:25:41 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -22,6 +22,9 @@ import {
     doc,            // create a document reference
     getDoc,         // read data from firestore
     setDoc,         // write data to firestore
+    collection,     // create a collection reference
+    query,          // create a query
+    getDocs,        // read data from firestore
 } from "firebase/firestore";
 
 // Your web app's Firebase configuration
@@ -52,8 +55,6 @@ export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 export const signInWithGoogleRedirect = () => signInWithRedirect(auth, provider);
 
 
-//*********************************************** Database ***************************************//
-//************************************************************************************************//
 class AdminAuthError extends Error {
     constructor(message, code) {
         super(message);
@@ -68,11 +69,8 @@ export const db_Firestore = getFirestore();
 export const createUserDocumentFromAuth = async (userAuth) => {
     // Database, Collection, Document
     const userDocRef = doc(db_Firestore, "admin_user", userAuth.uid);
-    console.log(userDocRef)
 
     const userSnapshot = await getDoc(userDocRef);
-    console.log(userSnapshot)
-
     if (!userSnapshot.exists()) {
         const { displayName, email } = userAuth;
         const lastLogin = new Date();
@@ -104,4 +102,32 @@ export const signInAdminFromAuth = async (userAuth) => {
 
 
     return userDocRef;
+}
+
+
+//*********************************************** Database ***************************************//
+//************************************************************************************************//
+
+export const COLLECTION_TYPE = {
+    projects: "projects",
+    skills: "skills",
+    works: "works"
+}
+
+export const getCollection = async (collectionType) => {
+    try {
+        const collectionSnapshot = collection(db_Firestore, "skills");
+        const q = query(collectionSnapshot);
+        const querySnapshot = await getDocs(q);
+
+        const collectionData = querySnapshot.docs.reduce((acc, doc) => {
+            const { id } = doc;
+            const data = doc.data();
+            return { ...acc, [id]: data }
+        }, {});
+        console.log(collectionData);
+    }
+    catch (error) {
+        console.log(error);
+    }
 }

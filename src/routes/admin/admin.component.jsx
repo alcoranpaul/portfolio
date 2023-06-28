@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 28th June 2023 2:59:17 pm
+ * Last Modified: Wednesday, 28th June 2023 4:00:09 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -14,7 +14,7 @@
 
 import { useState } from "react"
 import { signInWithGooglePopup, signInAdminFromAuth } from "../../utils/firebase/firebase.utils"
-import { hover } from "@testing-library/user-event/dist/hover";
+import DatabasePage from "../../components/databasePage/databasePage.component";
 
 
 const Admin = () => {
@@ -39,7 +39,7 @@ const Admin = () => {
         <div
         >
             <h1>Admin</h1>
-            {/* <div style={{
+            <div style={{
                 position: 'absolute',
                 top: '35%',
                 left: '40%',
@@ -61,9 +61,9 @@ const Admin = () => {
                         backgroundColor: 'var(--color-accent)'
                     }}
                 >Admin Login</button>}
-                {adminLogIn === true && <h1>Admin Logged In</h1>}
+                {adminLogIn === true && <DatabasePage />}
                 {adminLogIn === false && <h1>Unauthorized user</h1>}
-            </div> */}
+            </div>
 
         </div>
     )
