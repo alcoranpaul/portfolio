@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 29th June 2023 2:23:53 pm
+ * Last Modified: Thursday, 29th June 2023 2:36:26 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,10 +13,10 @@
  */
 
 
-import { SidebarContainer, Sidebar, ContentContainer, NavItem, AdminSignIn } from './navigation.styles.jsx';
+import { SidebarContainer, Sidebar, ContentContainer, NavItem } from './navigation.styles.jsx';
 import { Outlet } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-import { useSelector } from 'react-redux';
+import AdminButton from '../../components/adminButton/adminButton.component';
 
 const sidebarVariants = {
     hidden: { opacity: 0, x: '-100%' },
@@ -43,7 +43,7 @@ const Navigation = ({ location }) => {
                             <NavItem to="/contact">Contact</NavItem>
                             <NavItem to="/about">About</NavItem>
                         </Sidebar>
-                        <AdminSignIn to="admin">Admin</AdminSignIn>
+                        <AdminButton />
                     </SidebarContainer>
 
                 )}

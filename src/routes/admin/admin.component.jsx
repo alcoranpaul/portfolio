@@ -5,45 +5,30 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 29th June 2023 2:29:18 pm
+ * Last Modified: Thursday, 29th June 2023 2:33:46 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
-import { useState } from "react"
+
 import { useSelector } from "react-redux";
 import { signInWithGooglePopup, signInAdminFromAuth } from "../../utils/firebase/firebase.utils"
 import DatabasePage from "../../components/databasePage/databasePage.component";
 import { signOutAdmin } from "../../utils/firebase/firebase.utils";
 
 const Admin = () => {
-    const [adminLogIn, setAdminLogIn] = useState(null);
     const adminUser = useSelector(state => state.user.adminUser);
-
 
     const signinWithGoogle = async () => {
         try {
             const { user } = await signInWithGooglePopup();
             await signInAdminFromAuth(user);
-            setAdminLogIn(true)
         }
         catch (error) {
-            setAdminLogIn(false)
-            setTimeout(() => {
-                setAdminLogIn(null)
-            }, 3000)
+            console.log(`Error in Admin/signinWithGoogle: ${error}`);
         };
-    }
-
-    const handleSignOut = async () => {
-        try {
-            await signOutAdmin();
-        }
-        catch (error) {
-            console.log(error);
-        }
     }
 
 
@@ -76,13 +61,7 @@ const Admin = () => {
 
                 {/* {adminLogIn === false && <h1>Unauthorized user</h1>} */}
             </div>
-            {adminUser !== null && <button type='button' onClick={handleSignOut}
-                style={{
-                    position: 'absolute',
-                    top: '3%',
-                    left: '18%',
-                }}
-            >SignOut</button>}
+
 
         </div>
     )
