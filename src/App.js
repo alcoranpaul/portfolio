@@ -19,7 +19,7 @@ function App() {
   const location = useLocation();
 
   return (
-    <AnimatePresence mode='wait'>
+    <AnimatePresence>
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Navigation />}>
           <Route index element={<Home />} />
