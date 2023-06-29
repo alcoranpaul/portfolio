@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 28th June 2023 9:37:59 pm
+ * Last Modified: Wednesday, 28th June 2023 9:40:08 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -27,8 +27,8 @@ const sidebarVariants = {
 };
 
 
+let showSidebar = false;
 const Navigation = () => {
-    let showSidebar = false;
 
     useEffect(() => {
         const handleTypingComplete = (exitHomePage) => {
@@ -49,7 +49,7 @@ const Navigation = () => {
     };
 
     return (
-        <div style={{ display: 'flex' }} className='sidebar'>
+        <div style={{ display: 'flex' }}>
             {showSidebar && (
                 <SidebarContainer
                     id="sidebar-container"
