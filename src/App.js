@@ -13,27 +13,26 @@ import Work from './routes/work/work.component';
 import Admin from './routes/admin/admin.component';
 
 import ParticleBG from './components/particleBG/particleBG';
-import { AnimatePresence } from 'framer-motion';
 
 function App() {
   const location = useLocation();
 
   return (
-    <AnimatePresence>
+    <div>
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Navigation />}>
-          <Route index element={<Home />} />
-          <Route path='projects' element={<Projects />} />
-          <Route path='skills' element={<Skills />} />
-          <Route path='work' element={<Work />} />
-          <Route path='education' element={<Education />} />
-          <Route path='contact' element={<Contact />} />
-          <Route path='about' element={<About />} />
-          <Route path='admin' element={<Admin />} />
+        <Route path="/" element={<Navigation location={location} />} key="navigation">
+          <Route index element={<Home />} key="home" />
+          <Route path='projects' element={<Projects />} key="projects" />
+          <Route path='skills' element={<Skills />} key="skills" />
+          <Route path='work' element={<Work />} key="work" />
+          <Route path='education' element={<Education />} key="education" />
+          <Route path='contact' element={<Contact />} key="contact" />
+          <Route path='about' element={<About />} key="about" />
+          <Route path='admin' element={<Admin />} key="admin" />
         </Route>
       </Routes>
       <ParticleBG />
-    </AnimatePresence>
+    </div>
   );
 }
 

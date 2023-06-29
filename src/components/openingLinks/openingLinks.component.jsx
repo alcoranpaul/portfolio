@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 28th June 2023 9:29:26 pm
+ * Last Modified: Wednesday, 28th June 2023 11:17:52 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -19,7 +19,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Observer from '../../utils/observers/observer';
 import SectionHoverSFX from '../sectionHoverSFX/sectionHoverSFX.component';
-import { OpeningLinksContainer, CardNavLink, BackgroundImage } from './openingLinks.styles'
+import { OpeningLinksContainer, CardNavLink } from './openingLinks.styles'
 
 const cardVariants = {
     hidden: { opacity: 0, y: 100 },
@@ -33,39 +33,23 @@ export const onHomeLinksHover = new Observer();
 
 
 const OpeningLinks = ({ showCards }) => {
-    const [isHovered, setIsHovered] = useState(false);
     const [buttonIndex, setButtonIndex] = useState(null); // Keep track of the index of the hovered button
     const [disabled, setDisabled] = useState([false, false, false, false]);
 
 
-
-    const handleOnButtonClick = () => {
-        const exitHomePage = true;
-        onHomeLinksClick.notify(exitHomePage);
-    };
-
     const handleOnHover = (index) => {
-        setIsHovered(true);
         setButtonIndex(index)
-
         const updatedDisabled = Array(4).fill(true);
         updatedDisabled[index] = false;
         setDisabled(updatedDisabled);
-
-
-        // const someBool = true
-        // onHomeLinksHover.notify(someBool);
     };
 
     const handleOnMouseLeave = () => {
-        setIsHovered(false);
         setButtonIndex(null)
         setTimeout(() => {
             setDisabled([false, false, false, false]);
         }, 400);
 
-        // const someBool = false
-        // onHomeLinksHover.notify(someBool);
     };
 
 
@@ -89,7 +73,7 @@ const OpeningLinks = ({ showCards }) => {
                                     width: '300px', margin: "0px 30px 0px 30px", display: 'flex', justifyContent: 'center', alignItems: 'center', pointerEvents: disabled[index] ? 'none' : 'auto', // Disable pointer events based on disabled state
                                 }}
                             >
-                                <CardNavLink to={title.toLowerCase()} onClick={handleOnButtonClick} $index={index}
+                                <CardNavLink to={title.toLowerCase()} $index={index}
                                     onMouseEnter={() => handleOnHover(index)}
                                     onMouseLeave={handleOnMouseLeave}
                                 >
