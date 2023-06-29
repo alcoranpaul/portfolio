@@ -5,31 +5,34 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 29th June 2023 2:53:52 pm
+ * Last Modified: Thursday, 29th June 2023 3:31:31 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
-
 import { useSelector } from "react-redux";
-import { signInWithGooglePopup, signInAdminFromAuth } from "../../utils/firebase/firebase.utils"
+import { signInWithGooglePopup, signInAdmin } from "../../utils/firebase/firebase.utils"
 import DatabasePage from "../../components/databasePage/databasePage.component";
 import { selectAdminUser } from "../../store/adminUser/adminUser.selector.js";
+import { signOutAdmin } from "../../utils/firebase/firebase.utils";
 
 const Admin = () => {
     const adminUser = useSelector(selectAdminUser);
 
     const signinWithGoogle = async () => {
         try {
-            const { user } = await signInWithGooglePopup();
-            await signInAdminFromAuth(user);
+            await signOutAdmin();
+            await signInWithGooglePopup();
         }
         catch (error) {
             console.log(`Error in Admin/signinWithGoogle: ${error}`);
         };
     }
+
+
+
 
 
     return (

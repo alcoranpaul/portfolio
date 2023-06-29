@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setAdminUser } from './store/adminUser/adminUser.action';
 import { onAuthStateChangeListener } from './utils/firebase/firebase.utils';
+import { signInAdmin, signOutAdmin } from './utils/firebase/firebase.utils';
 
 import Navigation from './routes/navigation/navigation.component';
 import Home from './routes/home/home.component';
@@ -24,12 +25,21 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChangeListener((user) => {
-      if (user) {
-        console.log(`setting admin user: ${user}`)
-        dispatch(setAdminUser(user))
+    const unsubscribe = onAuthStateChangeListener(async (user) => {
+      console.log(`onAuthStateChangeListener in App.js`)
+      try {
+        if (user) {
+          console.log(`setting admin user in App.js`);
+          await signInAdmin(user);
+          dispatch(setAdminUser(user))
+        }
+        else {
+          console.log(`setting admin user to null in App.js`)
+          dispatch(setAdminUser(null))
+        }
       }
-      else {
+      catch (error) {
+        console.log(`Error in App.js: ${error}`)
         dispatch(setAdminUser(null))
       }
     })

@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 29th June 2023 1:14:38 pm
+ * Last Modified: Thursday, 29th June 2023 3:31:12 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -56,7 +56,16 @@ provider.setCustomParameters({
 })
 
 export const auth = getAuth();
-export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+export const signInWithGooglePopup = async () => {
+    console.log(`signInWithGooglePopup -- signing  from google popup`)
+    try {
+        await signInWithPopup(auth, provider)
+    }
+    catch (error) {
+        console.log(`Error in signInWithGooglePopup`)
+        console.log(error)
+    }
+};
 export const signInWithGoogleRedirect = () => signInWithRedirect(auth, provider);
 
 
@@ -98,6 +107,8 @@ export const createUserDocumentFromAuth = async (userAuth) => {
 
 
 export const signInAdminFromAuth = async (userAuth) => {
+    console.log(`signInAdminFromAuth -- signing  from google popup`)
+    console.log(userAuth)
     const userDocRef = doc(db_Firestore, "admin_user", userAuth.uid);
     const userSnapshot = await getDoc(userDocRef);
 
@@ -106,6 +117,20 @@ export const signInAdminFromAuth = async (userAuth) => {
     }
 
 
+    return userDocRef;
+}
+
+export const signInAdmin = async (user) => {
+    console.log(`signInAdminFromUID -- Check if user is admin`)
+    const userDocRef = doc(db_Firestore, "admin_user", user.uid);
+    const userSnapshot = await getDoc(userDocRef);
+
+    if (!userSnapshot.exists()) {
+        console.log(`signInAdminFromUID -- User is not admin`)
+        throw new AdminAuthError(`Unauthorized user`, 401);
+    }
+
+    console.log(`signInAdminFromUID -- User is admin`)
     return userDocRef;
 }
 
