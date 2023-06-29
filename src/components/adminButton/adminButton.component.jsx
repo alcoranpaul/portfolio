@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 29th June 2023 2:42:14 pm
+ * Last Modified: Thursday, 29th June 2023 2:53:19 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,11 +13,12 @@
  */
 import { useSelector } from "react-redux";
 import { signOutAdmin } from "../../utils/firebase/firebase.utils"
+import { selectAdminUser } from "../../store/adminUser/adminUser.selector.js";
 
 import { AdminSignIn } from "./adminButton.styles";
 
 const AdminButton = () => {
-    const adminUser = useSelector(state => state.user.adminUser);
+    const adminUser = useSelector(selectAdminUser);
 
     const handleSignOut = async () => {
         try {
