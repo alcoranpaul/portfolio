@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 29th June 2023 1:26:47 pm
+ * Last Modified: Thursday, 29th June 2023 4:06:47 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -14,7 +14,7 @@
 
 import { PROJECTS_ACTION_TYPE } from "./projects.types";
 const INITIAL_STATE = {
-    projects: []
+    projects: {}
 }
 
 export const projectsReducer = (state = INITIAL_STATE, action = {}) => {

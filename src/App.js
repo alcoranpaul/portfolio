@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setAdminUser } from './store/adminUser/adminUser.action';
 import { onAuthStateChangeListener } from './utils/firebase/firebase.utils';
-import { signInAdmin, signOutAdmin } from './utils/firebase/firebase.utils';
+import { signInAdmin } from './utils/firebase/firebase.utils';
 
 import Navigation from './routes/navigation/navigation.component';
 import Home from './routes/home/home.component';
@@ -22,30 +22,30 @@ import ParticleBG from './components/particleBG/particleBG';
 
 function App() {
   const location = useLocation();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChangeListener(async (user) => {
-      console.log(`onAuthStateChangeListener in App.js`)
-      try {
-        if (user) {
-          console.log(`setting admin user in App.js`);
-          await signInAdmin(user);
-          dispatch(setAdminUser(user))
-        }
-        else {
-          console.log(`setting admin user to null in App.js`)
-          dispatch(setAdminUser(null))
-        }
-      }
-      catch (error) {
-        console.log(`Error in App.js: ${error}`)
-        dispatch(setAdminUser(null))
-      }
-    })
-    return unsubscribe;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChangeListener(async (user) => {
+  //     console.log(`onAuthStateChangeListener in App.js`)
+  //     try {
+  //       if (user) {
+  //         console.log(`setting admin user in App.js`);
+  //         await signInAdmin(user);
+  //         dispatch(setAdminUser(user))
+  //       }
+  //       else {
+  //         console.log(`setting admin user to null in App.js`)
+  //         dispatch(setAdminUser(null))
+  //       }
+  //     }
+  //     catch (error) {
+  //       console.log(`Error in App.js: ${error}`)
+  //       dispatch(setAdminUser(null))
+  //     }
+  //   })
+  //   return unsubscribe;
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [])
 
   return (
     <div>

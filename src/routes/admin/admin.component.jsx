@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 29th June 2023 3:31:31 pm
+ * Last Modified: Thursday, 29th June 2023 5:40:47 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -18,8 +18,15 @@ import DatabasePage from "../../components/databasePage/databasePage.component";
 import { selectAdminUser } from "../../store/adminUser/adminUser.selector.js";
 import { signOutAdmin } from "../../utils/firebase/firebase.utils";
 
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setAdminUser } from '../../store/adminUser/adminUser.action';
+import { onAuthStateChangeListener } from '../../utils/firebase/firebase.utils';
+
+
 const Admin = () => {
     const adminUser = useSelector(selectAdminUser);
+    const dispatch = useDispatch();
 
     const signinWithGoogle = async () => {
         try {
@@ -31,14 +38,61 @@ const Admin = () => {
         };
     }
 
+    useEffect(() => {
+        const unsubscribe = onAuthStateChangeListener(async (user) => {
+            console.log(`onAuthStateChangeListener in App.js`)
+            try {
+                if (user) {
+                    console.log(`setting admin user in App.js`);
+                    await signInAdmin(user);
+                    dispatch(setAdminUser(user))
+                }
+                else {
+                    console.log(`setting admin user to null in App.js`)
+                    dispatch(setAdminUser(null))
+                }
+            }
+            catch (error) {
+                console.log(`Error in App.js: ${error}`)
+                dispatch(setAdminUser(null))
+            }
+        })
+        return unsubscribe;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
-
+    const handleSignOut = async () => {
+        try {
+            await signOutAdmin();
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
 
 
     return (
         <div
         >
             <h1>Admin</h1>
+            {adminUser !== null && (
+                <div className='sign-out-container' style={{
+                    width: '150px',
+                    height: '50px',
+                    border: '1px double var(--color-primary)',
+                    borderRadius: '10px',
+
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    cursor: 'pointer',
+
+                }}
+                    onClick={handleSignOut}
+                >
+                    <span>Sign Out</span>
+                </div>
+            )}
             <div style={{
                 position: 'absolute',
                 top: '35%',

@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 29th June 2023 2:53:19 pm
+ * Last Modified: Thursday, 29th June 2023 5:35:39 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -18,28 +18,11 @@ import { selectAdminUser } from "../../store/adminUser/adminUser.selector.js";
 import { AdminSignIn } from "./adminButton.styles";
 
 const AdminButton = () => {
-    const adminUser = useSelector(selectAdminUser);
-
-    const handleSignOut = async () => {
-        try {
-            await signOutAdmin();
-        }
-        catch (error) {
-            console.log(error);
-        }
-    }
 
 
     return (
         <div className="admin-button">
-            {adminUser !== null ?
-                <AdminSignIn type='button' onClick={handleSignOut}
-                    style={{
-                        backgroundColor: "var(--color-primary)",
-                    }}
-                >Admin SignOut</AdminSignIn>
-                :
-                <AdminSignIn to='/admin' >Admin SignIn</AdminSignIn>}
+            <AdminSignIn to='/admin' >Admin SignIn</AdminSignIn>
         </div>
     )
 }
