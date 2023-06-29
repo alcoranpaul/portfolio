@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 28th June 2023 11:32:29 pm
+ * Last Modified: Wednesday, 28th June 2023 11:35:12 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -53,7 +53,7 @@ const Navigation = ({ location }) => {
                     initial="hide"
                     animate="show"
                     exit="hide"
-                    transition={{ duration: 0.5, type: "tween", ease: [0.17, 0.67, 0.83, 0.67] }}>
+                    transition={{ duration: 0.7, type: "tween" }}>
                     <Outlet />
                 </ContentContainer>
             </div>

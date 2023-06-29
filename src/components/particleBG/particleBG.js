@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 27th June 2023 3:46:44 pm
+ * Last Modified: Wednesday, 28th June 2023 11:33:57 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -28,10 +28,6 @@ const ParticleBG = () => {
             fpsLimit: 120,
             interactivity: {
                 events: {
-                    onClick: {
-                        enable: true,
-                        mode: "push",
-                    },
                     onHover: {
                         enable: true,
                         mode: "repulse",
@@ -39,11 +35,8 @@ const ParticleBG = () => {
                     resize: true,
                 },
                 modes: {
-                    push: {
-                        quantity: 4,
-                    },
                     repulse: {
-                        distance: 150,
+                        distance: 100,
                         duration: 1,
                     },
                 },
