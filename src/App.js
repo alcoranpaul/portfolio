@@ -1,6 +1,10 @@
 
 import { Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
+import { useDispatch } from 'react-redux';
+import { setAdminUser } from './store/adminUser/adminUser.action';
+import { onAuthStateChangeListener } from './utils/firebase/firebase.utils';
 
 import Navigation from './routes/navigation/navigation.component';
 import Home from './routes/home/home.component';
@@ -13,10 +17,25 @@ import Work from './routes/work/work.component';
 import Admin from './routes/admin/admin.component';
 
 import ParticleBG from './components/particleBG/particleBG';
-import { setAdminUser } from './store/admin/admin.actions';
+
 
 function App() {
   const location = useLocation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChangeListener((user) => {
+      if (user) {
+        console.log(`setting admin user: ${user}`)
+        dispatch(setAdminUser(user))
+      }
+      else {
+        dispatch(setAdminUser(null))
+      }
+    })
+    return unsubscribe;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div>

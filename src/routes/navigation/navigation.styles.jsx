@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 28th June 2023 11:32:29 pm
+ * Last Modified: Thursday, 29th June 2023 2:24:04 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -73,7 +73,7 @@ export const NavItem = styled(Link)`
 
 export const AdminSignIn = styled(Link)`
     position: absolute; 
-    right: 20px;
+    right: 40px;
     bottom: 50px;
     background-color: var(--color-background);
     border: 2px double var(--color-accent);

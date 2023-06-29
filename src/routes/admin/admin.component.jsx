@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 28th June 2023 4:00:09 pm
+ * Last Modified: Thursday, 29th June 2023 2:29:18 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,12 +13,15 @@
  */
 
 import { useState } from "react"
+import { useSelector } from "react-redux";
 import { signInWithGooglePopup, signInAdminFromAuth } from "../../utils/firebase/firebase.utils"
 import DatabasePage from "../../components/databasePage/databasePage.component";
-
+import { signOutAdmin } from "../../utils/firebase/firebase.utils";
 
 const Admin = () => {
     const [adminLogIn, setAdminLogIn] = useState(null);
+    const adminUser = useSelector(state => state.user.adminUser);
+
 
     const signinWithGoogle = async () => {
         try {
@@ -32,6 +35,15 @@ const Admin = () => {
                 setAdminLogIn(null)
             }, 3000)
         };
+    }
+
+    const handleSignOut = async () => {
+        try {
+            await signOutAdmin();
+        }
+        catch (error) {
+            console.log(error);
+        }
     }
 
 
@@ -51,7 +63,7 @@ const Admin = () => {
                 width: '400px',
             }}
             >
-                {adminLogIn === null && <button type='button' onClick={signinWithGoogle}
+                {adminUser === null ? <button type='button' onClick={signinWithGoogle}
                     style={{
                         height: '150px',
                         width: '200px',
@@ -60,10 +72,17 @@ const Admin = () => {
                         fontSize: '20px',
                         backgroundColor: 'var(--color-accent)'
                     }}
-                >Admin Login</button>}
-                {adminLogIn === true && <DatabasePage />}
-                {adminLogIn === false && <h1>Unauthorized user</h1>}
+                >Admin Login</button> : (<DatabasePage />)}
+
+                {/* {adminLogIn === false && <h1>Unauthorized user</h1>} */}
             </div>
+            {adminUser !== null && <button type='button' onClick={handleSignOut}
+                style={{
+                    position: 'absolute',
+                    top: '3%',
+                    left: '18%',
+                }}
+            >SignOut</button>}
 
         </div>
     )

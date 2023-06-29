@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 29th June 2023 11:02:37 am
+ * Last Modified: Thursday, 29th June 2023 2:13:25 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -15,7 +15,9 @@
 import { combineReducers } from "redux";
 
 import { projectsReducer } from "./projects/projects.reducer";
+import { adminUserReducer } from "./adminUser/adminUser.reducer";
 
 export const rootReducer = combineReducers({
-    projects: projectsReducer
+    projects: projectsReducer,
+    user: adminUserReducer
 })
