@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 28th June 2023 9:40:08 pm
+ * Last Modified: Wednesday, 28th June 2023 10:31:08 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -16,7 +16,7 @@
 import { SidebarContainer, Sidebar, ContentContainer, NavItem, AdminSignIn } from './navigation.styles.jsx';
 import { onHomeLinksClick } from '../../components/openingLinks/openingLinks.component.jsx';
 import { Outlet, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 const sidebarVariants = {
     hidden: { opacity: 0, x: '-100%' },
@@ -27,26 +27,9 @@ const sidebarVariants = {
 };
 
 
-let showSidebar = false;
 const Navigation = () => {
-
-    useEffect(() => {
-        const handleTypingComplete = (exitHomePage) => {
-            console.log("Changing Boolean");
-            showSidebar = exitHomePage;
-        };
-
-        onHomeLinksClick.subscribe(handleTypingComplete);
-
-        return () => {
-            onHomeLinksClick.unsubscribe(handleTypingComplete);
-        };
-    }, []);
-
-    const handleHomeClick = () => {
-        showSidebar = false;
-        console.log("Showing Home Page");
-    };
+    const location = useLocation().pathname;
+    const showSidebar = location !== "/";
 
     return (
         <div style={{ display: 'flex' }}>
@@ -60,7 +43,7 @@ const Navigation = () => {
                     transition={{ duration: 0.33, type: "tween", ease: [0.17, 0.67, 0.83, 0.67] }}
                 >
                     <Sidebar id="sidebar">
-                        <NavItem to="/" onClick={handleHomeClick}>Home</NavItem>
+                        <NavItem to="/">Home</NavItem>
                         <NavItem to="/projects">Projects</NavItem>
                         <NavItem to="/skills">Skills</NavItem>
                         <NavItem to="/work">Work</NavItem>
