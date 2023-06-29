@@ -5,11 +5,11 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 29th June 2023 11:02:08 am
+ * Last Modified: Thursday, 29th June 2023 2:55:37 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
-export const selectProjects = (state) => state.projects.projects;
+export const selectProjects = (state) => state.projectsMap.projects;
