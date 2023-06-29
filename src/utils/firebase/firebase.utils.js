@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 28th June 2023 6:25:41 pm
+ * Last Modified: Thursday, 29th June 2023 12:26:09 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -116,7 +116,8 @@ export const COLLECTION_TYPE = {
 
 export const getCollection = async (collectionType) => {
     try {
-        const collectionSnapshot = collection(db_Firestore, "skills");
+        if (COLLECTION_TYPE[collectionType] === undefined) throw new Error("Invalid collection type");
+        const collectionSnapshot = collection(db_Firestore, collectionType);
         const q = query(collectionSnapshot);
         const querySnapshot = await getDocs(q);
 
@@ -125,7 +126,8 @@ export const getCollection = async (collectionType) => {
             const data = doc.data();
             return { ...acc, [id]: data }
         }, {});
-        console.log(collectionData);
+
+        return collectionData;
     }
     catch (error) {
         console.log(error);

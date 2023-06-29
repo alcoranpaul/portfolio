@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 28th June 2023 6:10:43 pm
+ * Last Modified: Thursday, 29th June 2023 12:56:12 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -16,28 +16,31 @@ import { useState } from "react";
 import { COLLECTION_TYPE, getCollection } from "../../utils/firebase/firebase.utils";
 
 const DatabasePage = () => {
-    const [showCollectionFlag, setShowCollectionFlag] = useState(false);
-    const [collection, setCollection] = useState([]);
+    const [collection, setCollection] = useState({});
 
-    const showCollection = async () => {
-        await getCollection(COLLECTION_TYPE.projects);
-
+    const showCollection = async (collectionType) => {
+        try {
+            const resp = await getCollection(collectionType);
+            setCollection(resp);
+        } catch (error) {
+            console.log(error);
+        }
     };
+
+
 
     return (
         <div>
             <h1>Database</h1>
-            <button onClick={showCollection}>Show Project</button>
-            {showCollectionFlag && (
-                <div>
-                    {collection.map((item) => (
-                        <div key={item.id}>
-                            <h1>{item.title}</h1>
-                            <p>{item.description}</p>
-                        </div>
-                    ))}
-                </div>
-            )}
+            <button onClick={() => showCollection(COLLECTION_TYPE.projects)}>Show Project</button>
+            <button onClick={() => showCollection(COLLECTION_TYPE.skills)}>Show Skills</button>
+            <button onClick={() => showCollection(COLLECTION_TYPE.works)}>Show Works</button>
+
+            <div>
+                {Object.keys(collection).map((key) => (
+                    <p key={key}>{key}</p>
+                ))}
+            </div>
         </div>
     );
 };
