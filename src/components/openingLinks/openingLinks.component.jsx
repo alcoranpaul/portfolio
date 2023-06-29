@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 27th June 2023 1:58:44 pm
+ * Last Modified: Wednesday, 28th June 2023 9:29:26 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -40,7 +40,8 @@ const OpeningLinks = ({ showCards }) => {
 
 
     const handleOnButtonClick = () => {
-        onHomeLinksClick.notify();
+        const exitHomePage = true;
+        onHomeLinksClick.notify(exitHomePage);
     };
 
     const handleOnHover = (index) => {

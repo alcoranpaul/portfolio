@@ -5,12 +5,13 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 28th June 2023 3:45:29 pm
+ * Last Modified: Wednesday, 28th June 2023 9:37:59 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
+
 
 import { SidebarContainer, Sidebar, ContentContainer, NavItem, AdminSignIn } from './navigation.styles.jsx';
 import { onHomeLinksClick } from '../../components/openingLinks/openingLinks.component.jsx';
@@ -25,14 +26,14 @@ const sidebarVariants = {
     exitOut: { opacity: 0 }
 };
 
+
 const Navigation = () => {
-    const [showSidebar, setShowSidebar] = useState(false);
-    const currentRoute = useLocation().pathname;
+    let showSidebar = false;
 
     useEffect(() => {
-        const handleTypingComplete = () => {
+        const handleTypingComplete = (exitHomePage) => {
             console.log("Changing Boolean");
-            setShowSidebar(true);
+            showSidebar = exitHomePage;
         };
 
         onHomeLinksClick.subscribe(handleTypingComplete);
@@ -42,19 +43,13 @@ const Navigation = () => {
         };
     }, []);
 
-    useEffect(() => {
-        if (currentRoute !== "/") {
-            setShowSidebar(true);
-        }
-    }, [currentRoute]);
-
     const handleHomeClick = () => {
-        setShowSidebar(false);
+        showSidebar = false;
         console.log("Showing Home Page");
     };
 
     return (
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex' }} className='sidebar'>
             {showSidebar && (
                 <SidebarContainer
                     id="sidebar-container"
@@ -75,6 +70,7 @@ const Navigation = () => {
                     </Sidebar>
                     <AdminSignIn to="admin">Admin Sign In</AdminSignIn>
                 </SidebarContainer>
+
             )}
             <ContentContainer>
                 <Outlet />
