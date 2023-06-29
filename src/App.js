@@ -13,6 +13,7 @@ import Work from './routes/work/work.component';
 import Admin from './routes/admin/admin.component';
 
 import ParticleBG from './components/particleBG/particleBG';
+import { setAdminUser } from './store/admin/admin.actions';
 
 function App() {
   const location = useLocation();

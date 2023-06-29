@@ -1,15 +1,15 @@
 /*
- * File: user.selector.js
+ * File: adminUser.selector.js
  * Project: portfolio
- * File Created: Tuesday, 30th May 2023 4:21:25 pm
+ * File Created: Thursday, 29th June 2023 12:00:03 pm
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 30th May 2023 4:26:40 pm
+ * Last Modified: Thursday, 29th June 2023 12:00:51 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
-export const selectCategories = (state) => state.categories.categories;
+export const selectAdminUser = (state) => state.adminUser.adminUser;

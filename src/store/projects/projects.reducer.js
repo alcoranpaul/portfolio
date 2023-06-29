@@ -5,25 +5,25 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 30th May 2023 5:07:40 pm
+ * Last Modified: Thursday, 29th June 2023 12:04:10 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
-import { CATEGORY_ACTION_TYPE } from "./category.types";
+import { PROJECT_ACTION_TYPE } from "./projects.types";
 const INITIAL_STATE = {
-    categories: []
+    projects: []
 }
 
-export const categoryReducer = (state = INITIAL_STATE, action = {}) => {
+export const projectsReducer = (state = INITIAL_STATE, action = {}) => {
     const { type, payload } = action;
     switch (type) {
-        case CATEGORY_ACTION_TYPE.SET_CATEGORIES_MAP:
+        case PROJECT_ACTION_TYPE.SET_PROJECTS_MAP:
             return {
                 ...state, //Spread the previous state 
-                categoriesMap: payload // Update currentUser and overwrite existing value with payload
+                projects: payload // Update currentUser and overwrite existing value with payload
             }
         default:
             return state

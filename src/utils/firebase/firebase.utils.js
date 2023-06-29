@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 29th June 2023 12:26:09 am
+ * Last Modified: Thursday, 29th June 2023 1:14:38 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -14,7 +14,12 @@
 
 import { initializeApp } from 'firebase/app';
 import {
-    getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider
+    getAuth,            // get auth instance
+    signInWithRedirect, // sign in with redirect
+    signInWithPopup,    // sign in with popup
+    GoogleAuthProvider, // google auth provider
+    signOut,            // sign out
+    onAuthStateChanged  // listen to auth state changes
 } from 'firebase/auth';
 
 import {
@@ -104,6 +109,9 @@ export const signInAdminFromAuth = async (userAuth) => {
     return userDocRef;
 }
 
+export const signOutAdmin = async () => await signOut(auth)
+
+export const onAuthStateChangeListener = (callback) => onAuthStateChanged(auth, callback)
 
 //*********************************************** Database ***************************************//
 //************************************************************************************************//
