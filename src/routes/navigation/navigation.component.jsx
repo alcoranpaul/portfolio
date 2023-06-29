@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 28th June 2023 11:29:56 pm
+ * Last Modified: Wednesday, 28th June 2023 11:32:29 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -32,14 +32,7 @@ const Navigation = ({ location }) => {
         <AnimatePresence mode='wait'>
             <div style={{ display: 'flex' }}>
                 {location.pathname !== '/' && (
-                    <SidebarContainer
-                        id="sidebar-container"
-                        key="sidebar-container"
-                        initial={{ opacity: 0.8 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.5, type: "tween", ease: [0.17, 0.67, 0.83, 0.67] }}
-                    >
+                    <SidebarContainer>
                         <Sidebar id="sidebar">
                             <NavItem to="/">Home</NavItem>
                             <NavItem to="/projects">Projects</NavItem>
@@ -60,7 +53,7 @@ const Navigation = ({ location }) => {
                     initial="hide"
                     animate="show"
                     exit="hide"
-                    transition={{ duration: 1, type: 'spring' }}>
+                    transition={{ duration: 0.5, type: "tween", ease: [0.17, 0.67, 0.83, 0.67] }}>
                     <Outlet />
                 </ContentContainer>
             </div>
