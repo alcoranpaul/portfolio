@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 29th June 2023 11:02:08 am
+ * Last Modified: Thursday, 29th June 2023 7:01:40 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,8 +13,8 @@
  */
 
 import { createAction } from "../../utils/reducer/reducer.utils";
-import { PROJECT_ACTION_TYPE } from "./projects.types";
+import { PROJECTS_ACTION_TYPE } from "./projects.types";
 
 export const setProjects = (projects) => { // Create a function that will update the currentUser
-    return createAction(PROJECT_ACTION_TYPE.SET_PROJECTS_MAP, projects)
+    return createAction(PROJECTS_ACTION_TYPE.SET_PROJECTS_MAP, projects)
 }

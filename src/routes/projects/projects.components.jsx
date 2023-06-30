@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 22nd June 2023 2:47:48 pm
+ * Last Modified: Thursday, 29th June 2023 7:37:43 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,15 +13,28 @@
  */
 
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
+import { setProjects } from "../../store/projects/projects.action";
+import { COLLECTION_TYPE, getCollection } from "../../utils/firebase/firebase.utils";
 import ProjectPreview from "../../components/projectPreview/projectPreview.component";
 
 const Projects = () => {
+    const dispatch = useDispatch();
     useEffect(() => {
-        // Reset scroll position when component mounts
-        window.scrollTo(0, 0);
-    }, []);
+        const getProjects = async () => {
+            try {
+                console.log(`Getting Projects from Database`)
+                const projectMap = await getCollection(COLLECTION_TYPE.projects);
+                dispatch(setProjects(projectMap))
+            }
+            catch (error) {
+                console.log(`Error in Projects/getProjects: ${error}`)
+            }
+        }
 
+        return getProjects;
+    }, [])
     return (
         <motion.div
             initial={{ opacity: 0 }}

@@ -5,69 +5,33 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 29th June 2023 1:04:21 am
+ * Last Modified: Thursday, 29th June 2023 7:03:36 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
-import React, { useState } from 'react';
-import { COLLECTION_TYPE, getCollection } from '../../utils/firebase/firebase.utils';
+import { useSelector } from "react-redux";
 
+import { selectProjects } from "../../store/projects/projects.selector";
 const DatabasePage = () => {
-    const [collection, setCollection] = useState({});
-    const [editedData, setEditedData] = useState({});
+    const projects = useSelector(selectProjects);
 
-    const showCollection = async (collectionType) => {
-        try {
-            const resp = await getCollection(collectionType);
-            setCollection(resp);
-            setEditedData(resp);
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    const showProjects = () => {
 
-    const handleInputChange = (event, key) => {
-        const { value } = event.target;
-        setEditedData((prevData) => ({
-            ...prevData,
-            [key]: value,
-        }));
-    };
+        console.log(projects)
+    }
 
-    const saveChanges = async (collectionType) => {
-        try {
-            // Save the edited data to Firebase
-            // Implement your own logic here
-
-            console.log('Saved data:', editedData);
-        } catch (error) {
-            console.log(error);
-        }
-    };
 
     return (
         <div>
             <h1>Database</h1>
-            <button onClick={() => showCollection(COLLECTION_TYPE.projects)}>Show Projects</button>
-            <button onClick={() => showCollection(COLLECTION_TYPE.skills)}>Show Skills</button>
-            <button onClick={() => showCollection(COLLECTION_TYPE.works)}>Show Works</button>
-
             <div>
-                {Object.keys(collection).map((key) => (
-                    <div key={key}>
-                        <h3>{key}</h3>
-                        <textarea
-                            value={editedData[key] || ''}
-                            onChange={(event) => handleInputChange(event, key)}
-                        ></textarea>
-                    </div>
-                ))}
+                <button onClick={showProjects}>Show Projects</button>
             </div>
 
-            <button onClick={saveChanges}>Save Changes</button>
+
         </div>
     );
 };

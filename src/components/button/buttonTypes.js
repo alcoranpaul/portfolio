@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 12th June 2023 9:48:41 pm
+ * Last Modified: Thursday, 29th June 2023 7:07:44 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -15,4 +15,5 @@
 export const BUTTON_TYPES = {
     DEMO: 'Demo',
     GITHUB: 'Github',
+    CASE_STUDY: 'Case Study',
 }
