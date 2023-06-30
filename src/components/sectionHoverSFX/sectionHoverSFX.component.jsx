@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 27th June 2023 2:36:24 pm
+ * Last Modified: Thursday, 29th June 2023 10:19:21 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -17,9 +17,6 @@ import SkillsSectionSFX from "./sectionComponents/skillsSection/skillsSectionSFX
 import ContactSectionSFX from "./sectionComponents/contactSection/contactSectionSFX.component";
 import AboutSectionSFX from "./sectionComponents/aboutSection/aboutSectionSFX.component";
 const SectionHoverSFX = ({ buttonIndex }) => {
-    console.log(buttonIndex); // Log the value of the "show" prop
-
-
     return (
         <div>
             {<ProjectSectionSFX show={buttonIndex === 0} />}

@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 29th June 2023 10:08:47 pm
+ * Last Modified: Thursday, 29th June 2023 10:19:21 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -24,9 +24,7 @@ const Projects = () => {
     useEffect(() => {
         const getProjects = async () => {
             try {
-                console.log(`Getting Projects from Database`)
                 const projectMap = await getCollection(COLLECTION_TYPE.projects);
-                // console.log(projectMap.data())
                 dispatch(setProjects(projectMap))
             }
             catch (error) {

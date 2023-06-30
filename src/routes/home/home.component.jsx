@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 27th June 2023 10:17:25 pm
+ * Last Modified: Thursday, 29th June 2023 10:19:21 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -27,7 +27,6 @@ const Home = () => {
 
     useEffect(() => {
         const handleTypingComplete = () => {
-            console.log("Typing animation complete!");
             setTimeout(() => {
                 setShowLinks(true);
                 setTimeout(() => {

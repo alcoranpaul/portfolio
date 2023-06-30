@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 29th June 2023 5:40:47 pm
+ * Last Modified: Thursday, 29th June 2023 10:19:21 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -40,15 +40,12 @@ const Admin = () => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChangeListener(async (user) => {
-            console.log(`onAuthStateChangeListener in App.js`)
             try {
                 if (user) {
-                    console.log(`setting admin user in App.js`);
                     await signInAdmin(user);
                     dispatch(setAdminUser(user))
                 }
                 else {
-                    console.log(`setting admin user to null in App.js`)
                     dispatch(setAdminUser(null))
                 }
             }
