@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 29th June 2023 10:08:41 pm
+ * Last Modified: Friday, 30th June 2023 2:25:16 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -56,16 +56,7 @@ provider.setCustomParameters({
 })
 
 export const auth = getAuth();
-export const signInWithGooglePopup = async () => {
-    console.log(`signInWithGooglePopup -- signing  from google popup`)
-    try {
-        await signInWithPopup(auth, provider)
-    }
-    catch (error) {
-        console.log(`Error in signInWithGooglePopup`)
-        console.log(error)
-    }
-};
+export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 export const signInWithGoogleRedirect = () => signInWithRedirect(auth, provider);
 
 
@@ -108,21 +99,21 @@ export const createUserDocumentFromAuth = async (userAuth) => {
 
 export const signInAdminFromAuth = async (userAuth) => {
     console.log(`signInAdminFromAuth -- signing  from google popup`)
-    console.log(userAuth)
     const userDocRef = doc(db_Firestore, "admin_user", userAuth.uid);
     const userSnapshot = await getDoc(userDocRef);
+
 
     if (!userSnapshot.exists()) {
         throw new AdminAuthError(`Unauthorized user`, 401);
     }
 
 
-    return userDocRef;
+    return userSnapshot;
 }
 
-export const signInAdmin = async (user) => {
+export const signInAdmin = async (userAuth) => {
     console.log(`signInAdminFromUID -- Check if user is admin`)
-    const userDocRef = doc(db_Firestore, "admin_user", user.uid);
+    const userDocRef = doc(db_Firestore, "admin_user", userAuth.uid);
     const userSnapshot = await getDoc(userDocRef);
 
     if (!userSnapshot.exists()) {
@@ -131,12 +122,21 @@ export const signInAdmin = async (user) => {
     }
 
     console.log(`signInAdminFromUID -- User is admin`)
-    return userDocRef;
+    return userSnapshot;
 }
 
 export const signOutAdmin = async () => await signOut(auth)
 
 export const onAuthStateChangeListener = (callback) => onAuthStateChanged(auth, callback)
+
+export const getCurrentUser = () => {
+    return new Promise((resolve, reject) => {
+        const unsubscribe = onAuthStateChanged(auth, (userAuth) => {
+            unsubscribe(); // unsubscribe to prevent memory leaks
+            resolve(userAuth);
+        }, reject);
+    })
+};
 
 //*********************************************** Database ***************************************//
 //************************************************************************************************//

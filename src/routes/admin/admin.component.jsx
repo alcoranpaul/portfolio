@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 29th June 2023 11:09:38 pm
+ * Last Modified: Friday, 30th June 2023 2:05:07 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -20,53 +20,22 @@ import { signOutAdmin } from "../../utils/firebase/firebase.utils";
 
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setAdminUser } from '../../store/adminUser/adminUser.action';
+import { checkUserSession, setAdminUser } from '../../store/adminUser/adminUser.action';
 import { onAuthStateChangeListener } from '../../utils/firebase/firebase.utils';
-
+import { signInStart, signOutStart } from '../../store/adminUser/adminUser.action';
 
 const Admin = () => {
     const adminUser = useSelector(selectAdminUser);
     const dispatch = useDispatch();
 
-    const signinWithGoogle = async () => {
-        try {
-            await signOutAdmin();
-            await signInWithGooglePopup();
-        }
-        catch (error) {
-            console.log(`Error in Admin/signinWithGoogle: ${error}`);
-        };
-    }
+    const signinWithGoogle = async () => dispatch(signInStart());
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChangeListener(async (user) => {
-            try {
-                if (user) {
-                    await signInAdmin(user);
-                    dispatch(setAdminUser(user))
-                }
-                else {
-                    dispatch(setAdminUser(null))
-                }
-            }
-            catch (error) {
-                console.log(`Error in App.js: ${error}`)
-                dispatch(setAdminUser(null))
-            }
-        })
-        return unsubscribe;
+        dispatch(checkUserSession())
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const handleSignOut = async () => {
-        try {
-            await signOutAdmin();
-        }
-        catch (error) {
-            console.log(error);
-        }
-    }
-
+    const handleSignOut = async () => dispatch(signOutStart())
 
     return (
         <div
