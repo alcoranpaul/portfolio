@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-
+import { PersistGate } from 'redux-persist/integration/react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.scss';
@@ -11,16 +11,18 @@ import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import { store } from './store/store';
+import { store, persistor } from './store/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
 
     <Provider store={store}>
-      <HashRouter base="/">
-        <App />
-      </HashRouter>
+      <PersistGate loading={null} persistor={persistor}>
+        <HashRouter base="/">
+          <App />
+        </HashRouter>
+      </PersistGate>
     </Provider>
 
 

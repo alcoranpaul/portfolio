@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 29th June 2023 9:45:00 pm
+ * Last Modified: Thursday, 29th June 2023 10:26:57 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,12 +13,39 @@
  */
 
 import { compose, createStore, applyMiddleware } from 'redux';
-import logger from 'redux-logger';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+
+// import logger from 'redux-logger';
 
 import { rootReducer } from './root-reducer';
 
-const middleWares = [logger];
+const persistConfig = {
+    key: 'root',
+    storage,
+    blacklist: ['user']
+}
+
+const loggerMiddleware = (store) => (next) => (action) => {
+    if (!action.type) {
+        return next(action);
+    }
+
+    console.log('type: ', action.type);
+    console.log('payload: ', action.payload);
+    console.log('currentState: ', store.getState());
+
+    next(action)
+
+    console.log('nextState: ', store.getState());
+}
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const middleWares = [loggerMiddleware];
 
 const composedEnhancers = compose(applyMiddleware(...middleWares));
 
-export const store = createStore(rootReducer, undefined, composedEnhancers);
+export const store = createStore(persistedReducer, undefined, composedEnhancers);
+
+export const persistor = persistStore(store);

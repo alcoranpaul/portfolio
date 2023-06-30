@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 29th June 2023 10:19:21 pm
+ * Last Modified: Thursday, 29th June 2023 10:45:18 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,16 +13,25 @@
  */
 
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import { setProjects } from "../../store/projects/projects.action";
 import { COLLECTION_TYPE, getCollection } from "../../utils/firebase/firebase.utils";
+import { selectProjects } from "../../store/projects/projects.selector";
 import ProjectPreview from "../../components/projectPreview/projectPreview.component";
 
 const Projects = () => {
+    const projects = useSelector(selectProjects);
     const dispatch = useDispatch();
+
     useEffect(() => {
         const getProjects = async () => {
+            if (projects) {
+                console.log(`Projects/getProjects: projects already exists`)
+                return;
+            }
+
             try {
                 const projectMap = await getCollection(COLLECTION_TYPE.projects);
                 dispatch(setProjects(projectMap))

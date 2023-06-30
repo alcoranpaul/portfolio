@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 29th June 2023 10:19:21 pm
+ * Last Modified: Thursday, 29th June 2023 11:09:38 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -91,19 +91,22 @@ const Admin = () => {
                 </div>
             )}
             <div style={{
+                height: '80vh',
+                width: '80vw',
                 position: 'absolute',
-                top: '35%',
-                left: '40%',
+                top: '15%',
+                left: '15%',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
-                height: '200px',
-                width: '400px',
             }}
             >
                 {adminUser === null ? <button type='button' onClick={signinWithGoogle}
                     style={{
+                        position: 'absolute',
+                        top: '35%',
+                        left: '40%',
                         height: '150px',
                         width: '200px',
                         borderRadius: '30%',
