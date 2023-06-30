@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 28th June 2023 11:33:57 pm
+ * Last Modified: Friday, 30th June 2023 2:56:30 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -62,7 +62,7 @@ const ParticleBG = () => {
                         default: "bounce",
                     },
                     random: true,
-                    speed: { min: 0.5, max: 2 },
+                    speed: { min: 0.5, max: 1 },
                 },
                 number: {
                     density: {

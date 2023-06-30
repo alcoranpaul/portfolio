@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 30th June 2023 2:05:07 pm
+ * Last Modified: Friday, 30th June 2023 2:58:54 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,15 +13,12 @@
  */
 
 import { useSelector } from "react-redux";
-import { signInWithGooglePopup, signInAdmin } from "../../utils/firebase/firebase.utils"
 import DatabasePage from "../../components/databasePage/databasePage.component";
 import { selectAdminUser } from "../../store/adminUser/adminUser.selector.js";
-import { signOutAdmin } from "../../utils/firebase/firebase.utils";
 
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { checkUserSession, setAdminUser } from '../../store/adminUser/adminUser.action';
-import { onAuthStateChangeListener } from '../../utils/firebase/firebase.utils';
+import { checkUserSession } from '../../store/adminUser/adminUser.action';
 import { signInStart, signOutStart } from '../../store/adminUser/adminUser.action';
 
 const Admin = () => {

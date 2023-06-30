@@ -12,11 +12,15 @@ import Work from './routes/work/work.component';
 import Admin from './routes/admin/admin.component';
 
 import ParticleBG from './components/particleBG/particleBG';
+import { useEffect } from 'react';
 
 
 function App() {
   const location = useLocation();
 
+  useEffect(() => {
+    console.log(`App.js running`)
+  }, [])
   return (
     <div>
       <Routes location={location} key={location.pathname}>

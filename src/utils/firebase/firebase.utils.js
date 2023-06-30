@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 30th June 2023 2:25:16 pm
+ * Last Modified: Friday, 30th June 2023 3:33:11 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -97,31 +97,14 @@ export const createUserDocumentFromAuth = async (userAuth) => {
 }
 
 
-export const signInAdminFromAuth = async (userAuth) => {
-    console.log(`signInAdminFromAuth -- signing  from google popup`)
-    const userDocRef = doc(db_Firestore, "admin_user", userAuth.uid);
-    const userSnapshot = await getDoc(userDocRef);
-
-
-    if (!userSnapshot.exists()) {
-        throw new AdminAuthError(`Unauthorized user`, 401);
-    }
-
-
-    return userSnapshot;
-}
-
 export const signInAdmin = async (userAuth) => {
-    console.log(`signInAdminFromUID -- Check if user is admin`)
     const userDocRef = doc(db_Firestore, "admin_user", userAuth.uid);
     const userSnapshot = await getDoc(userDocRef);
 
     if (!userSnapshot.exists()) {
-        console.log(`signInAdminFromUID -- User is not admin`)
-        throw new AdminAuthError(`Unauthorized user`, 401);
+        throw new AdminAuthError(`Unauthorized user has no admin privileges`, 401);
     }
 
-    console.log(`signInAdminFromUID -- User is admin`)
     return userSnapshot;
 }
 
