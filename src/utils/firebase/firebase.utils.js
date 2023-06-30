@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 30th June 2023 3:33:11 pm
+ * Last Modified: Friday, 30th June 2023 5:01:12 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -68,9 +68,14 @@ class AdminAuthError extends Error {
     }
 }
 
-
 export const db_Firestore = getFirestore();
 
+
+/** Create user document from authentication object
+ * this is for creating more than one admin account
+ * @param {*} userAuth - user authentication object from firebase
+ * @returns {Promise} - promise that resolves to user document reference
+ */
 export const createUserDocumentFromAuth = async (userAuth) => {
     // Database, Collection, Document
     const userDocRef = doc(db_Firestore, "admin_user", userAuth.uid);
@@ -96,10 +101,15 @@ export const createUserDocumentFromAuth = async (userAuth) => {
     return userDocRef;
 }
 
-
+/** Sign in admin user
+ * 
+ * @param {*} userAuth - user authentication object from firebase
+ * @returns {Promise} - promise that resolves to user snapshot
+ */
 export const signInAdmin = async (userAuth) => {
-    const userDocRef = doc(db_Firestore, "admin_user", userAuth.uid);
-    const userSnapshot = await getDoc(userDocRef);
+    console.log("Fetching data from database")
+    const userDocRef = doc(db_Firestore, "admin_user", userAuth.uid); // Reference of document from firebase
+    const userSnapshot = await getDoc(userDocRef); // Get document data from firebase
 
     if (!userSnapshot.exists()) {
         throw new AdminAuthError(`Unauthorized user has no admin privileges`, 401);
@@ -108,10 +118,23 @@ export const signInAdmin = async (userAuth) => {
     return userSnapshot;
 }
 
+/** Sign out admin user
+ * 
+ * @returns {Promise} - promise that resolves to void
+ */
 export const signOutAdmin = async () => await signOut(auth)
 
+/**
+ * 
+ * @param {*} callback - callback function to be called when auth state changes
+ * @returns {Function} - unsubscribe function
+ */
 export const onAuthStateChangeListener = (callback) => onAuthStateChanged(auth, callback)
 
+/** Get current user
+ * 
+ * @returns {Promise} - promise that resolves to current user
+ */
 export const getCurrentUser = () => {
     return new Promise((resolve, reject) => {
         const unsubscribe = onAuthStateChanged(auth, (userAuth) => {
@@ -130,6 +153,12 @@ export const COLLECTION_TYPE = {
     works: "works"
 }
 
+
+/** Get collection from firestore based on collection type
+ * 
+ * @param {*} collectionType - type of collection to get
+ * @returns {Object} - collection data
+ */
 export const getCollection = async (collectionType) => {
     try {
         console.log(`getCollection -- getting collection ${collectionType}`)

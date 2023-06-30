@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 30th June 2023 1:41:16 pm
+ * Last Modified: Friday, 30th June 2023 4:01:52 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -28,20 +28,6 @@ const persistConfig = {
 }
 
 const sagaMiddleware = createSageMiddleware();
-
-// const loggerMiddleware = (store) => (next) => (action) => {
-//     if (!action.type) {
-//         return next(action);
-//     }
-
-//     console.log('type: ', action.type);
-//     console.log('payload: ', action.payload);
-//     console.log('currentState: ', store.getState());
-
-//     next(action)
-
-//     console.log('nextState: ', store.getState());
-// }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

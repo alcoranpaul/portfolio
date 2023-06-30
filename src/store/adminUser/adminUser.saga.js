@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 30th June 2023 3:30:48 pm
+ * Last Modified: Friday, 30th June 2023 5:03:06 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -27,39 +27,68 @@ import {
     signOutAdmin
 } from '../../utils/firebase/firebase.utils';
 
-// Function to get user snapshot from authentication data
-export function* getSnapshotFromAuth(userAuth, additionalDetails) {
+/**
+ * Function to get user snapshot from authentication data.
+ * @param {Object} userAuth - User authentication data.
+ * @param {Object} additionalDetails - Additional details.
+ */
+export function* getSnapshot(userAuth, additionalDetails) {
     try {
-        // Call the signInAdmin function from firebase.utils to sign in the admin user
-        const userSnapshot = yield call(signInAdmin, userAuth, additionalDetails);
+        let userSnapshot = null;
+
+        // Check if the user snapshot exists in local storage
+        const cachedUserSnapshot = localStorage.getItem('userSnapshot');
+        if (cachedUserSnapshot) {
+            userSnapshot = JSON.parse(cachedUserSnapshot);
+            console.log('userSnapshot from local storage', userSnapshot);
+        } else {
+            // Call the signInAdmin function from firebase.utils to sign in the admin user
+            const resp = yield call(signInAdmin, userAuth, additionalDetails);
+
+            // Create an object with id and data properties
+            const userSnapshot = {
+                id: resp.id,
+                data: resp.data()
+            };
+
+            // Store the user snapshot in local storage
+            localStorage.setItem('userSnapshot', JSON.stringify(userSnapshot));
+        }
 
         // Dispatch the signInSuccess action with the user data
-        yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
+        yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data }));
     } catch (error) {
         // Dispatch the signInFailed action with the error
         yield put(signInFailed(error));
     }
 }
 
-// Function to sign in with Google
+/**
+ * Function to sign in with Google.
+ */
 export function* signInWithGoogle() {
     try {
         // Call the signInWithGooglePopup function from firebase.utils to sign in with Google
         const { user } = yield call(signInWithGooglePopup);
 
-        // Call the getSnapshotFromAuth function with the user data
-        yield call(getSnapshotFromAuth, user);
+        // Call the getSnapshot function with the user data
+        yield call(getSnapshot, user);
     } catch (error) {
         // Dispatch the signInFailed action with the error
         yield put(signInFailed(error));
     }
 }
 
-// Function to sign out
+/**
+ * Function to sign out.
+ */
 export function* signOut() {
     try {
         // Call the signOutAdmin function from firebase.utils to sign out the admin user
         yield call(signOutAdmin);
+
+        // Clear the user snapshot from local storage
+        localStorage.removeItem('userSnapshot');
 
         // Dispatch the signOutSuccess action
         yield put(signOutSuccess());
@@ -69,7 +98,9 @@ export function* signOut() {
     }
 }
 
-// Function to check if the user is authenticated
+/**
+ * Function to check if the user is authenticated.
+ */
 export function* isUserAuthenticated() {
     try {
         // Call the getCurrentUser function from firebase.utils to get the current user
@@ -78,33 +109,41 @@ export function* isUserAuthenticated() {
         // If userAuth is null or undefined, return without further processing
         if (!userAuth) return;
 
-        // Call the getSnapshotFromAuth function with the userAuth data
-        yield call(getSnapshotFromAuth, userAuth);
+        // Call the getSnapshot function with the userAuth data
+        yield call(getSnapshot, userAuth);
     } catch (error) {
         // Dispatch the signInFailed action with the error
         yield put(signInFailed(error));
     }
 }
 
-// Function to handle the admin sign-in start action
+/**
+ * Function to handle the admin sign-in start action.
+ */
 export function* onAdminSignInStart() {
     // Take the latest occurrence of SIGN_IN_START action and call the signInWithGoogle function
     yield takeLatest(ADMINUSER_ACTION_TYPE.SIGN_IN_START, signInWithGoogle);
 }
 
-// Function to handle the check user session action
+/**
+ * Function to handle the check user session action.
+ */
 export function* onCheckUserSession() {
     // Take the latest occurrence of CHECK_USER_SESSION action and call the isUserAuthenticated function
     yield takeLatest(ADMINUSER_ACTION_TYPE.CHECK_USER_SESSION, isUserAuthenticated);
 }
 
-// Function to handle the sign-out start action
+/**
+ * Function to handle the sign-out start action.
+ */
 export function* onSignOutStart() {
     // Take the latest occurrence of SIGN_OUT_START action and call the signOut function
     yield takeLatest(ADMINUSER_ACTION_TYPE.SIGN_OUT_START, signOut);
 }
 
-// Main adminUserSaga function to combine and run all the sagas
+/**
+ * Main adminUserSaga function to combine and run all the sagas.
+ */
 export function* adminUserSaga() {
     // Run all the sagas concurrently using the all function
     yield all([
