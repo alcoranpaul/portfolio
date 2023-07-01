@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 30th June 2023 5:01:12 pm
+ * Last Modified: Friday, 30th June 2023 7:10:38 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -56,6 +56,11 @@ provider.setCustomParameters({
 })
 
 export const auth = getAuth();
+
+/**
+ * Function to get user snapshot from authentication data.
+ * @returns {Promise} - promise that resolves to user object
+ */
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 export const signInWithGoogleRedirect = () => signInWithRedirect(auth, provider);
 
