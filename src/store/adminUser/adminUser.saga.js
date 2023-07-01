@@ -5,11 +5,11 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 30th June 2023 8:30:06 pm
+ * Last Modified: Friday, 30th June 2023 8:38:04 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
- * -----
- * Description:
+ * ----- 
+ * Description: Saga functions for the adminUser state.
  */
 
 import { takeLatest, put, all, call } from 'redux-saga/effects';

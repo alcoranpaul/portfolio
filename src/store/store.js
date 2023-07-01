@@ -5,11 +5,11 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 30th June 2023 4:01:52 pm
+ * Last Modified: Friday, 30th June 2023 8:38:12 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
- * Description:
+ * Description: The store of the application.
  */
 
 import { compose, createStore, applyMiddleware } from 'redux';

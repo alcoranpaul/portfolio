@@ -5,11 +5,11 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 29th June 2023 2:55:28 pm
+ * Last Modified: Friday, 30th June 2023 8:38:53 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
- * Description:
+ * Description: The root reducer of the application.
  */
 
 import { combineReducers } from "redux";
@@ -17,6 +17,10 @@ import { combineReducers } from "redux";
 import { projectsReducer } from "./projects/projects.reducer";
 import { adminUserReducer } from "./adminUser/adminUser.reducer";
 
+/**
+ * The root reducer of the application.
+ * @constant
+ */
 export const rootReducer = combineReducers({
     projectsMap: projectsReducer,
     user: adminUserReducer

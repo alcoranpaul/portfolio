@@ -5,11 +5,11 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 30th June 2023 1:42:17 pm
+ * Last Modified: Friday, 30th June 2023 8:37:57 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
- * Description:
+ * Description: Action types for the adminUser state.
  */
 
 export const ADMINUSER_ACTION_TYPE = {

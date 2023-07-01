@@ -5,11 +5,11 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 30th June 2023 7:36:38 pm
+ * Last Modified: Friday, 30th June 2023 8:37:57 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
- * Description:
+ * Description: Action types for the category state.
  */
 
 export const PROJECTS_ACTION_TYPE = {
