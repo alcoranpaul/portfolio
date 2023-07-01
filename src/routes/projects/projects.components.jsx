@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 30th June 2023 7:45:45 pm
+ * Last Modified: Friday, 30th June 2023 8:25:03 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -16,6 +16,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 
+import { onFetchProjects } from "../../store/projects/projects.saga";
 import { selectProjects } from "../../store/projects/projects.selector";
 import ProjectPreview from "../../components/projectPreview/projectPreview.component";
 

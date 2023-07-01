@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 30th June 2023 5:03:06 pm
+ * Last Modified: Friday, 30th June 2023 8:30:06 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -43,16 +43,16 @@ export function* getSnapshot(userAuth, additionalDetails) {
             console.log('userSnapshot from local storage', userSnapshot);
         } else {
             // Call the signInAdmin function from firebase.utils to sign in the admin user
-            const resp = yield call(signInAdmin, userAuth, additionalDetails);
+            userSnapshot = yield call(signInAdmin, userAuth, additionalDetails);
 
             // Create an object with id and data properties
-            const userSnapshot = {
-                id: resp.id,
-                data: resp.data()
+            const dataToStore = {
+                id: userSnapshot.id,
+                data: userSnapshot.data()
             };
 
             // Store the user snapshot in local storage
-            localStorage.setItem('userSnapshot', JSON.stringify(userSnapshot));
+            localStorage.setItem('userSnapshot', JSON.stringify(dataToStore));
         }
 
         // Dispatch the signInSuccess action with the user data
