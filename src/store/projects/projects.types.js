@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 29th June 2023 1:25:55 pm
+ * Last Modified: Friday, 30th June 2023 7:36:38 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,5 +13,8 @@
  */
 
 export const PROJECTS_ACTION_TYPE = {
-    SET_PROJECTS_MAP: "projects/SET_PROJECTS_MAP"
+    SET_PROJECTS_MAP: "projects/SET_PROJECTS_MAP",
+    FETCH_PROJECTS_START: "projects/FETCH_PROJECTS_START",
+    FETCH_PROJECTS_SUCCESS: "projects/FETCH_PROJECTS_SUCCESS",
+    FETCH_PROJECTS_FAILED: "projects/FETCH_PROJECTS_FAILED",
 }

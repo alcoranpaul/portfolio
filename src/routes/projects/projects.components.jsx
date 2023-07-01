@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 29th June 2023 10:45:18 pm
+ * Last Modified: Friday, 30th June 2023 7:45:45 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,35 +13,33 @@
  */
 
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { motion } from "framer-motion";
-import { setProjects } from "../../store/projects/projects.action";
-import { COLLECTION_TYPE, getCollection } from "../../utils/firebase/firebase.utils";
+
 import { selectProjects } from "../../store/projects/projects.selector";
 import ProjectPreview from "../../components/projectPreview/projectPreview.component";
 
 const Projects = () => {
-    const projects = useSelector(selectProjects);
     const dispatch = useDispatch();
+    const projects = useSelector(selectProjects);
 
     useEffect(() => {
-        const getProjects = async () => {
-            if (projects) {
-                console.log(`Projects/getProjects: projects already exists`)
-                return;
-            }
 
-            try {
-                const projectMap = await getCollection(COLLECTION_TYPE.projects);
-                dispatch(setProjects(projectMap))
-            }
-            catch (error) {
-                console.log(`Error in Projects/getProjects: ${error}`)
-            }
+        if (projects) {
+            console.log(`Projects/getProjects: projects already exists`)
+            return;
         }
 
-        return getProjects;
+        dispatch(onFetchProjects())
+
+        // try {
+        //     const projectMap = await getCollection(COLLECTION_TYPE.projects);
+        //     dispatch(setProjects(projectMap))
+        // }
+        // catch (error) {
+        //     console.log(`Error in Projects/getProjects: ${error}`)
+        // }
+
     }, [])
     return (
         <motion.div
