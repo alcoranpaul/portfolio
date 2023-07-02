@@ -5,19 +5,40 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 21st June 2023 11:10:34 am
+ * Last Modified: Saturday, 1st July 2023 9:24:13 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
-import SkillContent from '../../components/skillContent/skillContent.component';
-import SkillTriangle from '../../components/skillTriangle/skillTriangle.component';
-import { SkillsContainer, ChildrenContainer, ChildrenRow } from './skills.styles';
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useDispatch, useSelector } from 'react-redux';
 
-const Skills = () => {
+import { fetchSkillsStart } from '../../store/skills/skills.action';
+import { selectSkills } from '../../store/skills/skills.selector';
+
+import SkillTriangle from '../../components/skillTriangle/skillTriangle.component';
+import SkillContent from '../../components/skillContent/skillContent.component';
+import { SkillsContainer, ChildrenContainer, ChildrenRow } from './skills.styles';
+
+
+const Skills = () => { //TODO: simplify this
+    const dispatch = useDispatch();
+    const skills = useSelector(selectSkills);
+
+    useEffect(() => {
+        if (Object.keys(skills).length > 0) {
+            console.log(`Skills/getSkills: skills already exists`)
+            return;
+        }
+        else {
+            dispatch(fetchSkillsStart())
+        }
+    }, [])
+
+
     return (
         <motion.div
             initial={{ opacity: 0 }}

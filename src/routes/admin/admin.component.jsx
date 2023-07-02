@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 30th June 2023 2:58:54 pm
+ * Last Modified: Saturday, 1st July 2023 9:32:09 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -26,13 +26,15 @@ const Admin = () => {
     const dispatch = useDispatch();
 
     const signinWithGoogle = async () => dispatch(signInStart());
+    const handleSignOut = async () => dispatch(signOutStart())
 
     useEffect(() => {
         dispatch(checkUserSession())
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const handleSignOut = async () => dispatch(signOutStart())
+
 
     return (
         <div

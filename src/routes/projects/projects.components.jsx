@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 30th June 2023 8:25:03 pm
+ * Last Modified: Saturday, 1st July 2023 9:24:13 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -16,7 +16,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 
-import { onFetchProjects } from "../../store/projects/projects.saga";
+import { fetchProjectsStart } from "../../store/projects/projects.action";
 import { selectProjects } from "../../store/projects/projects.selector";
 import ProjectPreview from "../../components/projectPreview/projectPreview.component";
 
@@ -24,22 +24,14 @@ const Projects = () => {
     const dispatch = useDispatch();
     const projects = useSelector(selectProjects);
 
-    useEffect(() => {
+    useEffect(() => { //TODO: simplify this
 
-        if (projects) {
+        if (Object.keys(projects).length > 0) {
             console.log(`Projects/getProjects: projects already exists`)
-            return;
         }
-
-        dispatch(onFetchProjects())
-
-        // try {
-        //     const projectMap = await getCollection(COLLECTION_TYPE.projects);
-        //     dispatch(setProjects(projectMap))
-        // }
-        // catch (error) {
-        //     console.log(`Error in Projects/getProjects: ${error}`)
-        // }
+        else {
+            dispatch(fetchProjectsStart())
+        }
 
     }, [])
     return (

@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 30th June 2023 7:10:38 pm
+ * Last Modified: Saturday, 1st July 2023 6:19:00 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -98,7 +98,7 @@ export const createUserDocumentFromAuth = async (userAuth) => {
             });
         }
         catch (error) {
-            console.log("Error creating user", error.message);
+            throw new AdminAuthError(`Error creating user document: ${error.message}`, 500);
         }
     }
     console.log("SignIn successful")
@@ -113,14 +113,20 @@ export const createUserDocumentFromAuth = async (userAuth) => {
  */
 export const signInAdmin = async (userAuth) => {
     console.log("Fetching data from database")
-    const userDocRef = doc(db_Firestore, "admin_user", userAuth.uid); // Reference of document from firebase
-    const userSnapshot = await getDoc(userDocRef); // Get document data from firebase
+    try {
+        const userDocRef = doc(db_Firestore, "admin_user", userAuth.uid); // Reference of document from firebase
+        const userSnapshot = await getDoc(userDocRef); // Get document data from firebase
 
-    if (!userSnapshot.exists()) {
-        throw new AdminAuthError(`Unauthorized user has no admin privileges`, 401);
+        if (!userSnapshot.exists()) {
+            throw new AdminAuthError(`Unauthorized user has no admin privileges`, 401);
+        }
+
+        return userSnapshot;
     }
-
-    return userSnapshot;
+    catch (error) {
+        const msgToSend = `firebase.utils.js/signInAdmin --${error.message}`
+        throw new AdminAuthError(msgToSend, error.code);
+    }
 }
 
 /** Sign out admin user
@@ -166,7 +172,7 @@ export const COLLECTION_TYPE = {
  */
 export const getCollection = async (collectionType) => {
     try {
-        console.log(`getCollection -- getting collection ${collectionType}`)
+        console.log(`getCollection -- FETCHING ${collectionType} collection`)
         if (COLLECTION_TYPE[collectionType] === undefined) throw new Error("Invalid collection type");
         const collectionSnapshot = collection(db_Firestore, collectionType);
         const q = query(collectionSnapshot);
@@ -181,7 +187,10 @@ export const getCollection = async (collectionType) => {
         return collectionData;
     }
     catch (error) {
-        console.log(`Error in getCollection`)
-        console.log(error);
+        // 500 means that the server encountered
+        // an unexpected condition that prevented it from fulfilling the request.
+        const { message } = error;
+        const msgToSend = `firebase.utils.js/getCollection -- ${message}`
+        throw new AdminAuthError(msgToSend, error.code || 500)
     }
 }

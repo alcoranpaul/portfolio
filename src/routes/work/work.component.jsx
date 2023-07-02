@@ -5,17 +5,35 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 28th June 2023 11:07:03 pm
+ * Last Modified: Saturday, 1st July 2023 9:24:13 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
-import React from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { fetchWorksStart } from '../../store/works/works.action';
+import { selectWorks } from '../../store/works/works.selector';
+
 import { Card, Row, Col, Container } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 const Work = () => {
+    const dispatch = useDispatch();
+    const works = useSelector(selectWorks);
+
+    useEffect(() => { //TODO: simplify this
+        if (Object.keys(works).length > 0) {
+            console.log(`Work/getWork: work already exists`)
+            return;
+        }
+        else {
+            dispatch(fetchWorksStart())
+        }
+    }, [])
+
     const workData = [
         {
             title: 'Project 1',

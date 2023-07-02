@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 30th June 2023 8:38:25 pm
+ * Last Modified: Saturday, 1st July 2023 6:13:29 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -16,6 +16,8 @@ import { all, call } from 'redux-saga/effects';
 
 import { adminUserSaga } from './adminUser/adminUser.saga';
 import { projectsSaga } from './projects/projects.saga';
+import { worksSaga } from './works/works.saga';
+import { skillsSaga } from './skills/skills.saga';
 
 /**
  * Root saga that combines all sagas.
@@ -23,5 +25,9 @@ import { projectsSaga } from './projects/projects.saga';
  * @function
  */
 export function* rootSaga() {
-    yield all([call(adminUserSaga), call(projectsSaga)]);
+    yield all([
+        call(adminUserSaga),
+        call(projectsSaga),
+        call(worksSaga),
+        call(skillsSaga)]);
 }
