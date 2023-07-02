@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Saturday, 1st July 2023 9:24:13 pm
+ * Last Modified: Saturday, 1st July 2023 9:36:54 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -44,7 +44,7 @@ const Projects = () => {
                 overflow: 'hidden',
                 width: '100%'
             }}>
-            <ProjectPreview />
+            <ProjectPreview projects={projects} />
         </motion.div>
     );
 };

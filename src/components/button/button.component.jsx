@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 12th June 2023 10:23:04 pm
+ * Last Modified: Saturday, 1st July 2023 9:55:33 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -17,8 +17,13 @@ import { BUTTON_TYPES } from "./buttonTypes";
 
 
 const CustomButton = ({ type, disabled, children, linkTo }) => {
+
+    const handleClick = () => {
+        window.open(linkTo, "_blank"); // Open link in a new tab
+    };
+
     return (
-        <Button type={type} disabled={disabled} onClick={linkTo}>
+        <Button type={type} disabled={disabled} onClick={handleClick}>
             <ButtonIcon>{children}</ButtonIcon>
             <ButtonText>
                 {type === BUTTON_TYPES.DEMO ? 'Demo' : 'Github'}
