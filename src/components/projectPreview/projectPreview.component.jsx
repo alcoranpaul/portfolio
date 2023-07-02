@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Saturday, 1st July 2023 9:51:25 pm
+ * Last Modified: Sunday, 2nd July 2023 12:32:55 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -29,8 +29,6 @@ import {
 const COLUMN_WIDTHS = [4, 4, 4]; // Initial column widths
 
 //TODO: State machine for Arrow hover?
-// - When hot hovered the description should be lessen
-// - When hovered the description should be expanded
 // - Add view all button
 const ProjectPreview = ({ projects }) => {
     const [columnWidths, setColumnWidths] = useState(COLUMN_WIDTHS); // Initial column widths
