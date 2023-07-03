@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 27th June 2023 10:17:56 pm
+ * Last Modified: Sunday, 2nd July 2023 10:08:43 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,7 +13,6 @@
  */
 
 
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const MainContent = styled.div`

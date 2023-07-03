@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 23rd June 2023 11:43:57 pm
+ * Last Modified: Sunday, 2nd July 2023 10:05:47 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -21,6 +21,7 @@ const linkVariants = {
     default: { y: 0 }
 };
 
+// eslint-disable-next-line react-hooks/exhaustive-deps
 const shortDescription = "Passionate <b>software<\/b> developer driven\n\nby a desire to create <b>meaningful<\/b> applications, collaborate, and make a positive impact through continuous learning and values-driven actions.";
 
 
