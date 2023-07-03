@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Saturday, 1st July 2023 9:24:13 pm
+ * Last Modified: Sunday, 2nd July 2023 10:42:53 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -14,15 +14,17 @@
 
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { motion } from 'framer-motion';
 
 import { fetchWorksStart } from '../../store/works/works.action';
 import { selectWorks } from '../../store/works/works.selector';
 
-import { Card, Row, Col, Container } from 'react-bootstrap';
-import { motion } from 'framer-motion';
+import WorkContent from '../../components/workContent/workContent.component';
+
 const Work = () => {
     const dispatch = useDispatch();
     const works = useSelector(selectWorks);
+
 
     useEffect(() => { //TODO: simplify this
         if (Object.keys(works).length > 0) {
@@ -34,29 +36,6 @@ const Work = () => {
         }
     }, [])
 
-    const workData = [
-        {
-            title: 'Project 1',
-            imageSrc: 'https://via.placeholder.com/1280x720',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ',
-            technologies: ['React', 'JavaScript', 'HTML', 'CSS', 'Something'],
-            date: 'January 2022',
-        },
-        {
-            title: 'Project 2',
-            imageSrc: 'https://via.placeholder.com/800x600',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            technologies: ['Angular', 'TypeScript', 'SCSS'],
-            date: 'January 2022',
-        },
-        {
-            title: 'Project 3',
-            imageSrc: 'https://via.placeholder.com/800x600',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            technologies: ['Vue', 'JavaScript', 'Tailwind CSS'],
-            date: 'January 2022',
-        },
-    ];
 
     return (
         <motion.div
@@ -69,52 +48,7 @@ const Work = () => {
                 width: '100%'
             }}>
 
-            <Container className="developerWork" fluid style={{
-                width: '80%',
-            }}>
-                {workData.map((work, index) => (
-                    <Card key={index} style={{
-                        margin: '1rem auto',
-                        overflow: 'hidden',
-                        background: 'var(--color-workCard)',
-                        color: 'var(--color-text)',
-                        borderLeft: '5px double var(--color-accent)',
-                        boxShadow: '0 0 2px 0 var(--color-accent)',
-                    }}>
-                        <Card.Body>
-                            <Row>
-                                <Col xs={12} md={5} style={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    height: "80%"
-                                }}>
-                                    <div style={{ flex: '1 0 auto' }}>
-                                        <Card.Img
-                                            variant="top"
-                                            src={work.imageSrc}
-                                            style={{
-                                                width: '100%',
-
-
-                                                // border: '10px double var(--color-accent)',
-                                            }}
-                                        />
-                                    </div>
-                                    <Card.Text style={{ paddingTop: "10px" }}>
-                                        {work.technologies.join(', ')}
-                                        <i> {work.date}</i>
-                                    </Card.Text>
-
-                                </Col>
-                                <Col xs={12} md={7}>
-                                    <Card.Title><h4>{work.title}</h4></Card.Title>
-                                    <Card.Text>{work.description}</Card.Text>
-                                </Col>
-                            </Row>
-                        </Card.Body>
-                    </Card>
-                ))}
-            </Container>
+            <WorkContent works={works} />
         </motion.div>
 
 
