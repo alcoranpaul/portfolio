@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Saturday, 1st July 2023 9:36:54 pm
+ * Last Modified: Tuesday, 4th July 2023 1:24:28 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -24,15 +24,8 @@ const Projects = () => {
     const dispatch = useDispatch();
     const projects = useSelector(selectProjects);
 
-    useEffect(() => { //TODO: simplify this
-
-        if (Object.keys(projects).length > 0) {
-            console.log(`Projects/getProjects: projects already exists`)
-        }
-        else {
-            dispatch(fetchProjectsStart())
-        }
-
+    useEffect(() => {
+        dispatch(fetchProjectsStart())
     }, [])
     return (
         <motion.div

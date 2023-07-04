@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 3rd July 2023 11:19:11 pm
+ * Last Modified: Tuesday, 4th July 2023 1:24:28 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -24,18 +24,12 @@ import SkillContent from '../../components/skillContent/skillContent.component';
 import { SkillsContainer, SkillContentContainer, SkillTriangleContainer } from './skills.styles';
 
 
-const Skills = () => { //TODO: simplify this
+const Skills = () => {
     const dispatch = useDispatch();
     const skills = useSelector(selectSkills);
 
     useEffect(() => {
-        if (Object.keys(skills).length > 0) {
-            console.log(`Skills/getSkills: skills already exists`)
-            return;
-        }
-        else {
-            dispatch(fetchSkillsStart())
-        }
+        dispatch(fetchSkillsStart())
     }, [])
 
 

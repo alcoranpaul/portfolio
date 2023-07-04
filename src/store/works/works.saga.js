@@ -5,18 +5,20 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Saturday, 1st July 2023 6:13:29 pm
+ * Last Modified: Tuesday, 4th July 2023 1:23:44 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description: Saga functions for the works state.
  */
 
-import { takeLatest, put, all, call } from 'redux-saga/effects';
+import { takeLatest, put, all, call, select } from 'redux-saga/effects';
 import { getCollection, COLLECTION_TYPE } from '../../utils/firebase/firebase.utils';
 
 import { fetchWorksSuccess, fetchWorksFailed } from './works.action';
 import { WORKS_ACTION_TYPE } from './works.types';
+
+import { selectWorksMap } from './works.selector';
 
 /**
  * Worker saga responsible for fetching works asynchronously from firebase.
@@ -25,9 +27,19 @@ import { WORKS_ACTION_TYPE } from './works.types';
  */
 export function* fetchWorksAsync() {
     try {
-        // Call the getCollection function from firebase.utils to fetch works
-        const works = yield call(getCollection, COLLECTION_TYPE.works);
-        yield put(fetchWorksSuccess(works));
+        // Check if works already exist in the redux store
+        const localWorks = yield select(selectWorksMap);
+
+        // If works do not exist in the redux store, fetch them from firebase
+        if (!localWorks || Object.keys(localWorks).length === 0) {
+            // Call the getCollection function from firebase.utils to fetch works
+            const works = yield call(getCollection, COLLECTION_TYPE.works);
+            yield put(fetchWorksSuccess(works));
+        }
+        else {
+            console.log('Works already exist:', localWorks);
+        }
+
     } catch (error) {
         yield put(fetchWorksFailed(error));
     }

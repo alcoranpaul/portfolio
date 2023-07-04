@@ -5,18 +5,21 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Saturday, 1st July 2023 8:56:06 pm
+ * Last Modified: Tuesday, 4th July 2023 1:23:44 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
-import { takeLatest, put, all, call } from 'redux-saga/effects';
+import { takeLatest, put, all, call, select } from 'redux-saga/effects';
 import { getCollection, COLLECTION_TYPE } from '../../utils/firebase/firebase.utils';
 
 import { fetchSkillsSuccess, fetchSkillsFailed } from './skills.action';
 import { SKILLS_ACTION_TYPE } from './skills.types';
+
+import { selectSkillsMap } from './skills.selector';
+
 
 /**
  * Worker saga responsible for fetching projects asynchronously from firebase.
@@ -25,13 +28,24 @@ import { SKILLS_ACTION_TYPE } from './skills.types';
  */
 export function* fetchSkillsAsync() {
     try {
-        // Call the getCollection function from firebase.utils to fetch projects
-        const skills = yield call(getCollection, COLLECTION_TYPE.skills);
-        yield put(fetchSkillsSuccess(skills));
+        // Check if skills already exist in the redux store
+        const localSkills = yield select(selectSkillsMap);
+
+        // If skills do not exist in the redux store, fetch them from firebase
+        if (!localSkills || Object.keys(localSkills).length === 0) {
+            // Call the getCollection function from firebase.utils to fetch skills
+            const skills = yield call(getCollection, COLLECTION_TYPE.skills);
+            yield put(fetchSkillsSuccess(skills));
+
+        } else {
+            console.log('Skills already exist:', localSkills);
+        }
     } catch (error) {
+        console.log('Failed to fetch skills:', error);
         yield put(fetchSkillsFailed(error));
     }
 }
+
 
 /**
  * Watcher saga responsible for triggering the fetchProjectsAsync saga.

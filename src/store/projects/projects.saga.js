@@ -5,18 +5,20 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 30th June 2023 8:36:38 pm
+ * Last Modified: Tuesday, 4th July 2023 1:23:44 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description: Saga functions for the projects state.
  */
 
-import { takeLatest, put, all, call } from 'redux-saga/effects';
+import { takeLatest, put, all, call, select } from 'redux-saga/effects';
 import { getCollection, COLLECTION_TYPE } from '../../utils/firebase/firebase.utils';
 
 import { fetchProjectsSuccess, fetchProjectsFailed } from './projects.action';
 import { PROJECTS_ACTION_TYPE } from './projects.types';
+
+import { selectProjectsMap } from './projects.selector';
 
 /**
  * Worker saga responsible for fetching projects asynchronously from firebase.
@@ -25,9 +27,19 @@ import { PROJECTS_ACTION_TYPE } from './projects.types';
  */
 export function* fetchProjectsAsync() {
     try {
-        // Call the getCollection function from firebase.utils to fetch projects
-        const projects = yield call(getCollection, COLLECTION_TYPE.projects);
-        yield put(fetchProjectsSuccess(projects));
+        // Check if projects already exist in the redux store
+        const localProjects = yield select(selectProjectsMap);
+
+        // If projects do not exist in the redux store, fetch them from firebase
+        if (!localProjects || Object.keys(localProjects).length === 0) {
+            // Call the getCollection function from firebase.utils to fetch projects
+            const projects = yield call(getCollection, COLLECTION_TYPE.projects);
+            yield put(fetchProjectsSuccess(projects));
+        }
+        else {
+            console.log('Projects already exist:', localProjects);
+        }
+
     } catch (error) {
         yield put(fetchProjectsFailed(error));
     }

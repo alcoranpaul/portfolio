@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 3rd July 2023 6:47:05 pm
+ * Last Modified: Tuesday, 4th July 2023 1:24:28 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -26,14 +26,8 @@ const Work = () => {
     const works = useSelector(selectWorks);
 
 
-    useEffect(() => { //TODO: simplify this
-        if (Object.keys(works).length > 0) {
-            console.log(`Work/getWork: work already exists`)
-            return;
-        }
-        else {
-            dispatch(fetchWorksStart())
-        }
+    useEffect(() => {
+        dispatch(fetchWorksStart())
     }, [])
 
 
