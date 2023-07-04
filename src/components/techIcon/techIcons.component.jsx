@@ -5,27 +5,48 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 3rd July 2023 10:14:31 pm
+ * Last Modified: Tuesday, 4th July 2023 3:20:49 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
-import { IconsContainer, IconsWrapper, Icon, SquareOverlay, IconName } from "./techIcons.styles";
+
+import { IconsContainer, IconsWrapper, Icon, SquareOverlay, IconName, IconImage } from "./techIcons.styles";
+import SkillImage from "../skillImage/skillImage.component";
 
 const TechIcons = ({ items }) => {
-    const upperCaseItem = (item) => {
+    const itemsName = Object.keys(items);
+    const itemsValue = Object.values(items);
+
+    const upperCaseItemName = (item) => {
         return item.charAt(0).toUpperCase() + item.slice(1);
     }
+
     return (
         <IconsContainer className="iconcontainer">
             <IconsWrapper>
-                {items.map((item, index) => (
+                {itemsName.map((item, index) => (
                     <Icon key={index}>
-                        <SquareOverlay>
-                            <IconName>{upperCaseItem(item)}</IconName>
-                        </SquareOverlay>
+                        {itemsValue[index] === "" && (
+                            <SquareOverlay>
+                                <IconName> {upperCaseItemName(item)}</IconName>
+                            </SquareOverlay>
+                        )}
+
+                        {itemsValue[index] !== "" && (
+                            <>
+                                <SquareOverlay>
+
+                                    <SkillImage src={itemsValue[index]} alt={itemsName[index]} />
+                                </SquareOverlay>
+
+                                <IconName>
+                                    {upperCaseItemName(item)}
+                                </IconName>
+                            </>
+                        )}
                     </Icon>
                 ))}
             </IconsWrapper>
