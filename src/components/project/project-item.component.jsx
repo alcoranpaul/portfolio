@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Saturday, 1st July 2023 10:41:56 pm
+ * Last Modified: Monday, 3rd July 2023 6:37:52 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -24,7 +24,7 @@ const ProjectItem = ({ title, description, image, clicked, github, demo }) => {
     const shortenedDescription = testDescription.split(' ').slice(0, 5).join('. ') + '...';
     return (
         <ProjectItemContainer clicked={clicked}>
-            <BackgroundImage imageurl={image} />
+            <BackgroundImage imageurl={image} loading='lazy' />
             <ContentContainer>
                 <div className='text-descriptions'>
                     <h2 className='project-title'>{title}</h2>

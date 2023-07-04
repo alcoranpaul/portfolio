@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Saturday, 1st July 2023 10:49:37 pm
+ * Last Modified: Monday, 3rd July 2023 6:37:52 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,7 +13,7 @@
  */
 
 import styled from 'styled-components';
-
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 export const ButtonContainer = styled.div`
     display: flex;
@@ -26,7 +26,7 @@ export const ButtonContainer = styled.div`
 `;
 
 
-export const BackgroundImage = styled.div`
+export const BackgroundImage = styled.img`
     position: absolute;
     top: 0;
     left: 0;

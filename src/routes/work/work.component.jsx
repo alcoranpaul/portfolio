@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Sunday, 2nd July 2023 10:42:53 pm
+ * Last Modified: Monday, 3rd July 2023 6:47:05 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -45,7 +45,15 @@ const Work = () => {
             transition={{ duration: 0.2 }}
             style={{
                 overflow: 'hidden',
-                width: '100%'
+                width: '100%',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+
+                padding: '20px 0px 20px 0px',
+
             }}>
 
             <WorkContent works={works} />
