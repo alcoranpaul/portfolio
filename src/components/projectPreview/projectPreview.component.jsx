@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Sunday, 2nd July 2023 12:32:55 am
+ * Last Modified: Tuesday, 4th July 2023 1:37:17 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -98,6 +98,7 @@ const ProjectPreview = ({ projects }) => {
                                 clicked={index === activeIndex}
                                 github={project.github}
                                 demo={project.demo}
+                                blurHash={project.blurHash}
                             />
                         </ProjectContainer>
                     ))}

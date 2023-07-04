@@ -5,26 +5,49 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 3rd July 2023 6:37:52 pm
+ * Last Modified: Tuesday, 4th July 2023 1:41:24 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
-import { ProjectItemContainer, BackgroundImage, ContentContainer, ButtonContainer } from './project-item.styles.jsx';
-import { BUTTON_TYPES } from '../button/buttonTypes.js';
+import { useState, useEffect } from 'react';
+import { Blurhash } from 'react-blurhash';
 import GithubIcon from '../../data/components/button/githubIcon.jsx'
 import DemoIcon from '../../data/components/button/demoIcon.jsx';
 
 import CustomButton from '../button/button.component.jsx';
+import { BUTTON_TYPES } from '../button/buttonTypes.js';
 
-const ProjectItem = ({ title, description, image, clicked, github, demo }) => {
+
+import { ProjectItemContainer, BackgroundImage, ContentContainer, ButtonContainer } from './project-item.styles.jsx';
+
+const ProjectItem = ({ title, description, image, clicked, github, demo, blurHash }) => {
     const testDescription = description + " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl eget aliquam aliquam, nunc nisl aliquet nunc, quis aliquam nisl"
     const shortenedDescription = testDescription.split(' ').slice(0, 5).join('. ') + '...';
+
+    const [imageLoaded, setImageLoaded] = useState(false);
+
+    useEffect(() => {
+        const img = new Image();
+        img.onload = () => {
+            setImageLoaded(true);
+        }
+        img.src = image;
+    }, [image]);
     return (
         <ProjectItemContainer clicked={clicked}>
-            <BackgroundImage imageurl={image} loading='lazy' />
+            {!imageLoaded && (
+                <Blurhash
+                    hash={blurHash}
+                    width={1280}
+                    height={720}
+                    resolutionX={32}
+                    resolutionY={32}
+                    punch={1}
+                />)}
+            {imageLoaded && (<BackgroundImage imageurl={image} loading='lazy' />)}
             <ContentContainer>
                 <div className='text-descriptions'>
                     <h2 className='project-title'>{title}</h2>
