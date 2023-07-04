@@ -5,14 +5,14 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 4th July 2023 1:24:28 pm
+ * Last Modified: Tuesday, 4th July 2023 3:41:51 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -25,12 +25,22 @@ import { SkillsContainer, SkillContentContainer, SkillTriangleContainer } from '
 
 
 const Skills = () => {
+    const [selectedCategory, setSelectedCategory] = useState('All');
+    const [selectedSkillLevel, setSelectedSkillLevel] = useState('-');
     const dispatch = useDispatch();
     const skills = useSelector(selectSkills);
 
     useEffect(() => {
         dispatch(fetchSkillsStart())
     }, [])
+
+    const handleSelectCategory = (selectedCategory) => {
+        setSelectedCategory(selectedCategory);
+    }
+
+    const handleSelectSkillLevel = (selectedSkillLevel) => {
+        setSelectedSkillLevel(selectedSkillLevel)
+    }
 
 
     return (
@@ -43,8 +53,18 @@ const Skills = () => {
             }}>
 
             <SkillsContainer>
-                <SkillTriangleContainer lg={3} className='skill-triangle-container'><SkillTriangle /></SkillTriangleContainer>
-                <SkillContentContainer lg={9} className='skill-content-container'><SkillContent skills={skills} /></SkillContentContainer>
+                <SkillTriangleContainer lg={3} className='skill-triangle-container'>
+                    <SkillTriangle
+                        skills={skills}
+                        onSelectCategory={handleSelectCategory}
+                        onSelectSkillLevel={handleSelectSkillLevel} />
+                </SkillTriangleContainer>
+                <SkillContentContainer lg={9} className='skill-content-container'>
+                    <SkillContent skills={skills}
+                        selectedCategory={selectedCategory}
+                        selectedSkillLevel={selectedSkillLevel}
+                    />
+                </SkillContentContainer>
             </SkillsContainer>
         </motion.div>
     )

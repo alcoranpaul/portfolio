@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 4th July 2023 11:58:00 am
+ * Last Modified: Tuesday, 4th July 2023 5:21:46 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -14,9 +14,10 @@
 
 import TechTitle from "../techTitle/techTitle.component";
 import TechIcons from "../techIcon/techIcons.component";
+import { useEffect } from "react";
 
 
-const TechSkill = ({ name, items }) => {
+const TechSkill = ({ name, items, wrap }) => {
 
     return (
         <div
@@ -25,7 +26,7 @@ const TechSkill = ({ name, items }) => {
             }}
         >
             <TechTitle name={name} />
-            <TechIcons items={items} />
+            <TechIcons items={items} wrap={wrap} />
         </div>
     )
 }

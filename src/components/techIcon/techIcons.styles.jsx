@@ -5,46 +5,60 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 4th July 2023 3:15:10 pm
+ * Last Modified: Tuesday, 4th July 2023 5:27:47 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const IconsContainer = styled.div`
-    margin: 10px 10px 10px 10px;
-    height: 180px; 
-    width: 95%;
-    cursor: default;
-    user-select: none;
+  margin: 10px;
+  height: 180px;
+  width: 95%;
+  cursor: default;
+  user-select: none;
 
-    overflow-x: scroll;
-    overflow-y: hidden;
-  
+  ${(props) =>
+        props.numOfName === 1
+            ? css`
+            white-space: pre-wrap;
+         
 
-    /* Custom scrollbar styles */
-    &::-webkit-scrollbar {
-        width: 5px;
-        height: 5px;
-      
-    }
+        `
+            : css`
+            overflow-x: scroll;
+            overflow-y: hidden;
+        `}
 
-    &::-webkit-scrollbar-thumb {
-        background-color: var(--color-scroll);
-        border-radius: 5px;
-    }
+  /* Custom scrollbar styles */
+  &::-webkit-scrollbar {
+    height: 7px;
+  }
 
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-scroll);
+    border-radius: 5px;
+  }
 `;
+
 export const IconsWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap; /* Prevents wrapping to next line */
-    justify-content: flex-start;
-    
+  display: flex;
+  ${(props) =>
+        props.numOfName === 1
+            ? css`
+          flex-wrap: wrap;
+        `
+            : css`
+          flex-wrap: nowrap;
+       
+          
+        `}
+  justify-content: flex-start;
 `;
+
 
 
 export const Icon = styled.div`

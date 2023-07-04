@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 4th July 2023 1:23:44 pm
+ * Last Modified: Tuesday, 4th July 2023 3:24:47 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -37,8 +37,6 @@ export function* fetchSkillsAsync() {
             const skills = yield call(getCollection, COLLECTION_TYPE.skills);
             yield put(fetchSkillsSuccess(skills));
 
-        } else {
-            console.log('Skills already exist:', localSkills);
         }
     } catch (error) {
         console.log('Failed to fetch skills:', error);
