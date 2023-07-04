@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Saturday, 1st July 2023 9:24:13 pm
+ * Last Modified: Monday, 3rd July 2023 11:19:11 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -21,7 +21,7 @@ import { selectSkills } from '../../store/skills/skills.selector';
 
 import SkillTriangle from '../../components/skillTriangle/skillTriangle.component';
 import SkillContent from '../../components/skillContent/skillContent.component';
-import { SkillsContainer, ChildrenContainer, ChildrenRow } from './skills.styles';
+import { SkillsContainer, SkillContentContainer, SkillTriangleContainer } from './skills.styles';
 
 
 const Skills = () => { //TODO: simplify this
@@ -45,15 +45,12 @@ const Skills = () => { //TODO: simplify this
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             style={{
-                overflow: 'hidden',
                 width: '100%'
             }}>
 
             <SkillsContainer>
-                <ChildrenRow>
-                    <ChildrenContainer lg={3}><SkillTriangle /></ChildrenContainer>
-                    <ChildrenContainer lg={9}><SkillContent /></ChildrenContainer>
-                </ChildrenRow>
+                <SkillTriangleContainer lg={3} className='skill-triangle-container'><SkillTriangle /></SkillTriangleContainer>
+                <SkillContentContainer lg={9} className='skill-content-container'><SkillContent skills={skills} /></SkillContentContainer>
             </SkillsContainer>
         </motion.div>
     )

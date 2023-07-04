@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 13th June 2023 11:20:26 pm
+ * Last Modified: Monday, 3rd July 2023 11:46:33 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -15,7 +15,21 @@
 import styled from 'styled-components';
 
 export const SkillContentContainer = styled.div`
-
     width: 100%;
     height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: var(--color-accent);
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+    }
 `

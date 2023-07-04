@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 14th June 2023 1:13:17 am
+ * Last Modified: Monday, 3rd July 2023 11:46:02 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -16,19 +16,21 @@ import styled from 'styled-components';
 
 
 export const SkillTriangleContainer = styled.div`
-    ${'' /* background-color: var(--color-skillVerse); */}
-    height: 100%;
+
+    padding-top: 20px;
+    margin-top: 10px;
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    ${'' /* background: pink; */}
-    ${'' /* justify-content: flex-start; */}
+
 `
 
 export const VisualContainer = styled.div`
 
     width: 100%;
+    
     ${'' /* background: green; */}
 `
 export const SorterContainer = styled.div`

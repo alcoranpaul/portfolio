@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 28th June 2023 3:50:48 pm
+ * Last Modified: Monday, 3rd July 2023 10:14:31 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -14,14 +14,17 @@
 
 import { IconsContainer, IconsWrapper, Icon, SquareOverlay, IconName } from "./techIcons.styles";
 
-const TechIcons = ({ icons }) => {
+const TechIcons = ({ items }) => {
+    const upperCaseItem = (item) => {
+        return item.charAt(0).toUpperCase() + item.slice(1);
+    }
     return (
         <IconsContainer className="iconcontainer">
             <IconsWrapper>
-                {icons.map((icon, index) => (
+                {items.map((item, index) => (
                     <Icon key={index}>
                         <SquareOverlay>
-                            <IconName>{icon}</IconName>
+                            <IconName>{upperCaseItem(item)}</IconName>
                         </SquareOverlay>
                     </Icon>
                 ))}

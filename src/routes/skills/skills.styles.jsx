@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 13th June 2023 8:29:51 pm
+ * Last Modified: Monday, 3rd July 2023 11:46:55 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,20 +13,22 @@
  */
 
 import styled from 'styled-components';
-import { Container, Col, Row } from 'react-bootstrap';
-export const SkillsContainer = styled(Container)`
-    ${'' /* background-color: green; */}
+
+export const SkillsContainer = styled.div`
+
     max-width: 100vw;
-    max-height: 95vh;
     height: 95vh;
+    display: flex;
+    flex-direction: row;
 `
 
-export const ChildrenContainer = styled(Col)`
-    padding-left: 5px;
-    padding-right: 5px;
-`
 
-export const ChildrenRow = styled(Row)`
-    ${'' /* background-color: blue; */}
+
+export const SkillContentContainer = styled.div`
+    height: 100%;
+    margin-left: 5px;
+    width: 73%;
+`
+export const SkillTriangleContainer = styled.div`
     height: 100%;
 `

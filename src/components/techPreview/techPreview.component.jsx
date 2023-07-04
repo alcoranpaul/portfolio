@@ -5,42 +5,30 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 28th June 2023 3:51:34 pm
+ * Last Modified: Tuesday, 4th July 2023 11:57:13 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
+
 import TechSkill from "../techSkill/techSkill.component";
 
-const SkillTech = [
-    {
-        name: "Web Development",
-        icons: ["HTML", "CSS", "JavaScript", "Vue", "React", "React Router", "React Router"]
-    },
-    {
-        name: "Design and Prototyping",
-        icons: ["Figma"]
-    },
-    {
-        name: "Styling Framework",
-        icons: ["Bootstrap"]
-    },
-    {
-        name: "Backend Development",
-        icons: ["Node.js", "Express.js"]
-    }
-];
+
+const TechPreview = ({ skills }) => {
+
+    const skillName = Object.keys(skills);
+    const skillItems = Object.values(skills);
 
 
-const TechPreview = () => {
     return (
-        <div>
-            <TechSkill name={SkillTech[0].name} icons={SkillTech[0].icons} />
-            <TechSkill name={SkillTech[1].name} icons={SkillTech[1].icons} />
-            <TechSkill name={SkillTech[2].name} icons={SkillTech[2].icons} />
-            <TechSkill name={SkillTech[3].name} icons={SkillTech[3].icons} />
+        <div >
+            {
+                skillItems.map((skillItem, index) => {
+                    return <TechSkill name={skillName[index]} items={skillItem.items} level={skillItem.level} id={skillName[index]} key={skillName[index] + skillItem.level} />
+                })
+            }
         </div>
     );
 
