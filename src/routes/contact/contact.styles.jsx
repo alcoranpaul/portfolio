@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 19th June 2023 9:30:44 pm
+ * Last Modified: Wednesday, 5th July 2023 3:55:18 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -96,4 +96,15 @@ export const EmailButton = styled(Button)`
         border: 2px solid var(--color-text);
     }   
 
+`
+
+export const ResumeButton = styled(EmailButton)` 
+    color: var(--color-background);
+    background-color: var(--color-text);
+    border: 2px solid var(--color-background);
+
+    &:hover {
+        background-color: var(--color-buttonHover);
+        border: 2px solid var(--color-background);
+    }
 `

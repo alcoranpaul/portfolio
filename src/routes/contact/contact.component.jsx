@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 21st June 2023 11:32:13 am
+ * Last Modified: Wednesday, 5th July 2023 4:02:43 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,12 +13,18 @@
  */
 
 import { useState } from "react";
+import { motion } from "framer-motion";
+
 import Platforms from "../../components/platforms/platforms.component";
 import SimpleMap from "../../data/components/googleMap/googleMap.component";
-import { Container, MapAndEmailContainer, Box1, Box2, PlatformContainer, EmailButton } from "./contact.styles";
-import { motion } from "framer-motion";
-const EMAIL = "paulreyes74@yahoo.com"
 
+import { Container, MapAndEmailContainer, Box1, Box2, PlatformContainer, EmailButton, ResumeButton } from "./contact.styles";
+
+const EMAIL = "paulreyes74@yahoo.com"
+const RESUME_TYPE = {
+    ONE_PAGE: 'one-page',
+    TWO_PAGE: 'two-page'
+}
 const Contact = () => {
     const [isOpeningEmailApp, setIsOpeningEmailApp] = useState(false);
 
@@ -29,6 +35,25 @@ const Contact = () => {
         }, 2000);
         window.location.href = `mailto:${EMAIL}`;
     };
+
+    const handleResumeClick = (resumeType) => {
+        switch (resumeType) {
+            case RESUME_TYPE.ONE_PAGE:
+                {
+                    const pdfUrl = process.env.PUBLIC_URL + '/data/Paul_Reyes_Resume.pdf';
+                    window.open(pdfUrl, '_blank');
+                }
+                break;
+            case RESUME_TYPE.TWO_PAGE:
+                {
+                    const pdfUrl = process.env.PUBLIC_URL + '/data/Paul_Reyes_Resume_2P.pdf';
+                    window.open(pdfUrl, '_blank');
+                }
+                break;
+            default:
+                break;
+        }
+    }
 
     return (
         <motion.div
@@ -49,10 +74,9 @@ const Contact = () => {
                     <Box2>
                         <div className="opening-text">
                             <span>Reach out today and let's start a conversation!</span>
-                            <p>Stay connected and engaged with me on various social media platforms. Connect with me on the following popular social media apps below to explore my world as a developer.</p>
-                            <p>Let's connect, share experiences, and stay updated together. Your support and interaction mean a lot to me as I continue to grow and evolve in my journey. Feel free to reach out and connect with me today!</p>
+                            <p>Stay connected and engaged with me on various social media platforms. Connect with me on the follsowing popular social media apps below to explore my world as a developer.</p>
+                            <p>Your support and interaction mean a lot to me as I continue to grow and evolve in my journey.</p>
                             <p>Feel free to reach out for inquiries, collaborations, or meaningful professional connections. And if you're up for some fun, let's play games together too!</p>
-
                         </div>
                         <div className="location">
                             <p>Based on Winnipeg, MB</p>
@@ -74,6 +98,16 @@ const Contact = () => {
                                     </>
                                 )}
                             </EmailButton>
+                        </div>
+                        <div className="resume-btns" style={{ display: 'flex', gap: '10px' }}>
+                            <ResumeButton
+                                onClick={() => handleResumeClick(RESUME_TYPE.ONE_PAGE)}>
+                                CV / Resume 1-Page
+                            </ResumeButton>
+                            <ResumeButton
+                                onClick={() => handleResumeClick(RESUME_TYPE.TWO_PAGE)}>
+                                CV / Resume 2-Page
+                            </ResumeButton>
                         </div>
                     </Box2>
                 </MapAndEmailContainer>
