@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 3rd July 2023 6:37:52 pm
+ * Last Modified: Wednesday, 5th July 2023 5:22:43 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -37,6 +37,7 @@ export const BackgroundImage = styled.img`
     background-size: cover;
     background-repeat: no-repeat;
     background-size: 1280px 720px;
+    z-index: -1;
 
     filter: brightness(30%); /* Adjust the brightness to darken the image */
     transition: filter 1s ease, transform 0.5s ease, background-size 1s ease; /* Add a smooth transition effect for the filter */
@@ -51,7 +52,6 @@ export const ContentContainer = styled.div`
     z-index: 1;
     width: 100%;
     height: 100%;
-    
 
     transition: transform 1s ease, font-size 0.3s ease;
 

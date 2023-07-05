@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 5th July 2023 4:55:58 pm
+ * Last Modified: Wednesday, 5th July 2023 4:56:45 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,7 +13,7 @@
  */
 
 import styled from "styled-components";
-import { Card, Row, Col } from 'react-bootstrap';
+import { Card, Col } from 'react-bootstrap';
 
 export const WorkItemContainer = styled(Card)`
     margin: 1rem auto;

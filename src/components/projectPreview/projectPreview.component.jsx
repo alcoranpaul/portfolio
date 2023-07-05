@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 4th July 2023 1:37:17 pm
+ * Last Modified: Wednesday, 5th July 2023 5:57:39 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,6 +13,7 @@
  */
 
 import { useState, useEffect } from 'react';
+import { motion } from "framer-motion";
 import ArrowIcon from '../../data/home/icons/arrowIcon';
 import ProjectItem from '../project/project-item.component';
 
@@ -80,46 +81,56 @@ const ProjectPreview = ({ projects }) => {
 
 
     return (
-        <ProjectPreviewWrapper>
-            <ProjectsPreviewContainer>
-                {projectsValues
-                    .slice(maxIndex, maxIndex + 3)
-                    .map((project, index) => (
-                        <ProjectContainer
-                            key={projectsKeys[index]}
-                            onClick={() => handleClick(index)}
-                            lg={columnWidths[index]}
-                            className={isAnimating ? 'fade-in' : ''}
-                        >
-                            <ProjectItem
-                                title={project.title}
-                                description={project.description}
-                                image={project.imgURL}
-                                clicked={index === activeIndex}
-                                github={project.github}
-                                demo={project.demo}
-                                blurHash={project.blurHash}
-                            />
-                        </ProjectContainer>
-                    ))}
-            </ProjectsPreviewContainer>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            style={{
+                overflow: 'hidden',
+                width: '100%'
+            }}>
+            <ProjectPreviewWrapper>
+                <ProjectsPreviewContainer>
+                    {projectsValues
+                        .slice(maxIndex, maxIndex + 3)
+                        .map((project, index) => (
+                            <ProjectContainer
+                                key={projectsKeys[index]}
+                                onClick={() => handleClick(index)}
+                                lg={columnWidths[index]}
+                                className={isAnimating ? 'fade-in' : ''}
+                            >
+                                <ProjectItem
+                                    title={project.title}
+                                    description={project.description}
+                                    image={project.imgURL}
+                                    clicked={index === activeIndex}
+                                    github={project.github}
+                                    demo={project.demo}
+                                    blurHash={project.blurHash}
+                                />
+                            </ProjectContainer>
+                        ))}
+                </ProjectsPreviewContainer>
 
-            {maxIndex !== 0 && (
-                <LeftArrowContainer>
-                    <Arrow onClick={handlePrev}>
-                        <ArrowIcon />
-                    </Arrow>
-                </LeftArrowContainer>
-            )}
+                {maxIndex !== 0 && (
+                    <LeftArrowContainer>
+                        <Arrow onClick={handlePrev}>
+                            <ArrowIcon />
+                        </Arrow>
+                    </LeftArrowContainer>
+                )}
 
-            {(maxIndex + 3) === lastIndexOfProject && (
-                <RightArrowContainer>
-                    <Arrow onClick={handleNext}>
-                        <ArrowIcon />
-                    </Arrow>
-                </RightArrowContainer>
-            )}
-        </ProjectPreviewWrapper>
+                {(maxIndex + 3) === lastIndexOfProject && (
+                    <RightArrowContainer>
+                        <Arrow onClick={handleNext}>
+                            <ArrowIcon />
+                        </Arrow>
+                    </RightArrowContainer>
+                )}
+            </ProjectPreviewWrapper>
+        </motion.div>
     );
 
 }

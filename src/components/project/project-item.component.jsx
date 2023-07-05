@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 4th July 2023 1:41:24 pm
+ * Last Modified: Wednesday, 5th July 2023 6:15:02 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -14,8 +14,11 @@
 
 import { useState, useEffect } from 'react';
 import { Blurhash } from 'react-blurhash';
+import { Link } from 'react-router-dom';
+
 import GithubIcon from '../../data/components/button/githubIcon.jsx'
 import DemoIcon from '../../data/components/button/demoIcon.jsx';
+import CaseStudyIcon from '../../data/components/button/caseStudyIcon.jsx';
 
 import CustomButton from '../button/button.component.jsx';
 import { BUTTON_TYPES } from '../button/buttonTypes.js';
@@ -36,6 +39,9 @@ const ProjectItem = ({ title, description, image, clicked, github, demo, blurHas
         }
         img.src = image;
     }, [image]);
+
+
+
     return (
         <ProjectItemContainer clicked={clicked}>
             {!imageLoaded && (
@@ -47,23 +53,32 @@ const ProjectItem = ({ title, description, image, clicked, github, demo, blurHas
                     resolutionY={32}
                     punch={1}
                 />)}
-            {imageLoaded && (<BackgroundImage imageurl={image} loading='lazy' />)}
-            <ContentContainer>
-                <div className='text-descriptions'>
-                    <h2 className='project-title'>{title}</h2>
-                    <span className='project-description'>{shortenedDescription}</span>
-                </div>
+            {imageLoaded && (
+                <>
+                    <BackgroundImage imageurl={image} loading='lazy' />
+                    <ContentContainer>
+                        <div className='text-descriptions'>
+                            <h2 className='project-title'>{title}</h2>
+                            <span className='project-description'>{shortenedDescription}</span>
+                        </div>
 
-                <ButtonContainer clicked={clicked}>
-                    <CustomButton type={BUTTON_TYPES.DEMO} disabled={!clicked} linkTo={demo}>
-                        <DemoIcon />
-                    </CustomButton>
-                    <CustomButton type={BUTTON_TYPES.GITHUB} disabled={!clicked} linkTo={github}>
-                        <GithubIcon />
-                    </CustomButton>
-                </ButtonContainer>
+                        <ButtonContainer clicked={clicked}>
+                            <CustomButton type={BUTTON_TYPES.DEMO} disabled={!clicked} linkTo={demo}>
+                                <DemoIcon />
+                            </CustomButton>
+                            <CustomButton type={BUTTON_TYPES.GITHUB} disabled={!clicked} linkTo={github}>
+                                <GithubIcon />
+                            </CustomButton>
+                            <Link to={title}>
+                                <CustomButton type={BUTTON_TYPES.CASE_STUDY} disabled={!clicked} disableLink={true}>
+                                    <CaseStudyIcon />
+                                </CustomButton>
+                            </Link>
+                        </ButtonContainer>
 
-            </ContentContainer>
+                    </ContentContainer>
+                </>)}
+
         </ProjectItemContainer>
     );
 }

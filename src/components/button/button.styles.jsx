@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 12th June 2023 10:07:36 pm
+ * Last Modified: Wednesday, 5th July 2023 5:28:37 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -58,12 +58,21 @@ export const Button = styled.button`
         /* Add more styles specific to Demo button */
       `;
     }
-    if (type === BUTTON_TYPES.GITHUB) {
+    else if (type === BUTTON_TYPES.GITHUB) {
       return css`
         /* Styles for Github button */
         background-color: var(--color-accent);
         color: var(--color-background);
         border-color: var(--color-secondary);
+        /* Add more styles specific to Github button */
+      `;
+    }
+    else if (type === BUTTON_TYPES.CASE_STUDY) {
+      return css`
+        /* Styles for Github button */
+        background-color: black;
+        color: var(--color-text);
+        border-color: var(--color-primary);
         /* Add more styles specific to Github button */
       `;
     }

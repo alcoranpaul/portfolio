@@ -26,9 +26,9 @@ function App() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Navigation location={location} />} key="navigation">
           <Route index element={<Home />} key="home" />
-          <Route path='projects' element={<Projects />} key="projects" />
+          <Route path='projects/*' element={<Projects location={location} />} key="projects" />
           <Route path='skills' element={<Skills />} key="skills" />
-          <Route path='work' element={<Work />} key="work" />
+          <Route path='work/*' element={<Work location={location} />} key="work" />
           <Route path='education' element={<Education />} key="education" />
           <Route path='contact' element={<Contact />} key="contact" />
           <Route path='about' element={<About />} key="about" />

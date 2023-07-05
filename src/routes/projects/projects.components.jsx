@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 4th July 2023 1:24:28 pm
+ * Last Modified: Wednesday, 5th July 2023 6:22:46 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -14,31 +14,30 @@
 
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { motion } from "framer-motion";
+import { Routes, Route } from 'react-router-dom';
 
 import { fetchProjectsStart } from "../../store/projects/projects.action";
 import { selectProjects } from "../../store/projects/projects.selector";
 import ProjectPreview from "../../components/projectPreview/projectPreview.component";
+import ProjectPage from "../../components/projectPage/projectPage.component";
 
-const Projects = () => {
+
+const Projects = ({ location }) => {
     const dispatch = useDispatch();
     const projects = useSelector(selectProjects);
+    const shouldFetchProjects = location.pathname === '/projects';
 
     useEffect(() => {
-        dispatch(fetchProjectsStart())
+        if (shouldFetchProjects) {
+            dispatch(fetchProjectsStart());
+        }
     }, [])
     return (
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            style={{
-                overflow: 'hidden',
-                width: '100%'
-            }}>
-            <ProjectPreview projects={projects} />
-        </motion.div>
+        <Routes>
+            <Route index element={<ProjectPreview projects={projects} />} key="projectPreview" />
+            <Route path=":projectId" element={<ProjectPage projects={projects} />} key="projectPage" />
+        </Routes>
+
     );
 };
 

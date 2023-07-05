@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 5th July 2023 2:18:46 pm
+ * Last Modified: Wednesday, 5th July 2023 6:02:56 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -49,6 +49,8 @@ export function* checkProjectsExist() {
         if (!localProjects || Object.keys(localProjects).length === 0) {
             // Call the getCollection function from firebase.utils to fetch projects
             yield call(fetchProjectsAsync);
+        } else {
+            yield put(fetchProjectsSuccess(localProjects));
         }
 
     } catch (error) {

@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 5th July 2023 3:29:52 pm
+ * Last Modified: Wednesday, 5th July 2023 6:03:24 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -49,6 +49,9 @@ export function* checkWorksExist() {
         if (!localWorks || Object.keys(localWorks).length === 0) {
             // Call the getCollection function from firebase.utils to fetch works
             yield call(fetchWorksAsync);
+        }
+        else {
+            yield put(fetchWorksSuccess(localWorks));
         }
 
     } catch (error) {

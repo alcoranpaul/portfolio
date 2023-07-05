@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 5th July 2023 4:54:30 pm
+ * Last Modified: Wednesday, 5th July 2023 4:56:46 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -14,7 +14,7 @@
 
 import { useState, useEffect } from 'react';
 import { Blurhash } from 'react-blurhash';
-import { Card, Row, Col } from 'react-bootstrap';
+import { Card, Row } from 'react-bootstrap';
 
 import {
     WorkItemContainer, LeftContainer,

@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 5th July 2023 3:32:41 pm
+ * Last Modified: Wednesday, 5th July 2023 6:03:25 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -51,6 +51,9 @@ export function* checkSkillsExist() {
         if (!localSkills || Object.keys(localSkills).length === 0) {
             // Call the getCollection function from firebase.utils to fetch skills
             yield call(fetchSkillsAsync);
+        }
+        else {
+            yield put(fetchSkillsSuccess(localSkills));
         }
 
     } catch (error) {
