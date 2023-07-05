@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 4th July 2023 1:54:12 pm
+ * Last Modified: Wednesday, 5th July 2023 4:54:30 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -16,6 +16,13 @@ import { useState, useEffect } from 'react';
 import { Blurhash } from 'react-blurhash';
 import { Card, Row, Col } from 'react-bootstrap';
 
+import {
+    WorkItemContainer, LeftContainer,
+    ImageContainer,
+    TechContainer,
+    RightContainer
+} from './workItem.styles';
+
 const WorkItem = ({ title, imgURL, role, description, date, blurHash, tech }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
     useEffect(() => {
@@ -25,28 +32,11 @@ const WorkItem = ({ title, imgURL, role, description, date, blurHash, tech }) =>
     }, [imgURL]);
 
     return (
-        <Card
-            style={{
-                margin: '1rem auto',
-                overflow: 'hidden',
-                background: 'var(--color-workCard)',
-                color: 'var(--color-text)',
-                borderLeft: '5px double var(--color-accent)',
-                boxShadow: '0 0 2px 0 var(--color-accent)',
-            }}
-        >
+        <WorkItemContainer>
             <Card.Body>
                 <Row>
-                    <Col
-                        xs={12}
-                        md={5}
-                        style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            height: '80%',
-                        }}
-                    >
-                        <div style={{ flex: '1 0 auto' }}>
+                    <LeftContainer xs={12} md={5}>
+                        <ImageContainer>
                             {!imageLoaded && (
                                 <Blurhash
                                     hash={blurHash}
@@ -67,8 +57,8 @@ const WorkItem = ({ title, imgURL, role, description, date, blurHash, tech }) =>
                                     filter: 'brightness(90%)'
                                 }}
                             />)}
-                        </div>
-                        <Card.Text style={{ paddingTop: '10px' }}>
+                        </ImageContainer>
+                        <TechContainer>
                             {
                                 tech && (
                                     <span className="work-tech"
@@ -78,11 +68,11 @@ const WorkItem = ({ title, imgURL, role, description, date, blurHash, tech }) =>
                                     >{tech.join(' || ')}</span>
                                 )
                             }
-                            <br />
                             <span className="work-date">{date}</span>
-                        </Card.Text>
-                    </Col>
-                    <Col xs={12} md={7}>
+                            <button className='work-full-page-btn'>View Full Page</button>
+                        </TechContainer>
+                    </LeftContainer>
+                    <RightContainer xs={12} md={7}>
                         <Card.Title
                             style={{
                                 display: 'flex',
@@ -109,17 +99,22 @@ const WorkItem = ({ title, imgURL, role, description, date, blurHash, tech }) =>
                             style={{
                                 backgroundColor: 'rgba(255, 255, 255, 0.1)',
                                 width: '100%',
-                                height: '85%',
-                                padding: '5px',
+                                height: '90%',
+                                padding: '10px',
                                 borderRadius: '5px 10px 5px 10px',
                             }}
                         >
-                            {description}
+                            {description.split('\n').map((line, index) => (
+                                <span key={index}>
+                                    {line}
+                                    <br />
+                                </span>
+                            ))}
                         </Card.Text>
-                    </Col>
+                    </RightContainer>
                 </Row>
             </Card.Body>
-        </Card>
+        </WorkItemContainer>
     )
 }
 
