@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Saturday, 1st July 2023 6:19:00 pm
+ * Last Modified: Wednesday, 5th July 2023 12:56:29 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -30,6 +30,7 @@ import {
     collection,     // create a collection reference
     query,          // create a query
     getDocs,        // read data from firestore
+    writeBatch,     // batch writes
 } from "firebase/firestore";
 
 // Your web app's Firebase configuration
@@ -191,6 +192,35 @@ export const getCollection = async (collectionType) => {
         // an unexpected condition that prevented it from fulfilling the request.
         const { message } = error;
         const msgToSend = `firebase.utils.js/getCollection -- ${message}`
+        throw new AdminAuthError(msgToSend, error.code || 500)
+    }
+}
+
+export const updateCollection = async (collectionType, data) => {
+    try {
+        console.log(`updateCollection -- UPDATING ${collectionType} collection`)
+        if (COLLECTION_TYPE[collectionType] === undefined) throw new Error("Invalid collection type");
+        const collectionRef = collection(db_Firestore, collectionType);
+        const batch = writeBatch(db_Firestore);
+
+        const dataKeys = Object.keys(data);
+        const dataValues = Object.values(data);
+
+        dataKeys.forEach((key, index) => {
+            const docRef = doc(collectionRef, key);
+            batch.set(docRef, dataValues[index]);
+            console.log('Setting ', key, ' to ', dataValues[index])
+        });
+
+        batch.commit();
+        console.log('Batch commit successful')
+
+    }
+    catch (error) {
+        // 500 means that the server encountered
+        // an unexpected condition that prevented it from fulfilling the request.
+        const { message } = error;
+        const msgToSend = `firebase.utils.js/updateCollection -- ${message}`
         throw new AdminAuthError(msgToSend, error.code || 500)
     }
 }

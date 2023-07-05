@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Saturday, 1st July 2023 9:32:09 pm
+ * Last Modified: Wednesday, 5th July 2023 12:13:47 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -59,11 +59,8 @@ const Admin = () => {
                 </div>
             )}
             <div style={{
-                height: '80vh',
-                width: '80vw',
-                position: 'absolute',
-                top: '15%',
-                left: '15%',
+                height: '85vh',
+                width: '90vw',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',

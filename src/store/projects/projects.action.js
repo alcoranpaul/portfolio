@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 30th June 2023 8:33:26 pm
+ * Last Modified: Wednesday, 5th July 2023 2:18:11 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -29,6 +29,12 @@ export const setProjects = (projects) => {
  * @returns {object} An action object with the type.
  */
 export const fetchProjectsStart = () => createAction(PROJECTS_ACTION_TYPE.FETCH_PROJECTS_START);
+
+/**
+ * Action creator function to trigger the refresh projects action.
+ * @returns {object} An action object with the type.
+ */
+export const refreshProjects = () => createAction(PROJECTS_ACTION_TYPE.REFRESH_PROJECTS);
 
 /**
  * Action creator function to handle the fetch projects success action.

@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 29th June 2023 10:58:58 pm
+ * Last Modified: Wednesday, 5th July 2023 3:26:48 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,40 +13,97 @@
  */
 
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import { selectProjects } from "../../store/projects/projects.selector";
+import { useSelector, useDispatch } from "react-redux";
 
+import { selectProjects } from "../../store/projects/projects.selector";
+import { selectSkills } from "../../store/skills/skills.selector";
+import { selectWorks } from "../../store/works/works.selector";
+
+import TextArea from "../textArea/textArea.component";
+
+import { DatabasePageContainer } from './databasePage.styles';
+
+import { COLLECTION_TYPE, updateCollection } from "../../utils/firebase/firebase.utils";
+import { refreshProjects } from "../../store/projects/projects.action";
+import { refreshSkills } from "../../store/skills/skills.action";
+import { refreshWorks } from "../../store/works/works.action";
 const DatabasePage = () => {
+    const dispatch = useDispatch();
     const projects = useSelector(selectProjects);
+    const skills = useSelector(selectSkills);
+    const works = useSelector(selectWorks);
 
     const [projectsString, setProjectsString] = useState(
         JSON.stringify(projects, null, 2)
     );
+    const [skillsString, setSkillsString] = useState(
+        JSON.stringify(skills, null, 2)
+    );
+    const [worksString, setWorksString] = useState(
+        JSON.stringify(works, null, 2)
+    );
+
 
     const handleProjectsChange = (event) => {
         setProjectsString(event.target.value);
     };
+    const handleSkillsChange = (event) => {
+        setSkillsString(event.target.value);
+    };
+    const handleWorksChange = (event) => {
+        setWorksString(event.target.value);
+    };
+
+    const handleSave = async (value, collectionKey) => {
+        try {
+            const data = JSON.parse(value);
+            await updateCollection(collectionKey, data);
+            switch (collectionKey) {
+                case COLLECTION_TYPE.projects:
+                    console.log('refreshing projects')
+                    dispatch(refreshProjects());
+                    break;
+                case COLLECTION_TYPE.skills:
+                    console.log('refreshing skills')
+                    dispatch(refreshSkills());
+                    break;
+                case COLLECTION_TYPE.works:
+                    console.log('refreshing works')
+                    dispatch(refreshWorks());
+                    break;
+                default:
+                    break;
+            }
+        }
+        catch (error) {
+            console.log(error);
+        }
+
+    };
 
     return (
-        <div style={{
-            width: '100%',
-            height: '100%',
-        }}>
-            <h1>Database</h1>
-            <textarea
+        <DatabasePageContainer>
+            <h2>Projects</h2>
+            <TextArea
                 value={projectsString}
                 onChange={handleProjectsChange}
-                rows={10}
-                style={{
-                    width: "100%",
-                    height: '80%',
-                    fontFamily: "monospace",
-                    fontSize: "18px",
-                    backgroundColor: "var(--color-accent)",
-                    color: "var(--color-background)",
-                }}
-            />
-        </div>
+                collectionType={COLLECTION_TYPE.projects}
+                onSubmit={handleSave} />
+            <br />
+            <h2>Skills</h2>
+            <TextArea
+                value={skillsString}
+                onChange={handleSkillsChange}
+                collectionType={COLLECTION_TYPE.skills}
+                onSubmit={handleSave} />
+            <br />
+            <h2>Works</h2>
+            <TextArea
+                value={worksString}
+                onChange={handleWorksChange}
+                collectionType={COLLECTION_TYPE.works}
+                onSubmit={handleSave} />
+        </DatabasePageContainer>
     );
 };
 

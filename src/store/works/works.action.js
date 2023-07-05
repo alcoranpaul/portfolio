@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Saturday, 1st July 2023 9:02:18 pm
+ * Last Modified: Wednesday, 5th July 2023 2:19:24 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -21,6 +21,12 @@ import { WORKS_ACTION_TYPE } from "./works.types";
  * @returns {object} An action object with the type.
  */
 export const fetchWorksStart = () => createAction(WORKS_ACTION_TYPE.FETCH_WORKS_START);
+
+/**
+ * Action creator function to trigger the refresh works action.
+ * @returns {object} An action object with the type.
+ */
+export const refreshWorks = () => createAction(WORKS_ACTION_TYPE.REFRESH_WORKS);
 
 /**
  * Action creator function to handle the fetch works success action.
