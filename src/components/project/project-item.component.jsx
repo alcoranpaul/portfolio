@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 5th July 2023 6:15:02 pm
+ * Last Modified: Thursday, 6th July 2023 11:20:51 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -28,7 +28,7 @@ import { ProjectItemContainer, BackgroundImage, ContentContainer, ButtonContaine
 
 const ProjectItem = ({ title, description, image, clicked, github, demo, blurHash }) => {
     const testDescription = description + " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl eget aliquam aliquam, nunc nisl aliquet nunc, quis aliquam nisl"
-    const shortenedDescription = testDescription.split(' ').slice(0, 5).join('. ') + '...';
+    const shortenedDescription = testDescription.split(' ').slice(0, 5).join(' ') + '...';
 
     const [imageLoaded, setImageLoaded] = useState(false);
 

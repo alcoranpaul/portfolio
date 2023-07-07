@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 5th July 2023 6:15:01 pm
+ * Last Modified: Friday, 7th July 2023 2:26:12 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -16,7 +16,7 @@ import { Button, ButtonIcon, ButtonText } from "./button.styles";
 import { BUTTON_TYPES } from "./buttonTypes";
 
 
-const CustomButton = ({ type, disabled, children, linkTo, disableLink }) => {
+const CustomButton = ({ type, disabled, children, linkTo, disableLink, style }) => {
 
     const handleClick = () => {
         if (disableLink) return;
@@ -37,7 +37,7 @@ const CustomButton = ({ type, disabled, children, linkTo, disableLink }) => {
     }
 
     return (
-        <Button type={type} disabled={disabled} onClick={handleClick}>
+        <Button type={type} disabled={disabled} onClick={handleClick} style={style}>
             <ButtonIcon>{children}</ButtonIcon>
             <ButtonText>
                 {handleType(type)}

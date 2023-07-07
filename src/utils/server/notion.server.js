@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 6th July 2023 11:14:00 pm
+ * Last Modified: Friday, 7th July 2023 3:50:03 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -31,13 +31,19 @@ export const formatNotionContent = (content, setTitle) => {
         numberedListItem: "numbered_list_item",
         bold: "bold",
         code: "code",
+        image: "image", // New type for images
         default: "default",
     }
 
     const formattedContent = content.reduce((result, item, index) => {
         const { type, content } = item;
-
-        const text = content.join("");
+        let text = "";
+        if (type !== WORD_TYPE.image) {
+            text = content.join("");
+        }
+        else {
+            text = content;
+        }
         const id = setTitle + text;
 
         // Store heading information
@@ -48,6 +54,10 @@ export const formatNotionContent = (content, setTitle) => {
         const generateRandomKey = () => Math.floor(Math.random() * index * 1000000);
 
         switch (type) {
+            case WORD_TYPE.image:
+                // Add image element
+                result.push(<img key={"img" + generateRandomKey()} src={text} alt={text} />);
+                break;
             case WORD_TYPE.heading1:
                 // Close <ul> if started before adding a heading
                 if (ulStarted) {
@@ -148,6 +158,7 @@ export const formatNotionContent = (content, setTitle) => {
                     result.push(<p key={generateRandomKey()}>{text}</p>);
                 }
                 break;
+
             default:
                 // Default case for other types (if any)
                 result.push(<p key={generateRandomKey()}>{text}</p>);

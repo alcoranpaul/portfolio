@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 6th July 2023 11:03:28 pm
+ * Last Modified: Friday, 7th July 2023 3:04:01 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,12 +13,15 @@
  */
 
 import { useEffect, useState, useMemo } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import CustomButton from "../button/button.component";
 import TableOfContents from "../tableOfContents/tableOfContents.component";
 import { formatNotionContent } from "../../utils/server/notion.server";
+import { BUTTON_TYPES } from "../button/buttonTypes";
 
+import CustomButton from "../button/button.component";
+import GithubIcon from "../../data/components/button/githubIcon";
+import DemoIcon from "../../data/components/button/demoIcon";
 import {
     ProjectPageContainer,
     BodyContainer,
@@ -31,7 +34,14 @@ import {
 
 
 
-
+const buttonStyle = {
+    width: "80%",
+    margin: "20px 0 0 0",
+    padding: "10px 0",
+    fontSize: "1.2rem",
+    letterSpacing: "1px",
+    borderRadius: "5px",
+};
 
 const ProjectPage = ({ projects }) => {
     const [notionContent, setNotionContent] = useState([]);
@@ -42,6 +52,7 @@ const ProjectPage = ({ projects }) => {
     const [demo, setDemo] = useState("");
     const [github, setGithub] = useState("");
 
+    const navigate = useNavigate();
     const { projectId } = useParams();
     const formattedProjectId = projectId.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
 
@@ -117,22 +128,36 @@ const ProjectPage = ({ projects }) => {
                 overflow: 'hidden',
                 width: '100%'
             }}>
-            <ProjectPageContainer>
+            <ProjectPageContainer >
                 <TableOfContentsContainer>
                     <TableOfContents headings={memoizedFormatNotionContent.headings} />
                 </TableOfContentsContainer>
                 <MainContainer>
                     <h1>{title}</h1>
-                    <p>{description}</p>
+                    <p className="project-page-description">{description}</p>
                     <BodyContainer>{memoizedFormatNotionContent.formattedContent}</BodyContainer>
                 </MainContainer>
-                <div>
-                    <GoBackButton>
+                <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'flex-start',
+                    margin: '0 0 0 10px',
+                    // backgroundColor: 'white',
+                    width: '15%'
+                }}>
+                    <GoBackButton onClick={() => navigate('/projects')}>
                         Go back
                     </GoBackButton>
+                    <CustomButton style={buttonStyle} type={BUTTON_TYPES.GITHUB} linkTo={github}>
+                        <GithubIcon />
+                    </CustomButton>
+                    <CustomButton type={BUTTON_TYPES.DEMO} style={buttonStyle} linkTo={demo}>
+                        <DemoIcon fill={"white"} />
+                    </CustomButton>
                 </div>
             </ProjectPageContainer>
-        </motion.div>
+        </motion.div >
 
     );
 };

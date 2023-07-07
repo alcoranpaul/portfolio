@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 5th July 2023 5:22:43 pm
+ * Last Modified: Thursday, 6th July 2023 11:21:00 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -58,6 +58,10 @@ export const ContentContainer = styled.div`
     .project-title{
         margin-bottom: 10px;
     }    
+
+    ${'' /* .project-description{
+        width: 90%;
+    } */}
 
 `
 export const ProjectItemContainer = styled.div`

@@ -5,20 +5,20 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 12th June 2023 9:50:58 pm
+ * Last Modified: Friday, 7th July 2023 2:43:19 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
-const DemoIcon = () => {
+const DemoIcon = ({ fill }) => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
             width="32"
             height="32"
-            fill="white"
+            fill={fill ? fill : "none"}
             viewBox="0 0 24 24"
         >
             <path
