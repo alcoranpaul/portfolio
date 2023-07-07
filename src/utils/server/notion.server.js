@@ -5,13 +5,19 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 6th July 2023 11:07:01 pm
+ * Last Modified: Thursday, 6th July 2023 11:14:00 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
+/**
+ * Format Notion content to HTML
+ * @param {*} content - Notion content
+ * @param {*} setTitle - Title of the page
+ * @returns 
+ */
 export const formatNotionContent = (content, setTitle) => {
     const headings = [];
     let olStarted = false; // Check if <ol> has been started
