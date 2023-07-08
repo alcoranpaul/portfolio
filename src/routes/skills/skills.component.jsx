@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 4th July 2023 3:41:51 pm
+ * Last Modified: Friday, 7th July 2023 11:38:59 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -47,10 +47,7 @@ const Skills = () => {
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            style={{
-                width: '100%'
-            }}>
+            exit={{ opacity: 0 }}>
 
             <SkillsContainer>
                 <SkillTriangleContainer lg={3} className='skill-triangle-container'>

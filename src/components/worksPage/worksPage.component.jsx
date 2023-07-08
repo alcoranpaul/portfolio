@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 7th July 2023 8:13:37 pm
+ * Last Modified: Friday, 7th July 2023 11:03:57 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -32,8 +32,7 @@ const WorksPage = ({ works }) => {
     const { workID } = useParams();
 
 
-    /**
-     * Formats the content of the Notion page.
+    /**Formats the content of the Notion page.
      * @returns {array} formattedContent - An array containing the formatted content.
      * @returns {array} headings - An array containing the headings.
      */
@@ -55,13 +54,11 @@ const WorksPage = ({ works }) => {
             setRole(work.role);
 
             try { // Try to get the stored content from localStorage
-                const storedContent = localStorage.getItem(`worksPage_${workID}`);
+                const localStorageKey = `worksPage_${workID}`;
+                const storedContent = localStorage.getItem(localStorageKey);
                 if (storedContent) { // If the content is found, set the state
-                    console.log("Found stored content with name ", `worksPage_${workID}`);
                     setNotionContent(JSON.parse(storedContent));
                 } else { // If the content is not found, fetch the content from Notion
-                    console.log("NOT found stored content with name ", `worksPage_${workID}`);
-                    const localStorageKey = `worksPage_${workID}`;
                     fetchNotionPageContent(localStorageKey, work.notionId, (data) => setNotionContent(data));
                 }
             }

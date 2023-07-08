@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 5th July 2023 12:21:05 am
+ * Last Modified: Friday, 7th July 2023 11:27:40 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -21,19 +21,6 @@ export const DatabasePageContainer = styled.div`
     padding: 20px 0;
     margin: 20px auto;
            
-    ::-webkit-scrollbar {
-        width: 10px;
-    }
 
-    ::-webkit-scrollbar-thumb {
-        background-color: var(--color-accent);
-        border-radius: 4px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background-color: rgba(0, 0, 0, 0.1);
-        border-radius: 4px;
-    }
-    
  
 `

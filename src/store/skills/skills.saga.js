@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 5th July 2023 6:03:25 pm
+ * Last Modified: Saturday, 8th July 2023 12:01:04 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -84,7 +84,7 @@ export function* onRefreshSkills() {
  * @function
  */
 export function* onFetchSkills() {
-    yield takeLatest(SKILLS_ACTION_TYPE.FETCH_SKILLS_START, fetchSkillsAsync);
+    yield takeLatest(SKILLS_ACTION_TYPE.FETCH_SKILLS_START, checkSkillsExist);
 }
 
 /**

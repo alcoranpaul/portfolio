@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 4th July 2023 5:21:46 pm
+ * Last Modified: Friday, 7th July 2023 11:56:19 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -14,7 +14,6 @@
 
 import TechTitle from "../techTitle/techTitle.component";
 import TechIcons from "../techIcon/techIcons.component";
-import { useEffect } from "react";
 
 
 const TechSkill = ({ name, items, wrap }) => {

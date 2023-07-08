@@ -11,6 +11,7 @@ import Education from './routes/education/education.component';
 import Skills from './routes/skills/skills.component';
 import Work from './routes/work/work.component';
 import Admin from './routes/admin/admin.component';
+import WebsitePlan from './routes/websitePlan/websitePlan.component';
 
 import ParticleBG from './components/particleBG/particleBG';
 import { LocalStorageTitles } from './utils/server/notion.server';
@@ -47,6 +48,7 @@ function App() {
           <Route path='contact' element={<Contact />} key="contact" />
           <Route path='about' element={<About />} key="about" />
           <Route path='admin' element={<Admin />} key="admin" />
+          <Route path='websitePlan' element={<WebsitePlan />} key="websitePlan" />
         </Route>
       </Routes>
       <ParticleBG />

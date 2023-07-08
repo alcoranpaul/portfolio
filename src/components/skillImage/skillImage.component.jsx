@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 4th July 2023 3:20:11 pm
+ * Last Modified: Friday, 7th July 2023 11:51:02 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,7 +13,6 @@
  */
 
 import { useState, useEffect } from 'react';
-import { Blurhash } from 'react-blurhash';
 
 import { IconImage } from './skillImage.styles';
 const SkillImage = ({ src, alt }) => {
@@ -28,10 +27,13 @@ const SkillImage = ({ src, alt }) => {
     }, [src]);
 
     return (
-        <IconImage
-
-            src={src} alt={alt}
-        />
+        <>
+            {imageLoaded ? (<IconImage
+                src={src} alt={alt}
+            />
+            ) :
+                (<p>Loading</p>)}
+        </>
     )
 }
 

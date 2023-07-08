@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 7th July 2023 8:13:23 pm
+ * Last Modified: Friday, 7th July 2023 11:03:53 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -27,7 +27,8 @@ import {
     BodyContainer,
     MainContainer,
     TableOfContentsContainer,
-    GoBackButton
+    GoBackButton,
+    ButtonContainer
 } from "./projectPage.styles";
 
 
@@ -53,8 +54,7 @@ const ProjectPage = ({ projects }) => {
     const formattedProjectId = projectId.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
 
 
-    /**
-     * Formats the content of the Notion page.
+    /**Formats the content of the Notion page.
      * @returns {array} formattedContent - An array containing the formatted content.
      * @returns {array} headings - An array containing the headings.
      */
@@ -64,11 +64,10 @@ const ProjectPage = ({ projects }) => {
         return formatNotionContent(notionContent, title);
     }, [notionContent, title]);
 
+
     useEffect(() => {
         const projectKeys = Object.keys(projects);
         const foundProject = projectKeys.find(key => key === formattedProjectId);
-        console.log(title)
-        console.log(formattedProjectId)
         if (foundProject) { // If the project is found in the projects object, set the state
             const project = projects[foundProject];
             setTitle(project.title);
@@ -77,14 +76,11 @@ const ProjectPage = ({ projects }) => {
             setGithub(project.github);
 
             try { // Try to get the stored content from localStorage
-                const storedContent = localStorage.getItem(`projectPage_${project.title}`);
+                const localStorageKey = `projectPage_${project.title}`;
+                const storedContent = localStorage.getItem(localStorageKey);
                 if (storedContent) { // If the content is found, set the state
-                    console.log("Found stored content with name ", `projectPage_${project.title}`);
                     setNotionContent(JSON.parse(storedContent));
                 } else { // If the content is not found, fetch the content from Notion
-                    console.log("NOT found stored content with name ", `projectPage_${project.title}`);
-                    console.log("Notion ID: ", project.notionId);
-                    const localStorageKey = `projectPage_${project.title}`;
                     fetchNotionPageContent(localStorageKey, project.notionId, (data) => setNotionContent(data));
                 }
             }
@@ -104,34 +100,53 @@ const ProjectPage = ({ projects }) => {
                 overflow: 'hidden',
                 width: '100%'
             }}>
-            <ProjectPageContainer >
+            <ProjectPageContainer>
                 <TableOfContentsContainer>
-                    <TableOfContents headings={memoizedFormatNotionContent.headings} />
+                    {notionContent.length > 0
+                        ? (
+                            <TableOfContents headings={memoizedFormatNotionContent.headings} />)
+                        :
+                        (<p>
+                            Loading...
+                        </p>)
+                    }
                 </TableOfContentsContainer>
                 <MainContainer>
-                    <h1>{title}</h1>
-                    <p className="project-page-description">{description}</p>
-                    <BodyContainer>{memoizedFormatNotionContent.formattedContent}</BodyContainer>
+                    {notionContent.length > 0
+                        ? (
+                            <>
+                                <h1>{title}</h1>
+                                <p className="project-page-description">{description}</p>
+                                <BodyContainer>{memoizedFormatNotionContent.formattedContent}</BodyContainer>
+                            </>
+                        )
+                        :
+                        (<p>
+                            Loading...
+                        </p>)
+                    }
                 </MainContainer>
-                <div style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'flex-start',
-                    margin: '0 0 0 10px',
-                    // backgroundColor: 'white',
-                    width: '15%'
-                }}>
-                    <GoBackButton onClick={() => navigate('/projects')}>
-                        Go back
-                    </GoBackButton>
-                    <CustomButton style={buttonStyle} type={BUTTON_TYPES.GITHUB} linkTo={github}>
-                        <GithubIcon />
-                    </CustomButton>
-                    <CustomButton type={BUTTON_TYPES.DEMO} style={buttonStyle} linkTo={demo}>
-                        <DemoIcon fill={"white"} />
-                    </CustomButton>
-                </div>
+                <ButtonContainer>
+                    {notionContent.length > 0
+                        ? (
+                            <>
+                                <GoBackButton onClick={() => navigate('/projects')}>
+                                    Go back
+                                </GoBackButton>
+                                <CustomButton style={buttonStyle} type={BUTTON_TYPES.GITHUB} linkTo={github}>
+                                    <GithubIcon />
+                                </CustomButton>
+                                <CustomButton type={BUTTON_TYPES.DEMO} style={buttonStyle} linkTo={demo}>
+                                    <DemoIcon fill={"white"} />
+                                </CustomButton>
+                            </>
+                        )
+                        :
+                        (<p>
+                            Loading...
+                        </p>)
+                    }
+                </ButtonContainer>
             </ProjectPageContainer>
         </motion.div>
 

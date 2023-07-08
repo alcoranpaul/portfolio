@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 3rd July 2023 11:46:55 pm
+ * Last Modified: Friday, 7th July 2023 11:45:14 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -15,9 +15,9 @@
 import styled from 'styled-components';
 
 export const SkillsContainer = styled.div`
-
-    max-width: 100vw;
+    width: 68vw;
     height: 95vh;
+    max-width: 90vw;
     display: flex;
     flex-direction: row;
 `
@@ -26,8 +26,9 @@ export const SkillsContainer = styled.div`
 
 export const SkillContentContainer = styled.div`
     height: 100%;
-    margin-left: 5px;
-    width: 73%;
+    margin: 0 0 0 5px;
+    width: 100%;
+    
 `
 export const SkillTriangleContainer = styled.div`
     height: 100%;

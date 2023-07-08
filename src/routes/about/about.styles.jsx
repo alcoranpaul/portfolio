@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 7th July 2023 7:50:22 pm
+ * Last Modified: Friday, 7th July 2023 11:27:40 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -22,18 +22,5 @@ export const AboutContainer = styled(motion.div)`
     overflow-y: scroll;
     height: 95vh;
 
-    ::-webkit-scrollbar {
-        width: 5px;
-        
-    }
 
-    ::-webkit-scrollbar-thumb {
-        background-color: var(--color-accent);
-        border-radius: 4px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background-color: rgba(0, 0, 0, 0.1);
-        border-radius: 4px;
-    }
 `

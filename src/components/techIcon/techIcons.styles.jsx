@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 4th July 2023 5:27:47 pm
+ * Last Modified: Friday, 7th July 2023 11:48:00 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -22,13 +22,13 @@ export const IconsContainer = styled.div`
   user-select: none;
 
   ${(props) =>
-        props.numOfName === 1
-            ? css`
+    props.numOfName === 1
+      ? css`
             white-space: pre-wrap;
          
 
         `
-            : css`
+      : css`
             overflow-x: scroll;
             overflow-y: hidden;
         `}
@@ -47,11 +47,11 @@ export const IconsContainer = styled.div`
 export const IconsWrapper = styled.div`
   display: flex;
   ${(props) =>
-        props.numOfName === 1
-            ? css`
+    props.numOfName === 1
+      ? css`
           flex-wrap: wrap;
         `
-            : css`
+      : css`
           flex-wrap: nowrap;
        
           
@@ -91,7 +91,7 @@ export const IconImage = styled.img`
     height: 70px;
     object-fit: cover;
     object-position: center;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s ease;
     &:hover {
         transform: scale(1.2);
     }
