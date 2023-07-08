@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 4th July 2023 3:42:50 pm
+ * Last Modified: Saturday, 8th July 2023 12:14:23 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -15,7 +15,6 @@
 import { SkillTriangleContainer, Title, VisualContainer, SorterContainer } from "./skillTriangle.styles"
 import RadarGraph from "../radarGraph/radarGraph"
 import DropdownButton from "../dropdownBtn/dropdownBtn.component"
-import SearchBar from "../searchBar/searchBar.component";
 
 const skillLevels = ['Foundation', 'Comfortable', 'Proficient', 'Interested', '-'];
 
@@ -34,8 +33,7 @@ const SkillTriangle = ({ onSelectCategory, onSelectSkillLevel, skills }) => {
             </VisualContainer>
 
             <SorterContainer>
-                <SearchBar />
-                <br />
+
                 <DropdownButton categories={skillName} onSelectCategory={onSelectCategory} />
                 <br />
                 <DropdownButton categories={skillLevels} onSelectCategory={onSelectSkillLevel} />

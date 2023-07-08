@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 7th July 2023 11:38:59 pm
+ * Last Modified: Saturday, 8th July 2023 12:16:30 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -32,6 +32,7 @@ const Skills = () => {
 
     useEffect(() => {
         dispatch(fetchSkillsStart())
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const handleSelectCategory = (selectedCategory) => {
