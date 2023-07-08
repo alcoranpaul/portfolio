@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 6th July 2023 11:21:00 pm
+ * Last Modified: Friday, 7th July 2023 8:03:49 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -59,10 +59,6 @@ export const ContentContainer = styled.div`
         margin-bottom: 10px;
     }    
 
-    ${'' /* .project-description{
-        width: 90%;
-    } */}
-
 `
 export const ProjectItemContainer = styled.div`
     position: relative;
@@ -72,8 +68,6 @@ export const ProjectItemContainer = styled.div`
     display: flex;
     flex-direction: column;
 
-
-  
     ${({ clicked }) => clicked ?
         `
         ${ContentContainer} {
@@ -85,15 +79,11 @@ export const ProjectItemContainer = styled.div`
                 text-shadow: 2px 0 var(--color-background), 0 2px var(--color-background),0 0px var(--color-background), 2px 0 var(--color-background), 0 2px var(--color-background);
                 background-color: rgba(0, 0, 0, 0.5);
                 transition: text-shadow 0.5s ease, background-color 0.5s ease;
-            }
-
-
-           
+            }           
         }
         ${BackgroundImage} {
             filter: brightness(90%);
             background-size: 1600px 900px;
-
         }
         
     `:

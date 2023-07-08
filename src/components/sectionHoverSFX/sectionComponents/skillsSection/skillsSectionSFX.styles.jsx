@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 27th June 2023 2:50:12 pm
+ * Last Modified: Friday, 7th July 2023 8:06:45 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -39,7 +39,6 @@ export const Container = styled.div`
   z-index: -12; /* Set a lower z-index to place it behind everything */
   height: 100%;
   width: 100%;
-
   cursor: pointer;
   user-select: none;
 `;
@@ -54,11 +53,8 @@ export const WordCloud = styled.div`
   height: 100%;
   width: 100%;
   font-size: 300px;
-
   display: block;
 
-
-  
   span {
     display: block;
     text-align: center;

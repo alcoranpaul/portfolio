@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 7th July 2023 6:16:03 pm
+ * Last Modified: Friday, 7th July 2023 8:07:28 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -34,7 +34,6 @@ const WorkContent = ({ works }) => {
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
-
                 padding: '20px 0px 20px 0px',
 
             }}>

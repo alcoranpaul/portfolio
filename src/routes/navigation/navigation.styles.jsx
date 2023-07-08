@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 5th July 2023 12:09:26 am
+ * Last Modified: Friday, 7th July 2023 7:44:55 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -25,6 +25,7 @@ export const SidebarContainer = styled.div`
   height: 100vh;
   display: flex;
   width: 150px;
+
 `;
 
 export const Sidebar = styled(Navbar)`
@@ -47,7 +48,7 @@ export const Sidebar = styled(Navbar)`
 export const ContentContainer = styled(motion.div)`
   width: 100%;
   padding: 20px;
-  overflow: hidden;
+  
 `;
 
 

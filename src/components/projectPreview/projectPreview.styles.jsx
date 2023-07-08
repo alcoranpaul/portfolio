@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Saturday, 1st July 2023 10:13:13 pm
+ * Last Modified: Friday, 7th July 2023 8:04:13 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -68,7 +68,6 @@ export const Arrow = styled.svg`
 
 export const ProjectsPreviewContainer = styled(Row)`
     height: 100%;
-
     padding-left: 0px;
     padding-right: 0px;
 `
@@ -83,13 +82,9 @@ const fade = keyframes`
   }
 `;
 export const ProjectContainer = styled(Col)`
-
     height: 100%; /* Adjust the height to fill the entire column */
     display: flex;
-
-
     padding: 50px 0px 0px 0px;
-
     transition: width 0.5s ease-in-out, opacity 0.5s ease-in-out; // Add transition for width and opacity
 
     &.fade-in {

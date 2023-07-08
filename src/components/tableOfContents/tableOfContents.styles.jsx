@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 7th July 2023 7:18:03 pm
+ * Last Modified: Friday, 7th July 2023 8:06:45 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -16,7 +16,6 @@ import styled from "styled-components";
 
 
 export const TableOfContentsItem = styled.li`
-
     margin-left: ${({ type }) => (type === "heading_2" ? "20px" : "0")};
     cursor: pointer;
     list-style-type: none;
@@ -26,7 +25,6 @@ export const TableOfContentsItem = styled.li`
     padding-bottom: 10px;
     userSelect: none;
     
-
     transition: all 0.2s ease-in-out;
     &:hover {
         color: var(--color-text);

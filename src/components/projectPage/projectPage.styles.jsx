@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 7th July 2023 7:18:44 pm
+ * Last Modified: Friday, 7th July 2023 8:04:14 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -18,7 +18,6 @@ export const ProjectPageContainer = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    
     overflow: hidden;
     height: 95vh;
 
@@ -30,8 +29,6 @@ export const MainContainer = styled.div`
     align-items: center;
     width: 60%;
     max-width: 1200px;
-
-
     justify-content: center;
 
     .project-page-description{
@@ -56,8 +53,6 @@ export const TableOfContentsContainer = styled.div`
 
 
 export const BodyContainer = styled.div`
-    
-
 padding: 10px;
 margin: 20px;
     overflow: auto;
@@ -85,8 +80,6 @@ margin: 20px;
         justify-content: center;
         margin: 0 auto;
         margin-bottom: 20px;
-        ${'' /* height: 250px; */}
-        ${'' /* width: 600px; */}
         border-radius: 10px;
         
     }
