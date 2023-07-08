@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 5th July 2023 4:56:46 pm
+ * Last Modified: Friday, 7th July 2023 6:46:17 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -15,6 +15,7 @@
 import { useState, useEffect } from 'react';
 import { Blurhash } from 'react-blurhash';
 import { Card, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import {
     WorkItemContainer, LeftContainer,
@@ -25,6 +26,8 @@ import {
 
 const WorkItem = ({ title, imgURL, role, description, date, blurHash, tech }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
+    const workID = title.match(/[A-Z]/g)?.join('');
+
     useEffect(() => {
         const img = new Image();
         img.onload = () => setImageLoaded(true);
@@ -59,6 +62,7 @@ const WorkItem = ({ title, imgURL, role, description, date, blurHash, tech }) =>
                             />)}
                         </ImageContainer>
                         <TechContainer>
+
                             {
                                 tech && (
                                     <span className="work-tech"
@@ -68,9 +72,11 @@ const WorkItem = ({ title, imgURL, role, description, date, blurHash, tech }) =>
                                     >{tech.join(' || ')}</span>
                                 )
                             }
+
                             <span className="work-date">{date}</span>
-                            <button className='work-full-page-btn'>View Full Page</button>
+                            <Link className='work-full-page-btn' to={workID}>View Full Page</Link>
                         </TechContainer>
+
                     </LeftContainer>
                     <RightContainer xs={12} md={7}>
                         <Card.Title
@@ -96,13 +102,6 @@ const WorkItem = ({ title, imgURL, role, description, date, blurHash, tech }) =>
                         </Card.Title>
                         <Card.Text
                             className="work-description"
-                            style={{
-                                backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                                width: '100%',
-                                height: '90%',
-                                padding: '10px',
-                                borderRadius: '5px 10px 5px 10px',
-                            }}
                         >
                             {description.split('\n').map((line, index) => (
                                 <span key={index}>

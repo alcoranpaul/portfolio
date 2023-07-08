@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 7th July 2023 3:50:03 pm
+ * Last Modified: Friday, 7th July 2023 6:54:34 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -181,3 +181,23 @@ export const formatNotionContent = (content, setTitle) => {
 
     return { formattedContent, headings };
 };
+
+/**
+ * Fetches the content of the Notion page using the Notion API.
+ */
+export const fetchNotionPageContent = async (title, notionID, additionalCallbacks) => {
+    console.log("Fetching content");
+    // const response = await fetch('http://localhost:3000/', {
+    const response = await fetch('https://portfolio-server-jisj.onrender.com/', {
+        method: 'get',
+        headers: {
+            'Content-Type': 'application/json',
+            'Notion-Version': '2022-02-22',
+            'id': notionID,
+            'page_size': 100
+        }
+    });
+    const data = await response.json();
+    localStorage.setItem(`worksPage_${title}`, JSON.stringify(data));
+    additionalCallbacks(data);
+}

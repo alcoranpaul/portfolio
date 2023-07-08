@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 4th July 2023 1:24:28 pm
+ * Last Modified: Friday, 7th July 2023 6:35:05 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -14,12 +14,13 @@
 
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { motion } from 'framer-motion';
+import { Routes, Route } from 'react-router-dom';
 
 import { fetchWorksStart } from '../../store/works/works.action';
 import { selectWorks } from '../../store/works/works.selector';
 
 import WorkContent from '../../components/workContent/workContent.component';
+import WorksPage from '../../components/worksPage/worksPage.component';
 
 const Work = () => {
     const dispatch = useDispatch();
@@ -28,30 +29,16 @@ const Work = () => {
 
     useEffect(() => {
         dispatch(fetchWorksStart())
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 
     return (
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            style={{
-                overflow: 'hidden',
-                width: '100%',
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
 
-                padding: '20px 0px 20px 0px',
-
-            }}>
-
-            <WorkContent works={works} />
-        </motion.div>
+        <Routes>
+            <Route index element={<WorkContent works={works} />} key="worksContent" />
+            <Route path=":workID" element={<WorksPage works={works} />} key="workPage" />
+        </Routes>
 
 
 

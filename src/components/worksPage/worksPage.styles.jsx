@@ -1,11 +1,11 @@
 /*
- * File: projectPage.styles.jsx
+ * File: worksPage.styles.jsx
  * Project: portfolio
- * File Created: Thursday, 6th July 2023 6:41:13 pm
+ * File Created: Friday, 7th July 2023 5:23:55 pm
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 7th July 2023 7:18:44 pm
+ * Last Modified: Friday, 7th July 2023 7:18:25 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -14,14 +14,14 @@
 
 import styled from "styled-components";
 
-export const ProjectPageContainer = styled.div` 
+export const WorkPageContainer = styled.div` 
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     
     overflow: hidden;
     height: 95vh;
-
+    
 `;
 
 export const MainContainer = styled.div`
@@ -30,20 +30,35 @@ export const MainContainer = styled.div`
     align-items: center;
     width: 60%;
     max-width: 1200px;
-
-
     justify-content: center;
 
-    .project-page-description{
-        width: 70%;
-        color: var(--color-description);
-        font-size: 1.1rem;
-        text-align: center;
-        
-    }
+    .work-page-details{
+
+    width: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+            align-items: center;
+
+        .work-page-details-heading{
+            color: var(--color-accent);
+        }
+        .work-page-date{
+    
+        }
+
+        .work-page-tech{
+            ${'' /* background-color: lime; */}
+        }
+        .work-page-role{
+            ${'' /* background-color: blueviolet; */}
+        }
+    }   
+   
 `;
 
 export const TableOfContentsContainer = styled.div`
+
     flex-shrink:5;
     padding: 20px;
     width: 22%;
@@ -53,8 +68,6 @@ export const TableOfContentsContainer = styled.div`
     border: 1px solid rgba(255,255,255, 0.1);
 
 `
-
-
 export const BodyContainer = styled.div`
     
 
@@ -115,7 +128,10 @@ margin: 20px;
 `
 
 export const GoBackButton = styled.button`
-    width: 80%;
+    position: absolute;
+    top: 0;
+    right: 50px;
+    width: 15%;
     margin: 20px 0 0 0;
     padding: 10px 0;
     font-size: 1.2rem;

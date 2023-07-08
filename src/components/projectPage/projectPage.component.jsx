@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 7th July 2023 3:04:01 pm
+ * Last Modified: Friday, 7th July 2023 6:38:45 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -16,7 +16,7 @@ import { useEffect, useState, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import TableOfContents from "../tableOfContents/tableOfContents.component";
-import { formatNotionContent } from "../../utils/server/notion.server";
+import { formatNotionContent, fetchNotionPageContent } from "../../utils/server/notion.server";
 import { BUTTON_TYPES } from "../button/buttonTypes";
 
 import CustomButton from "../button/button.component";
@@ -29,8 +29,6 @@ import {
     TableOfContentsContainer,
     GoBackButton
 } from "./projectPage.styles";
-
-
 
 
 
@@ -47,8 +45,6 @@ const ProjectPage = ({ projects }) => {
     const [notionContent, setNotionContent] = useState([]);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [imgUrl, setImgUrl] = useState("");
-    const [blurHash, setBlurHash] = useState("");
     const [demo, setDemo] = useState("");
     const [github, setGithub] = useState("");
 
@@ -56,26 +52,6 @@ const ProjectPage = ({ projects }) => {
     const { projectId } = useParams();
     const formattedProjectId = projectId.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
 
-    /**
-     * Fetches the content of the Notion page using the Notion API.
-     */
-    const fetchNotionPageContent = async (title, notionID) => {
-        console.log("Fetching content");
-        // const response = await fetch('http://localhost:3000/', {
-        const response = await fetch('https://portfolio-server-jisj.onrender.com/', {
-            method: 'get',
-            headers: {
-                'Content-Type': 'application/json',
-                'Notion-Version': '2022-02-22',
-                'id': notionID,
-                'page_size': 100
-            }
-        });
-        const data = await response.json();
-        setNotionContent(data);
-
-        localStorage.setItem(`projectPage_${title}`, JSON.stringify(data));
-    };
 
     /**
      * Formats the content of the Notion page.
@@ -91,13 +67,12 @@ const ProjectPage = ({ projects }) => {
     useEffect(() => {
         const projectKeys = Object.keys(projects);
         const foundProject = projectKeys.find(key => key === formattedProjectId);
-
+        console.log(title)
+        console.log(formattedProjectId)
         if (foundProject) { // If the project is found in the projects object, set the state
             const project = projects[foundProject];
             setTitle(project.title);
             setDescription(project.description);
-            setImgUrl(project.imgURL);
-            setBlurHash(project.blurHash);
             setDemo(project.demo);
             setGithub(project.github);
 
@@ -109,7 +84,7 @@ const ProjectPage = ({ projects }) => {
                 } else { // If the content is not found, fetch the content from Notion
                     console.log("NOT found stored content with name ", `projectPage_${project.title}`);
                     console.log("Notion ID: ", project.notionId);
-                    fetchNotionPageContent(project.title, project.notionId);
+                    fetchNotionPageContent(project.title, project.notionId, (data) => setNotionContent(data));
                 }
             }
             catch (err) {
@@ -157,7 +132,7 @@ const ProjectPage = ({ projects }) => {
                     </CustomButton>
                 </div>
             </ProjectPageContainer>
-        </motion.div >
+        </motion.div>
 
     );
 };
