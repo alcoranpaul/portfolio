@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 7th July 2023 6:38:45 pm
+ * Last Modified: Friday, 7th July 2023 8:13:23 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -84,7 +84,8 @@ const ProjectPage = ({ projects }) => {
                 } else { // If the content is not found, fetch the content from Notion
                     console.log("NOT found stored content with name ", `projectPage_${project.title}`);
                     console.log("Notion ID: ", project.notionId);
-                    fetchNotionPageContent(project.title, project.notionId, (data) => setNotionContent(data));
+                    const localStorageKey = `projectPage_${project.title}`;
+                    fetchNotionPageContent(localStorageKey, project.notionId, (data) => setNotionContent(data));
                 }
             }
             catch (err) {

@@ -1,4 +1,5 @@
 
+import { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 import Navigation from './routes/navigation/navigation.component';
@@ -12,15 +13,28 @@ import Work from './routes/work/work.component';
 import Admin from './routes/admin/admin.component';
 
 import ParticleBG from './components/particleBG/particleBG';
-import { useEffect } from 'react';
+import { LocalStorageTitles } from './utils/server/notion.server';
 
 
 function App() {
   const location = useLocation();
 
   useEffect(() => {
-    console.log(`App.js running`)
-  }, [])
+    const handleBeforeUnload = (event) => {
+      // event.preventDefault();
+      // const confirmationMessage = 'Leaving this page will lose some persistent.';
+      // event.returnValue = confirmationMessage;
+      LocalStorageTitles.removeObjectsFromLocalStorage();
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
+
+
   return (
     <div>
       <Routes location={location} key={location.pathname}>
