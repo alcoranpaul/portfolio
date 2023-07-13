@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 5th July 2023 3:26:48 pm
+ * Last Modified: Thursday, 13th July 2023 1:56:41 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -60,15 +60,12 @@ const DatabasePage = () => {
             await updateCollection(collectionKey, data);
             switch (collectionKey) {
                 case COLLECTION_TYPE.projects:
-                    console.log('refreshing projects')
                     dispatch(refreshProjects());
                     break;
                 case COLLECTION_TYPE.skills:
-                    console.log('refreshing skills')
                     dispatch(refreshSkills());
                     break;
                 case COLLECTION_TYPE.works:
-                    console.log('refreshing works')
                     dispatch(refreshWorks());
                     break;
                 default:

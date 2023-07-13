@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 30th June 2023 8:38:04 pm
+ * Last Modified: Thursday, 13th July 2023 1:56:41 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * ----- 
@@ -40,7 +40,6 @@ export function* getSnapshot(userAuth, additionalDetails) {
         const cachedUserSnapshot = localStorage.getItem('userSnapshot');
         if (cachedUserSnapshot) {
             userSnapshot = JSON.parse(cachedUserSnapshot);
-            console.log('userSnapshot from local storage', userSnapshot);
         } else {
             // Call the signInAdmin function from firebase.utils to sign in the admin user
             userSnapshot = yield call(signInAdmin, userAuth, additionalDetails);

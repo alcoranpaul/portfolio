@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 7th July 2023 11:25:24 pm
+ * Last Modified: Thursday, 13th July 2023 1:56:41 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -37,7 +37,6 @@ const WebsitePlan = () => {
     useEffect(() => {
         try { // Try to get the stored content from localStorage
             const localStorageKey = `websitePlanPage_${websitePlanID}`;
-            console.log("localStorageKey", localStorageKey)
             const storedContent = localStorage.getItem(`worksPage_${websitePlanID}`);
             if (storedContent) { // If the content is found, set the state
                 setNotionContent(JSON.parse(storedContent));

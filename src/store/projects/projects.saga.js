@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 12th July 2023 11:57:34 pm
+ * Last Modified: Thursday, 13th July 2023 1:56:41 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -28,7 +28,6 @@ import { selectProjectsMap } from './projects.selector';
 
 export function* removeProjectsAsync() {
     try {
-        console.log("Removing Projects...")
         yield put(onRemoveProjectsSuccess())
     }
     catch (error) {

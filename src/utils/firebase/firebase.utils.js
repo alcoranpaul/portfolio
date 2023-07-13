@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 5th July 2023 12:56:29 am
+ * Last Modified: Thursday, 13th July 2023 1:56:41 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -102,7 +102,6 @@ export const createUserDocumentFromAuth = async (userAuth) => {
             throw new AdminAuthError(`Error creating user document: ${error.message}`, 500);
         }
     }
-    console.log("SignIn successful")
 
     return userDocRef;
 }
