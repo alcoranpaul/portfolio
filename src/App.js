@@ -1,6 +1,7 @@
 
 import { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import Navigation from './routes/navigation/navigation.component';
 import Home from './routes/home/home.component';
@@ -15,20 +16,21 @@ import WebsitePlan from './routes/websitePlan/websitePlan.component';
 
 import ParticleBG from './components/particleBG/particleBG';
 import { LocalStorageTitles } from './utils/server/notion.server';
-
+import { dateEvaluationStart } from './store/date/date.action';
 
 function App() {
   const location = useLocation();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const handleBeforeUnload = (event) => {
       // event.preventDefault();
-      // const confirmationMessage = 'Leaving this page will lose some persistent.';
-      // event.returnValue = confirmationMessage;
+      // event.returnValue = '';
       LocalStorageTitles.removeObjectsFromLocalStorage();
     };
 
     window.addEventListener('beforeunload', handleBeforeUnload);
+    dispatch(dateEvaluationStart());
 
     return () => {
       window.removeEventListener('beforeunload', handleBeforeUnload);

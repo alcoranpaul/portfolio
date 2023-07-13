@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 5th July 2023 6:02:56 pm
+ * Last Modified: Wednesday, 12th July 2023 11:57:34 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -15,10 +15,26 @@
 import { takeLatest, put, all, call, select } from 'redux-saga/effects';
 import { getCollection, COLLECTION_TYPE } from '../../utils/firebase/firebase.utils';
 
-import { fetchProjectsSuccess, fetchProjectsFailed } from './projects.action';
+import {
+    fetchProjectsSuccess,
+    fetchProjectsFailed,
+    onRemoveProjectsSuccess,
+    onRemoveProjectsFailed
+} from './projects.action';
+
 import { PROJECTS_ACTION_TYPE } from './projects.types';
 
 import { selectProjectsMap } from './projects.selector';
+
+export function* removeProjectsAsync() {
+    try {
+        console.log("Removing Projects...")
+        yield put(onRemoveProjectsSuccess())
+    }
+    catch (error) {
+        yield put(onRemoveProjectsFailed(error))
+    }
+}
 
 /**
  * Worker saga responsible for fetching projects asynchronously from firebase.
@@ -88,6 +104,10 @@ export function* onFetchProjects() {
     yield takeLatest(PROJECTS_ACTION_TYPE.FETCH_PROJECTS_START, checkProjectsExist);
 }
 
+export function* onRemovedProjects() {
+    yield takeLatest(PROJECTS_ACTION_TYPE.REMOVE_PROJECTS_START, removeProjectsAsync);
+}
+
 /**
  * Root saga that combines all project-related sagas.
  * @generator
@@ -96,5 +116,6 @@ export function* onFetchProjects() {
 export function* projectsSaga() {
     yield all([
         call(onFetchProjects),
-        call(onRefreshProjects)]);
+        call(onRefreshProjects),
+        call(onRemovedProjects)]);
 }

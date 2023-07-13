@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 5th July 2023 2:19:16 pm
+ * Last Modified: Tuesday, 11th July 2023 11:28:33 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -43,3 +43,9 @@ export const fetchSkillsSuccess = (skills) =>
  */
 export const fetchSkillsFailed = (errorMessage) =>
     createAction(SKILLS_ACTION_TYPE.FETCH_SKILLS_FAILED, errorMessage);
+
+
+export const onRemoveSkillsStart = () => createAction(SKILLS_ACTION_TYPE.REMOVE_SKILLS_START);
+export const onRemoveSkillsSuccess = () => createAction(SKILLS_ACTION_TYPE.REMOVE_SKILLS_SUCCESS);
+export const onRemoveSkillsFailed = (errorMessage) =>
+    createAction(SKILLS_ACTION_TYPE.REMOVE_SKILLS_FAILED, errorMessage);

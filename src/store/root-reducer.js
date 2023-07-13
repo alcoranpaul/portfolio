@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Saturday, 1st July 2023 6:13:42 pm
+ * Last Modified: Thursday, 13th July 2023 1:18:08 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -18,6 +18,7 @@ import { projectsReducer } from "./projects/projects.reducer";
 import { adminUserReducer } from "./adminUser/adminUser.reducer";
 import { worksReducer } from "./works/works.reducer";
 import { skillsReducer } from "./skills/skills.reducer";
+import { dateReducer } from "./date/date.reducer";
 
 /**
  * The root reducer of the application.
@@ -28,4 +29,5 @@ export const rootReducer = combineReducers({
     projectsMap: projectsReducer,
     worksMap: worksReducer,
     skillsMap: skillsReducer,
+    date: dateReducer
 })

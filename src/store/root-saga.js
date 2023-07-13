@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Saturday, 1st July 2023 6:13:29 pm
+ * Last Modified: Thursday, 13th July 2023 1:18:06 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -18,6 +18,7 @@ import { adminUserSaga } from './adminUser/adminUser.saga';
 import { projectsSaga } from './projects/projects.saga';
 import { worksSaga } from './works/works.saga';
 import { skillsSaga } from './skills/skills.saga';
+import { dateSaga } from './date/date.saga';
 
 /**
  * Root saga that combines all sagas.
@@ -29,5 +30,6 @@ export function* rootSaga() {
         call(adminUserSaga),
         call(projectsSaga),
         call(worksSaga),
-        call(skillsSaga)]);
+        call(skillsSaga),
+        call(dateSaga)]);
 }

@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 5th July 2023 2:15:09 pm
+ * Last Modified: Tuesday, 11th July 2023 10:41:31 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -17,4 +17,8 @@ export const WORKS_ACTION_TYPE = {
     FETCH_WORKS_SUCCESS: "WORKS/FETCH_WORKS_SUCCESS",
     FETCH_WORKS_FAILED: "WORKS/FETCH_WORKS_FAILED",
     REFRESH_WORKS: "WORKS/REFRESH_WORKS",
+
+    REMOVE_WORKS_START: "WORKS/REMOVE_WORKS_START",
+    REMOVE_WORKS_SUCCESS: "WORKS/REMOVE_WORKS_SUCCESS",
+    REMOVE_WORKS_FAILED: "WORKS/REMOVE_WORKS_FAILED",
 }

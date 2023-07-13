@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 5th July 2023 2:18:11 pm
+ * Last Modified: Wednesday, 12th July 2023 11:57:40 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -35,6 +35,11 @@ export const fetchProjectsStart = () => createAction(PROJECTS_ACTION_TYPE.FETCH_
  * @returns {object} An action object with the type.
  */
 export const refreshProjects = () => createAction(PROJECTS_ACTION_TYPE.REFRESH_PROJECTS);
+
+export const onRemoveProjectsStart = () => createAction(PROJECTS_ACTION_TYPE.REMOVE_PROJECTS_START);
+export const onRemoveProjectsSuccess = () => createAction(PROJECTS_ACTION_TYPE.REMOVE_PROJECTS_SUCCESS);
+export const onRemoveProjectsFailed = (errorMessage) =>
+    createAction(PROJECTS_ACTION_TYPE.REMOVE_PROJECTS_FAILED, errorMessage);
 
 /**
  * Action creator function to handle the fetch projects success action.

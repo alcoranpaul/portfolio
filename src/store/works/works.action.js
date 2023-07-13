@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 5th July 2023 2:19:24 pm
+ * Last Modified: Wednesday, 12th July 2023 11:42:40 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -42,4 +42,10 @@ export const fetchWorksSuccess = (works) =>
  * @returns {object} An action object with the type and payload.
  */
 export const fetchWorksFailed = (errorMessage) =>
+    createAction(WORKS_ACTION_TYPE.FETCH_WORKS_FAILED, errorMessage);
+
+
+export const onRemoveWorksStart = () => createAction(WORKS_ACTION_TYPE.REMOVE_WORKS_START);
+export const onRemoveWorksSuccess = () => createAction(WORKS_ACTION_TYPE.REMOVE_WORKS_SUCCESS);
+export const onRemoveWorksFailed = (errorMessage) =>
     createAction(WORKS_ACTION_TYPE.FETCH_WORKS_FAILED, errorMessage);

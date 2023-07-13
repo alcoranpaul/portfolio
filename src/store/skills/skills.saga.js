@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Saturday, 8th July 2023 12:01:04 am
+ * Last Modified: Wednesday, 12th July 2023 12:17:50 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -15,10 +15,19 @@
 import { takeLatest, put, all, call, select } from 'redux-saga/effects';
 import { getCollection, COLLECTION_TYPE } from '../../utils/firebase/firebase.utils';
 
-import { fetchSkillsSuccess, fetchSkillsFailed } from './skills.action';
+import { fetchSkillsSuccess, fetchSkillsFailed, onRemoveSkillsSuccess, onRemoveSkillsFailed } from './skills.action';
 import { SKILLS_ACTION_TYPE } from './skills.types';
 
 import { selectSkillsMap } from './skills.selector';
+
+export function* removeSkillsAsync() {
+    try {
+        yield put(onRemoveSkillsSuccess());
+    }
+    catch (error) {
+        yield put(onRemoveSkillsFailed(error));
+    }
+}
 
 
 /**
@@ -87,6 +96,10 @@ export function* onFetchSkills() {
     yield takeLatest(SKILLS_ACTION_TYPE.FETCH_SKILLS_START, checkSkillsExist);
 }
 
+export function* onRemoveSkills() {
+    yield takeLatest(SKILLS_ACTION_TYPE.REMOVE_SKILLS_START, removeSkillsAsync);
+}
+
 /**
  * Root saga that combines all project-related sagas.
  * @generator
@@ -95,5 +108,6 @@ export function* onFetchSkills() {
 export function* skillsSaga() {
     yield all([
         call(onFetchSkills),
-        call(onRefreshSkills),]);
+        call(onRefreshSkills),
+        call(onRemoveSkills)]);
 }

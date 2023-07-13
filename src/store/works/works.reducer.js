@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Saturday, 1st July 2023 9:23:08 pm
+ * Last Modified: Wednesday, 12th July 2023 11:44:02 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -33,6 +33,7 @@ const INITIAL_STATE = {
 export const worksReducer = (state = INITIAL_STATE, action = {}) => {
     const { type, payload } = action;
     switch (type) {
+        case WORKS_ACTION_TYPE.REMOVE_WORKS_START:
         case WORKS_ACTION_TYPE.FETCH_WORKS_START:
             return {
                 ...state,
@@ -44,6 +45,13 @@ export const worksReducer = (state = INITIAL_STATE, action = {}) => {
                 isLoading: false,
                 works: payload,
             };
+        case WORKS_ACTION_TYPE.REMOVE_WORKS_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                works: {}
+            }
+        case WORKS_ACTION_TYPE.REMOVE_WORKS_FAILED:
         case WORKS_ACTION_TYPE.FETCH_WORKS_FAILED:
             return {
                 ...state,

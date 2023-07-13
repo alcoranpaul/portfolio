@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 5th July 2023 1:07:32 am
+ * Last Modified: Tuesday, 11th July 2023 10:39:52 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -18,4 +18,8 @@ export const PROJECTS_ACTION_TYPE = {
     FETCH_PROJECTS_SUCCESS: "projects/FETCH_PROJECTS_SUCCESS",
     FETCH_PROJECTS_FAILED: "projects/FETCH_PROJECTS_FAILED",
     REFRESH_PROJECTS: "projects/REFRESH_PROJECTS",
+
+    REMOVE_PROJECTS_START: "projects/REMOVE_PROJECTS_START",
+    REMOVE_PROJECTS_SUCCESS: "projects/REMOVE_PROJECTS_SUCCESS",
+    REMOVE_PROJECTS_FAILED: "projects/REMOVE_PROJECTS_FAILED",
 }

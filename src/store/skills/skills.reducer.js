@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Saturday, 1st July 2023 3:40:00 pm
+ * Last Modified: Tuesday, 11th July 2023 11:29:15 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -33,6 +33,7 @@ const INITIAL_STATE = {
 export const skillsReducer = (state = INITIAL_STATE, action = {}) => {
     const { type, payload } = action;
     switch (type) {
+        case SKILLS_ACTION_TYPE.REMOVE_SKILLS_START:
         case SKILLS_ACTION_TYPE.FETCH_SKILLS_START:
             return {
                 ...state,
@@ -44,6 +45,13 @@ export const skillsReducer = (state = INITIAL_STATE, action = {}) => {
                 isLoading: false,
                 skills: payload,
             };
+        case SKILLS_ACTION_TYPE.REMOVE_SKILLS_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                skills: {}
+            }
+        case SKILLS_ACTION_TYPE.REMOVE_SKILLS_FAILED:
         case SKILLS_ACTION_TYPE.FETCH_SKILLS_FAILED:
             return {
                 ...state,

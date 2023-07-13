@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 30th June 2023 8:37:39 pm
+ * Last Modified: Tuesday, 11th July 2023 11:20:34 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -33,6 +33,7 @@ const INITIAL_STATE = {
 export const projectsReducer = (state = INITIAL_STATE, action = {}) => {
     const { type, payload } = action;
     switch (type) {
+        case PROJECTS_ACTION_TYPE.REMOVE_PROJECTS_START:
         case PROJECTS_ACTION_TYPE.FETCH_PROJECTS_START:
             return {
                 ...state,
@@ -44,6 +45,13 @@ export const projectsReducer = (state = INITIAL_STATE, action = {}) => {
                 isLoading: false,
                 projects: payload,
             };
+        case PROJECTS_ACTION_TYPE.REMOVE_PROJECTS_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                projects: {}
+            }
+        case PROJECTS_ACTION_TYPE.REMOVE_PROJECTS_FAILED:
         case PROJECTS_ACTION_TYPE.FETCH_PROJECTS_FAILED:
             return {
                 ...state,

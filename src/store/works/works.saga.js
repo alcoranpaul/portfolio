@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 5th July 2023 6:03:24 pm
+ * Last Modified: Wednesday, 12th July 2023 11:46:01 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -15,10 +15,24 @@
 import { takeLatest, put, all, call, select } from 'redux-saga/effects';
 import { getCollection, COLLECTION_TYPE } from '../../utils/firebase/firebase.utils';
 
-import { fetchWorksSuccess, fetchWorksFailed } from './works.action';
+import {
+    fetchWorksSuccess,
+    fetchWorksFailed,
+    onRemoveWorksSuccess,
+    onRemoveWorksFailed
+} from './works.action';
 import { WORKS_ACTION_TYPE } from './works.types';
 
 import { selectWorksMap } from './works.selector';
+
+export function* removeWorksAsync() {
+    try {
+        yield put(onRemoveWorksSuccess());
+    }
+    catch (error) {
+        yield put(onRemoveWorksFailed(error));
+    }
+}
 
 /**
  * Worker saga responsible for fetching works asynchronously from firebase.
@@ -85,6 +99,11 @@ export function* onFetchWorks() {
     yield takeLatest(WORKS_ACTION_TYPE.FETCH_WORKS_START, checkWorksExist);
 }
 
+export function* onRemoveWorks() {
+    yield takeLatest(WORKS_ACTION_TYPE.REMOVE_WORKS_START, removeWorksAsync);
+}
+
+
 /**
  * Root saga that combines all work-related sagas.
  * @generator
@@ -93,5 +112,6 @@ export function* onFetchWorks() {
 export function* worksSaga() {
     yield all([
         call(onFetchWorks),
-        call(onRefreshWorks)]);
+        call(onRefreshWorks),
+        call(onRemoveWorks)]);
 }
