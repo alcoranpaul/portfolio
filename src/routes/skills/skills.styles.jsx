@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Saturday, 8th July 2023 12:16:44 am
+ * Last Modified: Thursday, 13th July 2023 8:21:22 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -15,11 +15,18 @@
 import styled from 'styled-components';
 
 export const SkillsContainer = styled.div`
-    width: 69vw;
+ 
     height: 95vh;
     max-width: 90vw;
     display: flex;
     flex-direction: row;
+
+    @media (max-width: 1999px) {
+        width: 67vw;
+    }
+    @media (min-width: 2000px) {
+        width: 90vw;
+    }
 `
 
 

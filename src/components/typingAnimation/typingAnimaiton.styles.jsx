@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 7th July 2023 8:06:45 pm
+ * Last Modified: Thursday, 13th July 2023 8:26:54 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -29,9 +29,9 @@ export const StyledParagraph = styled(motion.p)`
   &::after {
     content: '';
     position: absolute;
-    width: 2px;
+    width:  ${({ $showVerticalCursor }) => ($showVerticalCursor ? '2px' : '0px')};
     height: 50px;
-    background-color: ${({ $showVerticalCursor, ...props }) => ($showVerticalCursor ? 'white' : 'black')};
+    background-color: ${({ $showVerticalCursor }) => ($showVerticalCursor ? 'white' : 'black')};
 
     animation: ${({ $showVerticalCursor }) => ($showVerticalCursor ? 'cursorAnimation 1s infinite' : 'none')};
   }

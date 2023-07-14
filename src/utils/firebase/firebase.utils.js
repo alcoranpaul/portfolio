@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 13th July 2023 1:56:41 pm
+ * Last Modified: Thursday, 13th July 2023 8:27:37 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -49,6 +49,7 @@ const firebaseConfig = {
 //************************************************************************************************//
 
 // Initialize Firebase
+// eslint-disable-next-line
 const firebaseApp = initializeApp(firebaseConfig);
 
 const provider = new GoogleAuthProvider();
