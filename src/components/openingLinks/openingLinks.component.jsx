@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Sunday, 2nd July 2023 10:07:01 pm
+ * Last Modified: Thursday, 13th July 2023 10:57:53 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -19,7 +19,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Observer from '../../utils/observers/observer';
 import SectionHoverSFX from '../sectionHoverSFX/sectionHoverSFX.component';
-import { OpeningLinksContainer, CardNavLink } from './openingLinks.styles'
+import { OpeningLinksContainer, CardNavLink, CardIndividual } from './openingLinks.styles'
 
 const cardVariants = {
     hidden: { opacity: 0, y: 100 },
@@ -62,16 +62,14 @@ const OpeningLinks = ({ showCards }) => {
                     <CardGroup>
 
                         {['Projects', 'Skills', 'Contact', 'About'].map((title, index) => (
-                            <motion.div
+                            <CardIndividual
                                 key={index}
                                 variants={cardVariants}
                                 initial={showCards ? "hidden" : "none"}
                                 animate={showCards ? "visible" : "none"}
                                 exit={showCards ? "hidden" : "none"}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                                style={{
-                                    width: '300px', margin: "0px 30px 0px 30px", display: 'flex', justifyContent: 'center', alignItems: 'center', pointerEvents: disabled[index] ? 'none' : 'auto', // Disable pointer events based on disabled state
-                                }}
+                                disabled={disabled[index]}
                             >
                                 <CardNavLink to={title.toLowerCase()} $index={index}
                                     onMouseEnter={() => handleOnHover(index)}
@@ -98,7 +96,7 @@ const OpeningLinks = ({ showCards }) => {
                                     </motion.div>
                                 </CardNavLink>
 
-                            </motion.div>
+                            </CardIndividual>
                         ))
                         }
                     </CardGroup>
