@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 7th July 2023 10:43:09 pm
+ * Last Modified: Thursday, 13th July 2023 9:34:00 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -18,13 +18,17 @@ import { aboutData } from "../../data/about/aboutData";
 import { AboutContainer } from './about.styles';
 
 const About = () => {
+
+    const pfpIMG = process.env.PUBLIC_URL + '/data/pfp.png';
     return (
         <AboutContainer
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}>
-
+            <div className="pfp-container">
+                <img src={pfpIMG} alt="pfp" className="pfp-img" />
+            </div>
             {Object.entries(aboutData).map(([key, section]) => (
                 <SectionCard key={key} title={section.title} body={section.body} />
             ))}

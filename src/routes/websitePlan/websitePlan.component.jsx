@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 13th July 2023 1:56:41 pm
+ * Last Modified: Thursday, 13th July 2023 9:32:35 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -58,7 +58,9 @@ const WebsitePlan = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}>
             <BodyContainer>
-                {memoizedFormatNotionContent.formattedContent}
+                {notionContent.length > 0 ? memoizedFormatNotionContent.formattedContent
+                    :
+                    <div>Loading...</div>}
             </BodyContainer>
             {/* <iframe src="https://v2-embednotion.com/93b7aab9c8a84ca895947a279134fd62?v=018489ff96f54860aedb413aab7093ac&pvs=4" className="notion-embed" title="Notion Embed">
             </iframe> //This is I FRAME from EMBEDNOTION.com*/}
