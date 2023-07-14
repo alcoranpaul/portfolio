@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 7th July 2023 11:34:25 pm
+ * Last Modified: Thursday, 13th July 2023 8:55:29 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -28,12 +28,16 @@ const sidebarVariants = {
 
 const Navigation = ({ location }) => {
 
-
+    const closeUpIMG = process.env.PUBLIC_URL + '/data/closeUp.jpg';
     return (
         <AnimatePresence mode='wait'>
             <div style={{ display: 'flex' }}>
                 {location.pathname !== '/' && (
                     <SidebarContainer>
+
+                        <div className="close-up-icon">
+                            <img src={closeUpIMG} alt="close-up" className='close-up-img' />
+                        </div>
                         <Sidebar id="sidebar">
                             <NavItem to="/">Home</NavItem>
                             <NavItem to="/projects">Projects</NavItem>
