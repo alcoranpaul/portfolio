@@ -5,14 +5,13 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 7th July 2023 2:19:31 pm
+ * Last Modified: Thursday, 13th July 2023 9:44:45 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
-import { useEffect } from "react";
 
 import { TableOfContentsItem, VerticalLine } from './tableOfContents.styles.jsx';
 

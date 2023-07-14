@@ -27,12 +27,19 @@ In this web portfolio, I have created a collection of my projects, highlighting 
 
 ### v1.0.1
 
-- Page Transition
-- Removed Briefcase Icon in Education
-- Revamped Homepage
-    - Removed SideNav during Home route
-    - Added 4 buttons for links
-    - Added Picture
+- Enhanced user experience with the addition of a Resume button.
+- Improved the visual appeal by implementing a hover effect for ButtonLinks.
+- Integrated dynamic data from Firebase, enriching the website's content.
+- Finalized the Project Component, ensuring smooth and consistent presentation.
+- Expanded the library of icons by adding and importing SVG Icons from Imgur.
+- Resolved the issue of skills overflowing, maintaining a neat and organized display.
+- Implemented a full-page view for projects and work items, allowing for a more immersive experience.
+- Added an eye-catching particle background effect to captivate visitors.
+- Addressed and resolved bugs related to page refresh and work functionality.
+- Enhanced performance by implementing reselector, redux-persist, and redux.
+- Created an admin page to provide administrative control and access.
+- Improved the navigation by adding a profile icon for quick access to personal information.
+- Enhanced data security by deleting local storage when the browser is closed.
 
 ### v1.0.0
 

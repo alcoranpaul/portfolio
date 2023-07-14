@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 22nd June 2023 10:28:21 pm
+ * Last Modified: Thursday, 13th July 2023 9:44:45 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -52,6 +52,7 @@ const TypingAnimation = ({ value, className }) => {
       clearTimeout(typingTimeout);
       clearTimeout(startDelay);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const splitTextByTags = (text) => {

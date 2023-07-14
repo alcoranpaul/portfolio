@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 7th July 2023 11:27:40 pm
+ * Last Modified: Thursday, 13th July 2023 9:43:41 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -28,6 +28,7 @@ export const MainContainer = styled.div`
     flex-direction: column;
     align-items: center;
     width: 60%;
+    min-width: 600px;
     max-width: 1200px;
     justify-content: center;
 
@@ -53,9 +54,12 @@ export const TableOfContentsContainer = styled.div`
 
 
 export const BodyContainer = styled.div`
-padding: 10px;
-margin: 20px;
-    overflow: auto;
+
+    padding: 10px;
+    margin: 20px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100%;
     height: 80vh;
     font-size: 1.2rem;
     cursor: default;

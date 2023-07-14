@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 4th July 2023 3:30:11 pm
+ * Last Modified: Thursday, 13th July 2023 9:44:45 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,7 +13,6 @@
  */
 import { SkillContentContainer } from "./skillContent.styles"
 import TechPreview from "../techPreview/techPreview.component"
-import { useEffect } from "react"
 
 const SkillContent = ({ skills, selectedCategory, selectedSkillLevel }) => {
 
