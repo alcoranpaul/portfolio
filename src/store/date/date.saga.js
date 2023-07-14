@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 13th July 2023 1:58:49 pm
+ * Last Modified: Thursday, 13th July 2023 10:46:27 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -91,11 +91,11 @@ export function* dateEvaluationProcess() {
         if (isSavedDateOutsideThreshold) {
             yield put(dateOutsideThreshold())
             yield call(removeLocalStorageProcess)
-            yield call(settingNewDateProcess, currentDate)
         }
         else {
             yield put(dateWithinThreshold())
         }
+        yield call(settingNewDateProcess, currentDate)
         yield put(dateEvaluationSuccess())
     }
     catch (error) {
