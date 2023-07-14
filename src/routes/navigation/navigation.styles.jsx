@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 13th July 2023 8:58:01 pm
+ * Last Modified: Thursday, 13th July 2023 10:11:40 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -24,18 +24,25 @@ export const SidebarContainer = styled.div`
   top: 0;
   height: 100vh;
   display: flex;
-  width: 150px;
+
 
   .close-up-icon {
     width: 140px;
     height: 140px;
     position: absolute;
     top: 55px;
-    left: 5px;
+ 
 
     border-radius: 50%;
     background-color: var(--color-primary);
     z-index: 1000;
+
+    @media (min-width: 1280px) {
+      left: 10px;
+    }
+    @media (min-width: 1840px) {
+      left: 8px;
+    }
   }
 
   .close-up-img {
@@ -51,6 +58,8 @@ export const SidebarContainer = styled.div`
       border-radius: 0%;
     }
   }
+
+
 
 `;
 

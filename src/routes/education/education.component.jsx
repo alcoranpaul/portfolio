@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 4th July 2023 11:04:42 pm
+ * Last Modified: Thursday, 13th July 2023 10:23:18 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -49,7 +49,7 @@ const timelineData = [
         date: '2015',
         title: 'Education in the Philippines',
         description: 'Education: Grade 8\n\nDuring my formative years in the Philippines at La Naval Academy, from childhood until the age of 14 in 2015, I experienced a comprehensive academic environment that fostered my intellectual growth. One standout memory from those years is my engagement with advanced mathematical concepts in grade 8. Exploring topics like the Slope Interval formula prepared me for the challenges of pre-calculus and sparked a lifelong curiosity.\n\nIn pursuit of further educational opportunities and an improved quality of life, my family and I made the decision to immigrate to Canada. This transition marked a significant turning point in my academic journey, opening up new horizons and possibilities for personal and educational growth.\n\nMy time at La Naval Academy provided me with a solid foundation and equipped me with the necessary skills for my academic and professional journey. The dedicated efforts of educators and the stimulating environment nurtured a deep appreciation for learning and set the stage for future successes.',
-        image: "https://imgur.com/P9YdKDW.png"
+        image: "https://imgur.com/AN3EJeP.png"
     }
 ];
 const Education = () => {

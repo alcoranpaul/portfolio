@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 5th July 2023 3:55:18 pm
+ * Last Modified: Thursday, 13th July 2023 10:17:38 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -22,12 +22,18 @@ export const Container = styled.div`
 `;
 
 export const MapAndEmailContainer = styled.div`
+    display: flex;
     width: 100%;
     height: 600px;
-    ${'' /* background-color: var(--color-primary); */}
     margin: 20px 0px;
     padding: 20px;
-    display: flex;
+
+    @media (min-width: 1280px) {
+        height: 650px;
+    }
+    @media (min-width: 1840px) {
+        height: 600px;
+    }
 `;
 
 export const Box1 = styled.div`
@@ -48,15 +54,13 @@ export const Box2 = styled.div`
   background-color: var(--color-contact);
   
   .opening-text {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 
     span{
         font-size: 30px;
         font-weight: 600;
     }
   }
-
-
   
   .email-container{
     width: 100%;
@@ -65,7 +69,7 @@ export const Box2 = styled.div`
         font-size: 16px;
         transition: opacity 0.5s ease;
         strong {
-        font-size: 18px;
+        font-size: 17px;
         
         letter-spacing: 2px;
         }
@@ -81,6 +85,7 @@ export const PlatformContainer = styled.div`
     justify-content: center;
     align-items: center;
     padding-top: 50px;
+    
 `;
 
 

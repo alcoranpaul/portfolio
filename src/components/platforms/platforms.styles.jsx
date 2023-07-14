@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 19th June 2023 5:55:48 pm
+ * Last Modified: Thursday, 13th July 2023 10:18:01 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -23,6 +23,7 @@ export const ContactContainer = styled.div`
     .oneSet{
         width: 400px;
     }
+    gap: 20px;
 `
 
 export const IconContainer = styled.div`

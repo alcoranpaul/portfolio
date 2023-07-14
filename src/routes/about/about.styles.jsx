@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 13th July 2023 9:28:57 pm
+ * Last Modified: Thursday, 13th July 2023 10:13:03 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -19,9 +19,10 @@ export const AboutContainer = styled(motion.div)`
     width: 100%;
     overflow-y: scroll;
     height: 95vh;
+`
 
-    .pfp-container{
-        z-index: -99;
+export const ImageContainer = styled(motion.div)`
+ z-index: -99;
         .pfp-img{
        
             position: absolute;
@@ -39,6 +40,4 @@ export const AboutContainer = styled(motion.div)`
                 opacity: 0.7;
             }
         }
-    }
-
 `
