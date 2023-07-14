@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 13th July 2023 11:26:15 pm
+ * Last Modified: Thursday, 13th July 2023 11:35:59 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -65,9 +65,10 @@ export function* checkDateProcess() {
         const localDate = yield select(selectSavedDate)
 
         if (!localDate || !(localDate instanceof Date)) {
+            yield call(settingNewDateProcess, currentDate)
             return {
                 currentDate: new Date(),
-                isSavedDateOutsideThreshold: true
+                isSavedDateOutsideThreshold: false
             };
         }
         const currentDate = new Date();
