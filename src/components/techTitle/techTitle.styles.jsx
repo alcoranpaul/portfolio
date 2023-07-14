@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 15th June 2023 4:07:05 pm
+ * Last Modified: Monday, 3rd July 2023 11:51:51 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -17,9 +17,9 @@ import styled from "styled-components"
 export const TitleContainer = styled.div`
     display: flex;
     align-items: center;
-    width: 100%;
-    ${'' /* background: red; */}
+    width: 98%;
     padding-top: 5px;
+    user-select: none;
 `
 
 export const LeftCircle = styled.div`

@@ -15,6 +15,11 @@
 
   /* Text color */
   --color-text: #fdf0d5;
+  --color-description: #a7a596;
+  --color-strong: #c08402;
+  --color-pageContent-h2: #c2b95a;
+  --color-pageContent-h3: #bbb88f;
+  --color-pageContent-codeStyle: rgb(252, 73, 41);
 
   /* Additional colors */
   --color-error: #b9baa3;
@@ -22,11 +27,12 @@
   --color-custom: #fdf0d5;
   --color-dropdownOutline: #D6D5C9;
   --color-dropdownBackground: #474B45;
-  --color-skillVerse: #474b451e;
+  --color-skillVerse: #00000093;
   --color-workCard: #85858500;
   --color-contact: #d6d5c921;
   --color-buttonHover: #5e1817;
   --color-linkHover: #d1cb87;
+  --color-scroll: #d6d5c975;
 
 }
 
@@ -47,4 +53,18 @@ body {
 .button {
   background-color: var(--color-primary);
   color: var(--color-text);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-text);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
 }

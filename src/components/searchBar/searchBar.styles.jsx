@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 14th June 2023 1:22:12 am
+ * Last Modified: Friday, 7th July 2023 8:06:44 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -39,7 +39,6 @@ export const SearchBarContainer = styled(Form.Control)`
 export const InputGroupContainer = styled(InputGroup)`
   width: 300px;
   height: 50px;
-  
 `
 
 export const IconContainer = styled.div`

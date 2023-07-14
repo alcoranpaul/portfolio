@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 15th June 2023 12:20:56 am
+ * Last Modified: Wednesday, 5th July 2023 5:57:39 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,6 +13,7 @@
  */
 
 import { useState, useEffect } from 'react';
+import { motion } from "framer-motion";
 import ArrowIcon from '../../data/home/icons/arrowIcon';
 import ProjectItem from '../project/project-item.component';
 
@@ -25,40 +26,20 @@ import {
     ProjectContainer
 } from './projectPreview.styles.jsx';
 
-const projectsTemp = {
-    projectOne: {
-        title: 'Project One',
-        description: 'This is a project',
-        image: 'https://th.bing.com/th/id/OIP.py11cEQbNyv0SjZwjkHasAHaEK?pid=ImgDet&rs=1'
-    },
-    projectTwo: {
-        title: 'Project Two',
-        description: 'lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum voluptates. ',
-        image: 'https://th.bing.com/th/id/OIP.ZO4TmUbxM5-V1R7bbDpMHQHaEK?pid=ImgDet&rs=1'
-    },
-    projectThree: {
-        title: 'Project Three',
-        description: 'This is a project',
-        image: 'https://th.bing.com/th/id/OIP.W2ZZmFD47OaU47rNNwzzUAHaEo?pid=ImgDet&rs=1'
-    },
-    projectFour: {
-        title: 'Project Four',
-        description: 'This is a project',
-        image: 'https://th.bing.com/th/id/OIP.W2ZZmFD47OaU47rNNwzzUAHaEo?pid=ImgDet&rs=1'
-    },
-}
 
 const COLUMN_WIDTHS = [4, 4, 4]; // Initial column widths
 
 //TODO: State machine for Arrow hover?
-// - When hot hovered the description should be lessen
-// - When hovered the description should be expanded
 // - Add view all button
-const ProjectPreview = () => {
+const ProjectPreview = ({ projects }) => {
     const [columnWidths, setColumnWidths] = useState(COLUMN_WIDTHS); // Initial column widths
     const [activeIndex, setActiveIndex] = useState(-1); // Active index of the clicked project
     const [maxIndex, setMaxIndex] = useState(0); // Max index for traversal    
     const [isAnimating, setIsAnimating] = useState(false);
+
+    const projectsKeys = Object.keys(projects);
+    const projectsValues = Object.values(projects);
+    const lastIndexOfProject = projectsValues - 1;
 
     useEffect(() => {
         setIsAnimating(true);
@@ -84,7 +65,7 @@ const ProjectPreview = () => {
     const handleNext = () => {
         setActiveIndex(-1);
         setColumnWidths(COLUMN_WIDTHS);
-        setMaxIndex((prevIndex) => (prevIndex + 1) % Object.keys(projectsTemp).length)
+        setMaxIndex((prevIndex) => (prevIndex + 1) % Object.keys(projects).length)
 
     }
 
@@ -92,52 +73,64 @@ const ProjectPreview = () => {
         setActiveIndex(-1);
         setColumnWidths(COLUMN_WIDTHS);
         setMaxIndex((prevIndex) =>
-            prevIndex === 0 ? Object.keys(projectsTemp).length - 1 : prevIndex - 1
+            prevIndex === 0 ? Object.keys(projects).length - 1 : prevIndex - 1
         );
 
     };
 
-    const projectsArray = Object.values(projectsTemp);
-    const lastProjectIndex = projectsArray.length - 1;
+
 
     return (
-        <ProjectPreviewWrapper>
-            <ProjectsPreviewContainer>
-                {projectsArray
-                    .slice(maxIndex, maxIndex + 3)
-                    .map((project, index) => (
-                        <ProjectContainer
-                            key={index}
-                            onClick={() => handleClick(index)}
-                            lg={columnWidths[index]}
-                            className={isAnimating ? 'fade-in' : ''}
-                        >
-                            <ProjectItem
-                                title={project.title}
-                                description={project.description}
-                                image={project.image}
-                                clicked={index === activeIndex}
-                            />
-                        </ProjectContainer>
-                    ))}
-            </ProjectsPreviewContainer>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            style={{
+                overflow: 'hidden',
+                width: '100%'
+            }}>
+            <ProjectPreviewWrapper>
+                <ProjectsPreviewContainer>
+                    {projectsValues
+                        .slice(maxIndex, maxIndex + 3)
+                        .map((project, index) => (
+                            <ProjectContainer
+                                key={projectsKeys[index]}
+                                onClick={() => handleClick(index)}
+                                lg={columnWidths[index]}
+                                className={isAnimating ? 'fade-in' : ''}
+                            >
+                                <ProjectItem
+                                    title={project.title}
+                                    description={project.description}
+                                    image={project.imgURL}
+                                    clicked={index === activeIndex}
+                                    github={project.github}
+                                    demo={project.demo}
+                                    blurHash={project.blurHash}
+                                />
+                            </ProjectContainer>
+                        ))}
+                </ProjectsPreviewContainer>
 
-            {maxIndex !== 0 && (
-                <LeftArrowContainer>
-                    <Arrow onClick={handlePrev}>
-                        <ArrowIcon />
-                    </Arrow>
-                </LeftArrowContainer>
-            )}
+                {maxIndex !== 0 && (
+                    <LeftArrowContainer>
+                        <Arrow onClick={handlePrev}>
+                            <ArrowIcon />
+                        </Arrow>
+                    </LeftArrowContainer>
+                )}
 
-            {(maxIndex + 3) === lastProjectIndex && (
-                <RightArrowContainer>
-                    <Arrow onClick={handleNext}>
-                        <ArrowIcon />
-                    </Arrow>
-                </RightArrowContainer>
-            )}
-        </ProjectPreviewWrapper>
+                {(maxIndex + 3) === lastIndexOfProject && (
+                    <RightArrowContainer>
+                        <Arrow onClick={handleNext}>
+                            <ArrowIcon />
+                        </Arrow>
+                    </RightArrowContainer>
+                )}
+            </ProjectPreviewWrapper>
+        </motion.div>
     );
 
 }

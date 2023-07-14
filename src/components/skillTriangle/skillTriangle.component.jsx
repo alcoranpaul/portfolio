@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 14th June 2023 1:12:10 am
+ * Last Modified: Saturday, 8th July 2023 12:14:23 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -15,17 +15,13 @@
 import { SkillTriangleContainer, Title, VisualContainer, SorterContainer } from "./skillTriangle.styles"
 import RadarGraph from "../radarGraph/radarGraph"
 import DropdownButton from "../dropdownBtn/dropdownBtn.component"
-import SearchBar from "../searchBar/searchBar.component";
 
-const categoryOptions = ['Front-end', 'Back-End', 'Software and Others', 'ToolChain', 'Interested', 'All'];
 const skillLevels = ['Foundation', 'Comfortable', 'Proficient', 'Interested', '-'];
 
-const SkillTriangle = () => {
+const SkillTriangle = ({ onSelectCategory, onSelectSkillLevel, skills }) => {
 
-    const handleCategorySelection = (selectedCategory) => {
-        console.log(`Selected category: ${selectedCategory}`);
-        // Perform desired actions based on the selected category
-    };
+    const skillName = Object.keys(skills);
+    skillName.push('All');
 
 
     return (
@@ -37,11 +33,10 @@ const SkillTriangle = () => {
             </VisualContainer>
 
             <SorterContainer>
-                <SearchBar />
+
+                <DropdownButton categories={skillName} onSelectCategory={onSelectCategory} />
                 <br />
-                <DropdownButton categories={categoryOptions} onSelectCategory={handleCategorySelection} />
-                <br />
-                <DropdownButton categories={skillLevels} onSelectCategory={handleCategorySelection} />
+                <DropdownButton categories={skillLevels} onSelectCategory={onSelectSkillLevel} />
             </SorterContainer>
 
         </SkillTriangleContainer>

@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 12th June 2023 10:23:04 pm
+ * Last Modified: Friday, 7th July 2023 2:26:12 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -16,12 +16,31 @@ import { Button, ButtonIcon, ButtonText } from "./button.styles";
 import { BUTTON_TYPES } from "./buttonTypes";
 
 
-const CustomButton = ({ type, disabled, children, linkTo }) => {
+const CustomButton = ({ type, disabled, children, linkTo, disableLink, style }) => {
+
+    const handleClick = () => {
+        if (disableLink) return;
+        window.open(linkTo, "_blank"); // Open link in a new tab
+    };
+
+    const handleType = (buttonType) => {
+        switch (buttonType) {
+            case BUTTON_TYPES.DEMO:
+                return 'Demo';
+            case BUTTON_TYPES.GITHUB:
+                return 'Github';
+            case BUTTON_TYPES.CASE_STUDY:
+                return 'Case-study';
+            default:
+                break;
+        }
+    }
+
     return (
-        <Button type={type} disabled={disabled} onClick={linkTo}>
+        <Button type={type} disabled={disabled} onClick={handleClick} style={style}>
             <ButtonIcon>{children}</ButtonIcon>
             <ButtonText>
-                {type === BUTTON_TYPES.DEMO ? 'Demo' : 'Github'}
+                {handleType(type)}
             </ButtonText>
         </Button>
     )

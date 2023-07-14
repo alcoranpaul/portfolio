@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 15th June 2023 2:52:47 pm
+ * Last Modified: Tuesday, 4th July 2023 3:30:11 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,11 +13,17 @@
  */
 import { SkillContentContainer } from "./skillContent.styles"
 import TechPreview from "../techPreview/techPreview.component"
+import { useEffect } from "react"
 
-const SkillContent = () => {
+const SkillContent = ({ skills, selectedCategory, selectedSkillLevel }) => {
+
+
     return (
         <SkillContentContainer>
-            <TechPreview />
+            <TechPreview
+                skills={skills}
+                selectedCategory={selectedCategory}
+                selectedSkillLevel={selectedSkillLevel} />
         </SkillContentContainer>
     )
 }

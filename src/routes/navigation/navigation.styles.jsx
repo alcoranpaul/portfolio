@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 15th June 2023 8:14:32 pm
+ * Last Modified: Thursday, 13th July 2023 8:58:01 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -15,6 +15,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Navbar } from 'react-bootstrap';
+import { motion } from 'framer-motion';
 
 
 export const SidebarContainer = styled.div`
@@ -24,6 +25,33 @@ export const SidebarContainer = styled.div`
   height: 100vh;
   display: flex;
   width: 150px;
+
+  .close-up-icon {
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    top: 55px;
+    left: 5px;
+
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    z-index: 1000;
+  }
+
+  .close-up-img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid var(--color-primary);
+    filter: grayscale(50%);
+    transition: border-radius 0.5s ease-in-out, filter 0.5s ease-in-out;
+    &:hover {
+      filter: grayscale(0%);
+      border-radius: 0%;
+    }
+  }
+
 `;
 
 export const Sidebar = styled(Navbar)`
@@ -43,9 +71,10 @@ export const Sidebar = styled(Navbar)`
 
 `;
 
-export const ContentContainer = styled.div`
+export const ContentContainer = styled(motion.div)`
   width: 100%;
   padding: 20px;
+  
 `;
 
 
@@ -67,3 +96,5 @@ export const NavItem = styled(Link)`
     background-color: var(--color-primary);
   }
 `
+
+

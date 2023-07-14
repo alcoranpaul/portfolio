@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Tuesday, 20th June 2023 5:17:25 pm
+ * Last Modified: Friday, 7th July 2023 7:36:39 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -37,7 +37,6 @@ const SectionCard = ({ title, body }) => {
                                         const linkToWord = segment.trim(); // Trim the linkToWord to remove leading/trailing spaces
                                         const toValue = linkToWord.match(/\((.*?)\)/)[1]; // Extract value between parentheses
                                         const textWithoutParentheses = linkToWord.replace(/\(.*?\)/, ''); // Remove parentheses from link text
-                                        console.log(toValue); // Log the extracted 'to' value
                                         return (
                                             <Link className="linkTo" to={toValue} key={j}>
                                                 {textWithoutParentheses}

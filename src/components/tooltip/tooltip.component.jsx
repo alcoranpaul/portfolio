@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 19th June 2023 8:37:07 pm
+ * Last Modified: Tuesday, 20th June 2023 7:57:41 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -13,7 +13,6 @@
  */
 
 
-import { Fragment } from 'react';
 import styled from 'styled-components';
 
 const TooltipContainer = styled.div`

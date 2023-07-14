@@ -5,25 +5,66 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 15th June 2023 11:20:01 pm
+ * Last Modified: Saturday, 8th July 2023 12:16:30 am
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
-import SkillContent from '../../components/skillContent/skillContent.component';
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { fetchSkillsStart } from '../../store/skills/skills.action';
+import { selectSkills } from '../../store/skills/skills.selector';
+
 import SkillTriangle from '../../components/skillTriangle/skillTriangle.component';
-import { SkillsContainer, ChildrenContainer, ChildrenRow } from './skills.styles';
+import SkillContent from '../../components/skillContent/skillContent.component';
+import { SkillsContainer, SkillContentContainer, SkillTriangleContainer } from './skills.styles';
+
 
 const Skills = () => {
+    const [selectedCategory, setSelectedCategory] = useState('All');
+    const [selectedSkillLevel, setSelectedSkillLevel] = useState('-');
+    const dispatch = useDispatch();
+    const skills = useSelector(selectSkills);
+
+    useEffect(() => {
+        dispatch(fetchSkillsStart())
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    const handleSelectCategory = (selectedCategory) => {
+        setSelectedCategory(selectedCategory);
+    }
+
+    const handleSelectSkillLevel = (selectedSkillLevel) => {
+        setSelectedSkillLevel(selectedSkillLevel)
+    }
+
+
     return (
-        <SkillsContainer>
-            <ChildrenRow>
-                <ChildrenContainer lg={3}><SkillTriangle /></ChildrenContainer>
-                <ChildrenContainer lg={9}><SkillContent /></ChildrenContainer>
-            </ChildrenRow>
-        </SkillsContainer>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}>
+
+            <SkillsContainer>
+                <SkillTriangleContainer lg={3} className='skill-triangle-container'>
+                    <SkillTriangle
+                        skills={skills}
+                        onSelectCategory={handleSelectCategory}
+                        onSelectSkillLevel={handleSelectSkillLevel} />
+                </SkillTriangleContainer>
+                <SkillContentContainer lg={9} className='skill-content-container'>
+                    <SkillContent skills={skills}
+                        selectedCategory={selectedCategory}
+                        selectedSkillLevel={selectedSkillLevel}
+                    />
+                </SkillContentContainer>
+            </SkillsContainer>
+        </motion.div>
     )
 }
 

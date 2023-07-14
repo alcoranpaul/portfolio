@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Wednesday, 14th June 2023 1:33:09 am
+ * Last Modified: Monday, 3rd July 2023 10:19:19 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -17,6 +17,7 @@ import React, { useState } from 'react';
 
 import { DropdownItem } from './dropdown.styles';
 import ArrowUpDown from '../../data/components/dropdown/arrowUpDown';
+
 const DropdownButton = ({ categories, onSelectCategory }) => {
     const [selectedCategory, setSelectedCategory] = useState(categories[categories.length - 1]);
 

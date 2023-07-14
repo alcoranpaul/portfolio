@@ -1,7 +1,7 @@
 {
   "homepage": "https://alcoranpaul.github.io/portfolio",
   "name": "portfolio",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
@@ -10,21 +10,33 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "animate.css": "^4.1.1",
+    "blurhash": "^2.0.5",
     "bootstrap": "^5.3.0",
+    "firebase": "^9.23.0",
+    "framer-motion": "^10.12.16",
     "gh-pages": "^5.0.0",
     "google-map-react": "^2.2.1",
     "react": "^18.2.0",
+    "react-blurhash": "^0.3.0",
     "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
+    "react-lazy-load-image-component": "^1.6.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
+    "react-tsparticles": "^2.10.1",
     "react-vertical-timeline-component": "^3.6.0",
     "recharts": "^2.6.2",
     "redux": "^4.2.1",
     "redux-logger": "^3.0.6",
+    "redux-persist": "^6.0.0",
+    "redux-saga": "^1.2.3",
+    "reselect": "^4.1.8",
     "sass": "^1.62.1",
     "styled-components": "^5.3.11",
+    "tsparticles": "^2.10.1",
+    "tsparticles-slim": "^2.10.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -54,6 +66,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.0.0",
     "svg-url-loader": "^8.0.0"
   }
 }

@@ -5,88 +5,40 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 15th June 2023 9:36:14 pm
+ * Last Modified: Friday, 7th July 2023 6:35:05 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
  * Description:
  */
 
-import React from 'react';
-import { Card, Row, Col, Container } from 'react-bootstrap';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Routes, Route } from 'react-router-dom';
+
+import { fetchWorksStart } from '../../store/works/works.action';
+import { selectWorks } from '../../store/works/works.selector';
+
+import WorkContent from '../../components/workContent/workContent.component';
+import WorksPage from '../../components/worksPage/worksPage.component';
 
 const Work = () => {
-    const workData = [
-        {
-            title: 'Project 1',
-            imageSrc: 'https://via.placeholder.com/1280x720',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ',
-            technologies: ['React', 'JavaScript', 'HTML', 'CSS', 'Something'],
-            date: 'January 2022',
-        },
-        {
-            title: 'Project 2',
-            imageSrc: 'https://via.placeholder.com/800x600',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            technologies: ['Angular', 'TypeScript', 'SCSS'],
-            date: 'January 2022',
-        },
-        {
-            title: 'Project 3',
-            imageSrc: 'https://via.placeholder.com/800x600',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            technologies: ['Vue', 'JavaScript', 'Tailwind CSS'],
-            date: 'January 2022',
-        },
-    ];
+    const dispatch = useDispatch();
+    const works = useSelector(selectWorks);
+
+
+    useEffect(() => {
+        dispatch(fetchWorksStart())
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
 
     return (
-        <Container className="developerWork" fluid style={{
-            width: '80%',
-        }}>
-            {workData.map((work, index) => (
-                <Card key={index} style={{
-                    margin: '1rem auto',
-                    overflow: 'hidden',
-                    background: 'var(--color-workCard)',
-                    color: 'var(--color-text)',
-                    borderLeft: '5px double var(--color-accent)',
-                    boxShadow: '0 0 2px 0 var(--color-accent)',
-                }}>
-                    <Card.Body>
-                        <Row>
-                            <Col xs={12} md={5} style={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                height: "80%"
-                            }}>
-                                <div style={{ flex: '1 0 auto' }}>
-                                    <Card.Img
-                                        variant="top"
-                                        src={work.imageSrc}
-                                        style={{
-                                            width: '100%',
 
-
-                                            // border: '10px double var(--color-accent)',
-                                        }}
-                                    />
-                                </div>
-                                <Card.Text style={{ paddingTop: "10px" }}>
-                                    <p>{work.technologies.join(', ')}</p>
-                                    <i> <p>{work.date}</p></i>
-                                </Card.Text>
-
-                            </Col>
-                            <Col xs={12} md={7}>
-                                <Card.Title><h4>{work.title}</h4></Card.Title>
-                                <Card.Text>{work.description}</Card.Text>
-                            </Col>
-                        </Row>
-                    </Card.Body>
-                </Card>
-            ))}
-        </Container>
+        <Routes>
+            <Route index element={<WorkContent works={works} />} key="worksContent" />
+            <Route path=":workID" element={<WorksPage works={works} />} key="workPage" />
+        </Routes>
 
 
 

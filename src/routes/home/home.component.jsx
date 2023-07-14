@@ -5,52 +5,61 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Friday, 9th June 2023 5:14:00 pm
+ * Last Modified: Sunday, 2nd July 2023 10:08:43 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
- * Description:
+ * Description: 
  */
-import { Row, Col } from 'react-bootstrap';
-import tempProjectShowcase from '../../data/home/tempProjectShowcase.gif';
 
-import { MainContent, TopRow, NameContainer, FactsContainer, BotRow, ProjectsContainer } from './home.styles.jsx';
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+
+import { typingObserver } from '../../components/typingAnimation/typingAnimation.component.jsx';
+import OpeningLinks from '../../components/openingLinks/openingLinks.component.jsx';
+import OpeningContent from '../../components/openingContent/openingContent.component.jsx';
+import { MainContent } from './home.styles.jsx';
+
 
 const Home = () => {
-    return (
-        <MainContent>
-            <TopRow>
-                <NameContainer>
-                    <Row>
-                        <Col className='name'>
-                            <h2>Hi I'm <span>Paul</span></h2>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col className='carousel'>
-                            <ul>
-                                <li>Web Developer</li>
-                                <li>Software Engineer</li>
-                                <li>Programmer</li>
+    const [showLinks, setShowLinks] = useState(false);
+    const [showCards, setCards] = useState(false);
 
-                            </ul>
-                        </Col>
-                    </Row>
-                </NameContainer>
-                <FactsContainer>
-                    <ul>
-                        <li>Java</li>
-                        <li>Python</li>
-                        <li>OOP</li>
-                    </ul>
-                </FactsContainer>
-            </TopRow>
-            <BotRow>
-                <ProjectsContainer>
-                    <img src={tempProjectShowcase} alt='tempProjectShowcase' className='video' />
-                </ProjectsContainer>
-            </BotRow>
-        </MainContent >
+    useEffect(() => {
+        const handleTypingComplete = () => {
+            setTimeout(() => {
+                setShowLinks(true);
+                setTimeout(() => {
+                    setCards(true);
+                }, 2000);
+            }, 2000);
+        };
+
+        typingObserver.subscribe(handleTypingComplete);
+
+        return () => {
+            typingObserver.unsubscribe(handleTypingComplete);
+        };
+    }, []);
+
+
+    return (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            style={{
+                overflow: 'hidden',
+                width: '100%'
+            }}
+        >
+            <MainContent>
+                <OpeningContent showLinks={showLinks} />
+                <OpeningLinks showCards={showCards} />
+            </MainContent>
+
+        </motion.div>
     );
 };
 

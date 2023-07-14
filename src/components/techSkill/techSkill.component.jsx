@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Thursday, 15th June 2023 3:39:06 pm
+ * Last Modified: Friday, 7th July 2023 11:56:19 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -15,11 +15,17 @@
 import TechTitle from "../techTitle/techTitle.component";
 import TechIcons from "../techIcon/techIcons.component";
 
-const TechSkill = ({ name, icons }) => {
+
+const TechSkill = ({ name, items, wrap }) => {
+
     return (
-        <div>
+        <div
+            style={{
+                paddingBottom: "20px"
+            }}
+        >
             <TechTitle name={name} />
-            <TechIcons icons={icons} />
+            <TechIcons items={items} wrap={wrap} />
         </div>
     )
 }

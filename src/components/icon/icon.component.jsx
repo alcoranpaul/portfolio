@@ -5,7 +5,7 @@
  * Author: Paul Adrian Reyes (paulreyes74@yahoo.com)
  * GitHub: https://github.com/alcoranpaul
  * -----
- * Last Modified: Monday, 19th June 2023 8:25:34 pm
+ * Last Modified: Thursday, 29th June 2023 10:19:21 pm
  * Modified By: PR (paulreyes74@yahoo.com>)
  * -----
  * -----
@@ -75,7 +75,6 @@ const Icon = ({ IconComponent, iconColor, payload: { type, value } }) => {
     const handleOnClick = (event) => {
         if (type === ICON_TYPES.popUp) {
             setIconCoordinates({ x: event.clientX, y: event.clientY });
-            console.log(iconCoordinates)
             setTooltipVisible(!tooltipVisible);
 
             if (tooltipContent) {
